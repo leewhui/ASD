@@ -20,6 +20,7 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="07e736f3-abdc-4534-bb90-ec2356c82a2a" name="Default Changelist" comment="good">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/adminHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/adminHome.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -52,7 +53,7 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1597477416546</updated>
-      <workItem from="1597477417865" duration="1903000" />
+      <workItem from="1597477417865" duration="3098000" />
     </task>
     <task id="LOCAL-00001" summary="g">
       <created>1597477562846</created>
@@ -68,7 +69,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597477620127</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="good">
+      <created>1597490556086</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1597490556086</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -91,10 +99,10 @@
     <option name="LAST_COMMIT_MESSAGE" value="good" />
   </component>
   <component name="WindowStateProjectService">
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1597477626928">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1597490561750">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1597477626928" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1597490561750" />
     <state x="763" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1597477497978">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
