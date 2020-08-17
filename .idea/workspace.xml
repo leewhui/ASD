@@ -44,9 +44,14 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
   </component>
   <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\Gao\Desktop\WebS" />
+    </key>
     <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\Gao\Desktop\WebS\pictures" />
       <recent name="C:\Users\Gao\Desktop\WebS" />
     </key>
   </component>
@@ -61,7 +66,7 @@
       <workItem from="1597477417865" duration="3098000" />
       <workItem from="1597494093742" duration="638000" />
       <workItem from="1597591789539" duration="260000" />
-      <workItem from="1597592795257" duration="2943000" />
+      <workItem from="1597592795257" duration="5743000" />
     </task>
     <task id="LOCAL-00001" summary="g">
       <created>1597477562846</created>
@@ -91,7 +96,14 @@
       <option name="project" value="LOCAL" />
       <updated>1597494122272</updated>
     </task>
-    <option name="localTasksCounter" value="5" />
+    <task id="LOCAL-00005" summary="good">
+      <created>1597667048695</created>
+      <option name="number" value="00005" />
+      <option name="presentableId" value="LOCAL-00005" />
+      <option name="project" value="LOCAL" />
+      <updated>1597667048695</updated>
+    </task>
+    <option name="localTasksCounter" value="6" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -110,9 +122,9 @@
     <option name="oldMeFiltersMigrated" value="true" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="good" />
     <MESSAGE value="g" />
-    <option name="LAST_COMMIT_MESSAGE" value="g" />
+    <MESSAGE value="good" />
+    <option name="LAST_COMMIT_MESSAGE" value="good" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="266" key="FileChooserDialogImpl" timestamp="1597591898532">
