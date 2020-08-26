@@ -19,11 +19,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="07e736f3-abdc-4534-bb90-ec2356c82a2a" name="Default Changelist" comment="Draft ver.1 23.Aug 11:45PM">
+    <list default="true" id="07e736f3-abdc-4534-bb90-ec2356c82a2a" name="Default Changelist" comment="Draft ver.2 26.Aug 8:33PM">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/admin.java" beforeDir="false" afterPath="$PROJECT_DIR$/admin.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/adminHome.html" beforeDir="false" afterPath="$PROJECT_DIR$/adminHome.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/editAccount.html" beforeDir="false" afterPath="$PROJECT_DIR$/editAccount.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/editInfo.html" beforeDir="false" afterPath="$PROJECT_DIR$/editInfo.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -79,7 +77,7 @@
       <workItem from="1597592795257" duration="9492000" />
       <workItem from="1598101331493" duration="4071000" />
       <workItem from="1598324677497" duration="2114000" />
-      <workItem from="1598425817889" duration="3722000" />
+      <workItem from="1598425817889" duration="4029000" />
     </task>
     <task id="LOCAL-00001" summary="g">
       <created>1597477562846</created>
@@ -151,7 +149,14 @@
       <option name="project" value="LOCAL" />
       <updated>1598190356932</updated>
     </task>
-    <option name="localTasksCounter" value="11" />
+    <task id="LOCAL-00011" summary="Draft ver.2 26.Aug 8:33PM">
+      <created>1598438026485</created>
+      <option name="number" value="00011" />
+      <option name="presentableId" value="LOCAL-00011" />
+      <option name="project" value="LOCAL" />
+      <updated>1598438026485</updated>
+    </task>
+    <option name="localTasksCounter" value="12" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -173,7 +178,8 @@
     <MESSAGE value="g" />
     <MESSAGE value="good" />
     <MESSAGE value="Draft ver.1 23.Aug 11:45PM" />
-    <option name="LAST_COMMIT_MESSAGE" value="Draft ver.1 23.Aug 11:45PM" />
+    <MESSAGE value="Draft ver.2 26.Aug 8:33PM" />
+    <option name="LAST_COMMIT_MESSAGE" value="Draft ver.2 26.Aug 8:33PM" />
   </component>
   <component name="WindowStateProjectService">
     <state x="740" y="266" key="FileChooserDialogImpl" timestamp="1597591898532">
@@ -184,10 +190,10 @@
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
     <state x="595" y="285" key="MultipleFileMergeDialog/0.0.1920.1050@0.0.1920.1050" timestamp="1597670401004" />
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1598190443248">
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2" timestamp="1598438031579">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
-    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1598190443248" />
+    <state x="552" y="258" key="Vcs.Push.Dialog.v2/0.0.1920.1050@0.0.1920.1050" timestamp="1598438031579" />
     <state x="763" y="438" key="com.intellij.openapi.vcs.update.UpdateOrStatusOptionsDialogupdate-v2" timestamp="1598190504275">
       <screen x="0" y="0" width="1920" height="1050" />
     </state>
