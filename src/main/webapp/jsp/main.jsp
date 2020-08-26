@@ -69,9 +69,9 @@
                 <li class="card" style="width: 18rem;">
                     <img src="../resources/info.jpg" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Card information</h5>
-                        <p class="card-text">Find your card information</p>
-                        <a href="#" class="btn btn-primary">Go for it</a>
+                        <h5 class="card-title">User information</h5>
+                        <p class="card-text">View Your Profile</p>
+                        <a href="../userInfo.jsp" class="btn btn-primary">Go for it</a>
 
                     </div>
                 </li>
