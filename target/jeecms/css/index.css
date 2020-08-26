@@ -1,0 +1,60 @@
+.clearfix::after,
+.clearfix::before{
+    display: table;
+    clear: both;
+    content: '';
+}
+.w{
+    width: 1380px;
+    margin: 0 auto;
+}
+.navbar{
+    position: fixed;
+}
+.logo{
+    height: 40px;
+}
+.background{
+    position: relative;
+}
+.coverpage{
+    width: 900px;
+}
+.background .text{
+    top: 250px;
+    left: 300px;
+    position: absolute;
+}
+.background .cover{
+    float: right;
+}
+.nav-card{
+    width: 100%;
+    margin: 0 auto;
+    list-style: none;
+}
+.nav-card li{
+    margin-left: 10px;
+    margin-bottom: 10px;
+    overflow: hidden;
+    float: left;
+}
+.nav-card li img{
+    height: 180px;
+}
+.nav-card li img:hover{
+    transform:scale(1.1,1.1);transition: all .3s ease-out;
+}
+.nav-card li .card-title{
+    margin-top: 10px;
+    margin-left: 10px;
+}
+
+.dropdown-divider{
+    width: 500px;
+    margin: 0 auto;
+}
+.card:hover{
+    box-shadow:1.5px 3px 5px 3px rgba(0, 0, 0, 0.4);
+    transition: box-shadow 0.2s;
+}
