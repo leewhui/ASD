@@ -99,7 +99,7 @@
                                     </div>
                                 </div>
                             </form>
-                            <div class="text-right"><a class="btn btn-primary" href="/main.jsp">Main Page</a></div>
+                            <div class="text-right"><a class="btn btn-primary" href="/jsp/main.jsp">Main Page</a></div>
                         </div>
                     </div>
                 </div>
