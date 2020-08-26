@@ -48,12 +48,12 @@
                     </div>
                 </li>
 
-                <li class="card" style="width: 18rem;">
+                 <li class="card" style="width: 18rem;">
                     <img src="../resources/paper.jpg" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">Term of use</h5>
-                        <p class="card-text">Understand your responsibilities</p>
-                        <a href="#" class="btn btn-primary">Go for it</a>
+                        <h5 class="card-title">Admin System</h5>
+                        <p class="card-text">For system admin to manage user</p>
+                        <a href="../adminHome.jsp" class="btn btn-primary">Go for it</a>
                     </div>
                 </li>
 
