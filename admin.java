@@ -6,7 +6,7 @@ public class Admin {
     int Salary;
 
 public Admin(int staffID, String position, String start_date, int Salary){
-    this.staffID=staffID;
+    this.staffID = staffID;
     this.position = position;
     this.start_date = start_date;
     this.Salary = Salary;
