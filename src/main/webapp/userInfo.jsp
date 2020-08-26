@@ -12,7 +12,7 @@
     <title>User Information</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link href="http://netdna.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="css/userInfo.css">
+    <link rel="stylesheet" href="./css/userInfo.css">
 </head>
 <body>
 
