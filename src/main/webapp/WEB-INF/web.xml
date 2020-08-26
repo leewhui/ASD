@@ -11,19 +11,25 @@
     <servlet-name>loginController</servlet-name>
     <servlet-class>com.app.asd.Controller.loginController</servlet-class>
   </servlet>
-  <servlet-mapping>
-    <servlet-name>loginController</servlet-name>
-    <url-pattern>/loginController</url-pattern>
-  </servlet-mapping>
 
   <servlet>
     <servlet-name>signupController</servlet-name>
     <servlet-class>com.app.asd.Controller.signupController</servlet-class>
   </servlet>
+
+
+
+  <servlet-mapping>
+    <servlet-name>loginController</servlet-name>
+    <url-pattern>/loginController</url-pattern>
+  </servlet-mapping>
+
   <servlet-mapping>
     <servlet-name>signupController</servlet-name>
     <url-pattern>/signupController</url-pattern>
   </servlet-mapping>
+
+
 
 </web-app>
 

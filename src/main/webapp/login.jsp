@@ -54,11 +54,11 @@
     cancelBtn.onclick = function()
     {
         window.location.href='index.jsp';
-    }
+    };
 
     document.getElementById('showPassword').onclick = function () {
         showPassword(document.getElementById('showPassword'), 'passwordBox');
-    }
+    };
     function showPassword(btn, boxName)
     {
         if(btn.innerHTML === 'Show')

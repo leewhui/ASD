@@ -42,9 +42,9 @@
                 <li class="card" style="width: 18rem;">
                     <img src="../resources/buy.png" alt="...">
                     <div class="card-body">
-                        <h5 class="card-title">purchase</h5>
-                        <p class="card-text">Purchase an opal card</p>
-                        <a href="#" class="btn btn-primary">Go for it</a>
+                        <h5 class="card-title">Order New Card</h5>
+                        <p class="card-text">Get a new opal card</p>
+                        <a href="/Controller/orderMenuController" class="btn btn-primary">Go for it</a>
                     </div>
                 </li>
 

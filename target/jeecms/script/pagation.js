@@ -49,7 +49,7 @@ preBtn.onclick = function()
         showpage(counter);
     }
     submitBtn.disabled = true;
-}
+};
 
 // --------------------------------------validate----------------------------------------------
 
@@ -78,11 +78,11 @@ function showPassword(btn, boxName)
 showPasswordBtn.onclick = function()
 {
     showPassword(showPasswordBtn, 'passwordBox');
-}
+};
 showConfirmBtn.onclick = function()
 {
     showPassword(showConfirmBtn, 'confirmBox');
-}
+};
 
 function checkPassword()
 {
@@ -97,7 +97,7 @@ function checkPassword()
 document.getElementById('confirmBox').onfocus = function()
 {
     document.getElementById('confirmText').innerHTML = '';
-}
+};
 
 
 function isEmail(str){
@@ -122,21 +122,21 @@ nextBtn.onclick = function()
         }
         nextpage();
     }
-}
+};
 
 usernameBox.onclick = function()
 {
     document.getElementById('usernameText').innerHTML = '';
-}
+};
 passwordBox.onclick = function() {
     document.getElementById('passwordText').innerHTML = '';
-}
+};
 confirmBox.onclick = function() {
     document.getElementById('confirmText').innerHTML = '';
-}
+};
 emailBox.onclick = function() {
     document.getElementById('emailText').innerHTML = '';
-}
+};
 
 const gender = document.getElementById('gender');
 const dob = document.getElementById('flatpickr-tryme');
@@ -150,12 +150,12 @@ submitBtn.onclick = function() {
         document.getElementById('dobText').innerHTML = 'please input your borthday';
         return false;
     }
-}
+};
 
 gender.onclick = function() {
     document.getElementById('genderText').innerHTML = '';
-}
+};
 
 dob.onclick = function() {
     document.getElementById('dobText').innerHTML = '';
-}
+};
