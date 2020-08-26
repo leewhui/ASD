@@ -35,7 +35,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Top up</h5>
                         <p class="card-text">Plan ahead or top up online</p>
-                        <a href="#" class="btn btn-primary">Go for it</a>
+                        <a href="..payment.jsp" class="btn btn-primary">Go for it</a>
                     </div>
                 </li>
 
