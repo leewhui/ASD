@@ -1,0 +1,20 @@
+body{
+    padding-top: 30px;
+}
+
+.starter{
+    padding: 30px 100px;
+    text-align: center;
+}
+.Head{
+    padding: 30px 100px;
+    text-align: center;
+}
+.panel-body{
+    padding: 50px 100px;
+    text-align: center;
+}
+.table{
+    border: 1px solid;
+    -moz-border-radius-topleft: 40px;
+}
