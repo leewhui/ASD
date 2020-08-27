@@ -115,6 +115,10 @@ nextBtn.onclick = function()
     else
     {
         if(checkPassword() === false) return false;
+        if(usernameBox.value === '' || passwordBox.value === '' || confirmBox.value === '' || emailBox.value === '')
+        {
+            return false;
+        }
         else if(!isEmail(emailBox.value) && emailBox.value !== '')
         {
             document.getElementById('emailText').innerHTML = 'Email address is uncorrect';
