@@ -81,7 +81,7 @@
                     <div class="card-body">
                         <h5 class="card-title">Manage card</h5>
                         <p class="card-text">Manage your opal card online</p>
-                        <a href="#" class="btn btn-primary">Go for it</a>
+                        <a href="../cardManagement.jsp" class="btn btn-primary">Go for it</a>
                     </div>
                 </li>
             </ul>
