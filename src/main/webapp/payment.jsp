@@ -70,6 +70,9 @@
                 </label>
                 <input type="submit" value="Confirm" class="btn">
             </form>
+            <form action="./jsp/main.jsp">
+                <input type="submit" value="Back" class="btn">
+            </form>
         </div>
     </div>
     <div class="col-25">
