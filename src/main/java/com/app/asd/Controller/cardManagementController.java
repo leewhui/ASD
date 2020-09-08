@@ -1,12 +1,16 @@
 package com.app.asd.Controller;
+
 import javax.servlet.ServletException;
+import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class loginController extends HttpServlet
-{
+
+@WebServlet(name = "cardManagementController", urlPatterns = {"/Controller/cardManagementController"})
+public class cardManagementController extends HttpServlet {
+
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         doPost(req, resp);
@@ -14,8 +18,8 @@ public class loginController extends HttpServlet
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        System.out.println("servlet1223");
+
         req.setCharacterEncoding("UTF-8");
-        resp.sendRedirect("./jsp/main.jsp");
+        resp.sendRedirect("../cardManagement.jsp");
     }
 }
