@@ -1,4 +1,4 @@
-<%@ page import="com.app.asd.module.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: wenhuili
   Date: 18/8/20
@@ -23,7 +23,7 @@
             <a href="" class="logo my-0 mr-md-auto font-weight-normal">
                 <img src="../resources/logo.png" class="logo my-0 mr-md-auto font-weight-normal" alt="" class="logo">
             </a>
-            <span>Welcome <span style="color: orangered;"><%=username%></span></span>
+            <span>Welcome <span style="color: orangered;">XXX</span></span>
         </div>
 
         <br>
