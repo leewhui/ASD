@@ -20,10 +20,7 @@
 </head>
 <body class="" style= " background-color: rgba(44, 141, 238, 0.15);">
 
-<%
-    ArrayList<Order> itemList = (ArrayList<Order>) session.getAttribute("itemList");
 
-%>
 
 
 
