@@ -1,0 +1,23 @@
+.form{
+    width: 500px;
+    border: 1px solid gainsboro;
+    padding: 20px 30px;
+    margin: 100px auto;
+    border-radius: 25px;
+    background-color: white;
+}
+.form h5{
+    text-align: center;
+}
+body{
+    background-color: #f1f1f1;
+}
+.logo{
+    width: 180px;
+}
+#submitBtn{
+    float: right;
+}
+.dob{
+    margin-bottom: 16px;
+}
