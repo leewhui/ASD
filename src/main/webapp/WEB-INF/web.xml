@@ -5,8 +5,6 @@
 <web-app>
   <display-name>Archetype Created Web Application</display-name>
 
-
-
   <servlet>
     <servlet-name>loginController</servlet-name>
     <servlet-class>com.app.asd.Controller.loginController</servlet-class>
@@ -35,6 +33,16 @@
   <servlet-mapping>
     <servlet-name>checkEmailUnique</servlet-name>
     <url-pattern>/checkEmailUnique</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>logoutServlet</servlet-name>
+    <servlet-class>com.app.asd.Controller.logoutController</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>logoutServlet</servlet-name>
+    <url-pattern>/logoutServlet</url-pattern>
   </servlet-mapping>
 
 </web-app>
