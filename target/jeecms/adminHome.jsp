@@ -7,13 +7,17 @@
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 
-<%@page import="com.app.asd.module.*" %>
+<%@page import="com.app.asd.Model.*" %>
 <%@page import="com.app.asd.Controller.*" %>
 >
-<%@page import="com.app.asd.module.dao.*" %>
+<%@page import="com.app.asd.Model.dao.*" %>
 <%@ page import="org.bson.types.ObjectId" %>
+<%@ page import="com.app.asd.Utils.JGDBC" %>
 
 <%
+    JGDBC jgdbc = new JGDBC();
+    adminHomeDao con = new adminHomeDao(jgdbc.openConnection());
+    session.setAttribute("con",con);
     User[] users = (User[]) request.getAttribute("users");
 %>
 
@@ -57,13 +61,14 @@
             </ul>
             <form class="navbar-form navbar-left form " action="adminHomeController" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" name="userID">
+                    <input type="text" class="form-control" placeholder="Search" name="userEmail">
                 </div>
                 <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="jsp/main.jsp">Main Page</a></li>
-                <li><a href="index.jsp">Logout</a></li>
+                <form class="navbar-form navbar-right form" action="logoutServlet" method="get">
+                    <button type="submit" class="btn btn-default">Logout</button>
+                </form>
             </ul>
         </div>
 
@@ -88,13 +93,12 @@
     <table class="table table-striped table-hover">
         <thead>
         <tr>
-            <th>UserID</th>
+            <th>Email</th>
             <th>Password</th>
             <th>First_name</th>
             <th>Last_name</th>
             <th>is_staff</th>
             <th>Phone</th>
-            <th>Email</th>
             <th>Gender</th>
             <th>Dob</th>
             <th>Data_registered</th>
@@ -132,7 +136,7 @@
                     String username = u.getUsername();
         %>
         <tr>
-            <td><%=userID%>
+            <td><%=email%>
             </td>
             <td><%=password%>
             </td>
@@ -143,8 +147,6 @@
             <td><%=is_staff%>
             </td>
             <td><%=phone%>
-            </td>
-            <td><%=email%>
             </td>
             <td><%=gender%>
             </td>

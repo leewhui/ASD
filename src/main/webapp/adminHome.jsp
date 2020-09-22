@@ -66,8 +66,9 @@
                 <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="jsp/main.jsp">Main Page</a></li>
-                <li><a href="index.jsp">Logout</a></li>
+                <form class="navbar-form navbar-right form" action="logoutServlet" method="get">
+                    <button type="submit" class="btn btn-default">Logout</button>
+                </form>
             </ul>
         </div>
 

@@ -46,7 +46,7 @@
             </ul>
             <form class="navbar-form navbar-left form " action="adminHomeController" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" name="userID">
+                    <input type="text" class="form-control" placeholder="Search" name="userEmail">
                 </div>
                 <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
             </form>

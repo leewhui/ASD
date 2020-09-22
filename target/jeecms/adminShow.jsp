@@ -1,4 +1,4 @@
-<%@ page import="com.app.asd.module.User" %><%--
+<%@ page import="com.app.asd.Model.User" %><%--
   Created by IntelliJ IDEA.
   User: Gao
   Date: 26/08/2020
@@ -42,9 +42,9 @@
                 <li><a href="editInfo.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User Information edit</a> </li>
                 <li><<li><a href="editAccount.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User Account edit</a> </li>
             </ul>
-            <form class="navbar-form navbar-left">
+            <form class="navbar-form navbar-left form " action="adminHomeController" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" name="userEmail">
                 </div>
                 <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
             </form>
@@ -77,13 +77,12 @@ if(finded != null){
     <table class="table table-striped table-hover">
     <thead>
     <tr>
-        <th>UserID</th>
+        <th>Email</th>
         <th>Password</th>
         <th>First_name</th>
         <th>Last_name</th>
         <th>is_staff</th>
         <th>Phone</th>
-        <th>Email</th>
         <th>Gender</th>
         <th>Dob</th>
         <th>Data_registered</th>
@@ -110,7 +109,7 @@ if(finded != null){
         String username = finded.getUsername();
     %>
     <tr>
-        <td><%=userID%></td>
+        <td><%=email%></td>
         <td><%=password%></td>
         <td><%=firstName%></td>
         <td><%=lastName%></td>
