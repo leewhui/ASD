@@ -21,7 +21,7 @@ public class MD5Util
         }
 
         try {
-            md5 = MessageDigest.getInstance("MD5"); // 取得算法
+            md5 = MessageDigest.getInstance("MD5");
         } catch (Exception e) {
             e.printStackTrace();
             return "";
@@ -34,7 +34,7 @@ public class MD5Util
             byteArray[i] = (byte) charArray[i];
         }
 
-        byte[] md5Bytes = md5.digest(byteArray); // 加密
+        byte[] md5Bytes = md5.digest(byteArray);
 
         StringBuilder hexValue = new StringBuilder();
 
@@ -47,7 +47,7 @@ public class MD5Util
         if (rang == 32) {
             return hexValue.toString();
         } else {
-            return hexValue.toString().substring(8, 24);// 转换为32位字符串
+            return hexValue.toString().substring(8, 24);
         }
     }
 

@@ -1,13 +1,11 @@
 package com.app.asd.Controller;
-import com.app.asd.Utils.MD5Util;
 import com.app.asd.Utils.dbConnect;
-import com.app.asd.module.User;
+import com.app.asd.Model.User;
 import com.google.gson.Gson;
 import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCursor;
 import org.bson.Document;
 
-import javax.mail.Session;
 import javax.servlet.ServletException;
 import javax.servlet.http.*;
 import java.io.IOException;
@@ -24,11 +22,11 @@ public class loginController extends HttpServlet
         req.setCharacterEncoding("UTF-8");
         Gson gson = new Gson();
         String email = req.getParameter("email");
-        String password = MD5Util.digest(req.getParameter("password"));
+        String password = req.getParameter("password");
         String remember = req.getParameter("checkbox");
         BasicDBObject obj = new BasicDBObject("email", email);
         MongoCursor<Document> resultList = dbConnect.queryCursor("User", obj);
-        if (!resultList.hasNext())
+        if (!resultList.hasNext()) // if there is no user found from the database
         {
             String message = "User not exist";
             req.setAttribute("LoginStatus",message);
@@ -40,13 +38,14 @@ public class loginController extends HttpServlet
                 User user = gson.fromJson(resultList.next().toJson(), User.class);
                 if (user.getEmail().equals(email) && user.getPassword().equals(password))
                 {
-                    if (user.isIs_staff())
+                    if ("admin@gmail.com".equals(user.getEmail())) // if staff login
                     {
                         req.setAttribute("LoginStatus",user);
                         req.getRequestDispatcher("/login.jsp").forward(req, resp);
                     }
                     else
                     {
+                        // add cookie for the user if the user click the remember be check box
                         if ("on".equals(remember))
                         {
                             Cookie cookie1 = new Cookie("email", email);
@@ -59,7 +58,7 @@ public class loginController extends HttpServlet
                         req.setAttribute("LoginStatus",user);
                         HttpSession session = req.getSession();
                         session.setAttribute("currentUser", user);
-                        req.getRequestDispatcher("/main.jsp").forward(req, resp);
+                        resp.sendRedirect("main.jsp");
                     }
                 }
                 else

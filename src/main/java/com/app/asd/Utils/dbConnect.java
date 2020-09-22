@@ -1,10 +1,9 @@
 package com.app.asd.Utils;
-import com.app.asd.module.User;
+import com.app.asd.Model.User;
 import com.google.gson.Gson;
 import com.mongodb.*;
 import com.mongodb.MongoClient;
 import com.mongodb.client.*;
-import com.mongodb.util.JSON;
 import org.bson.Document;
 
 public class dbConnect

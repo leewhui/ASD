@@ -1,4 +1,4 @@
-<%@ page import="com.app.asd.module.User" %><%--
+<%@ page import="com.app.asd.Model.User" %><%--
   Created by IntelliJ IDEA.
   User: wenhuili
   Date: 18/8/20

@@ -1,4 +1,4 @@
-<%@ page import="com.app.asd.module.User" %><%--
+<%@ page import="com.app.asd.Model.User" %><%--
   Created by IntelliJ IDEA.
   User: wenhuili
   Date: 18/8/20
@@ -25,7 +25,12 @@
     User user = (User) session.getAttribute("currentUser");
     if (user == null)
     {
-        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+//        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+
+        response.setHeader("Cache-Control","no-store");
+        response.setHeader("Pragrma","no-cache");
+        response.setDateHeader("Expires",0);
+
         response.sendRedirect("index.jsp");
     }
     else
@@ -103,21 +108,14 @@
                 <div class="card-body">
                     <h5 class="card-title">Manage card</h5>
                     <p class="card-text">Manage your opal card online</p>
-                    <a href="../cardManagement.jsp" class="btn btn-primary">Go for it</a>
+                    <form action="cardManagementController">
+                        <button class="btn btn-primary">Go for it</button>
+                    </form>
                 </div>
             </li>
         </ul>
     </div>
 </div>
 </body>
-
-<script>
-    const logoutBtn = document.getElementById('logoutBtn');
-    logoutBtn.onclick = function () {
-        const xhr = new XMLHttpRequest();
-        xhr.open('post', 'logoutServlet');
-        xhr.send();
-    }
-</script>
 
 </html>

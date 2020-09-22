@@ -1,7 +1,5 @@
 package com.app.asd.Controller;
 
-import com.app.asd.module.User;
-
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -15,6 +13,6 @@ public class logoutController extends HttpServlet
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.removeAttribute("currentUser");
-        resp.sendRedirect(req.getContextPath() + "/main.jsp");
+        resp.sendRedirect("main.jsp");
     }
 }

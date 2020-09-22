@@ -45,5 +45,15 @@
     <url-pattern>/logoutServlet</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>cardManagementController</servlet-name>
+    <servlet-class>com.app.asd.Controller.cardManagementController</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>cardManagementController</servlet-name>
+    <url-pattern>/cardManagementController</url-pattern>
+  </servlet-mapping>
+
 </web-app>
 
