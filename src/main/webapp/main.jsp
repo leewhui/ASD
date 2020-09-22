@@ -47,7 +47,7 @@
                 <span style="color: orangered;">
                 <%=username%>
             </span>
-                <form action="logoutServlet" method="post">
+                <form action="logoutServlet" method="get">
                     <button id="logoutBtn">Log out</button>
                 </form>
             </span>

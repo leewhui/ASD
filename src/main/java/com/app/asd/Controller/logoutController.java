@@ -10,7 +10,7 @@ import java.io.IOException;
 public class logoutController extends HttpServlet
 {
     @Override
-    protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+    protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         HttpSession session = req.getSession();
         session.removeAttribute("currentUser");
         resp.sendRedirect("main.jsp");
