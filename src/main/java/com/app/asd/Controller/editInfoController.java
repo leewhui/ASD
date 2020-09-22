@@ -1,19 +1,13 @@
 package com.app.asd.Controller;
 
+import com.app.asd.Model.User;
+import com.app.asd.Model.dao.adminHomeDao;
+
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-
-import com.app.asd.Utils.dbConnect;
-import com.app.asd.module.User;
-import com.app.asd.module.dao.JGDBC;
-import com.mongodb.BasicDBObject;
-import com.mongodb.DBCursor;
-import com.mongodb.client.MongoCursor;
-import org.bson.Document;
-import com.app.asd.module.dao.adminHomeDao;
 
 public class editInfoController extends HttpServlet {
 
@@ -28,13 +22,12 @@ public class editInfoController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         String type = req.getParameter("type");
-        JGDBC jgdbc = new JGDBC();
-        adminHomeDao con = new adminHomeDao(jgdbc.openConnection());
+        adminHomeDao con =(adminHomeDao) req.getSession().getAttribute("con");
 
         if (type.equals("1")) {
-            String userID = req.getParameter("userID");
+            String email = req.getParameter("userEmail");
 
-            User finded = con.getSearch(userID);
+            User finded = con.getSearch(email);
 
             req.setAttribute("finded", finded);
             req.getRequestDispatcher("editInfo.jsp").forward(req, resp);

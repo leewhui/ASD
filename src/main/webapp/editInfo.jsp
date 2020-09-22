@@ -1,4 +1,4 @@
-<%@ page import="com.app.asd.module.User" %><%--
+<%@ page import="com.app.asd.Model.User" %><%--
   Created by IntelliJ IDEA.
   User: Gao
   Date: 26/08/2020
@@ -46,7 +46,7 @@
             </ul>
             <form class="navbar-form navbar-left form " action="adminHomeController" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" name="userID">
+                    <input type="text" class="form-control" placeholder="Search" name="userEmail">
                 </div>
                 <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
             </form>
@@ -69,7 +69,7 @@
 <form action="editInfoController" method="post">
     <input type="hidden" name="type" value="1">
     <div class="text-center">
-        <input placeholder="UserID" name="userID">
+        <input placeholder="User Email" name="userEmail">
         <button type="submit">
             Enter
         </button>
@@ -81,20 +81,21 @@
     if (finded != null) {
 %>
 
+<br>
 <HR width="60%" color=#987cb9 SIZE=10>
+<br>
 
-<h2 class="sub-header">Searched result of "<%=finded.getUserId()%>"</h2>
+<h2 class="sub-header">Searched result of "<%=finded.getEmail()%>"</h2>
 <div class="table-responsive">
     <table class="table table-striped table-hover">
         <thead>
         <tr>
-            <th>UserID</th>
+            <th>Email</th>
             <th>Password</th>
             <th>First_name</th>
             <th>Last_name</th>
             <th>is_staff</th>
             <th>Phone</th>
-            <th>Email</th>
             <th>Gender</th>
             <th>Dob</th>
             <th>Data_registered</th>
@@ -130,7 +131,7 @@
             String username = finded.getUsername();
         %>
         <tr>
-            <td><%=userID%>
+            <td><%=email%>
             </td>
             <td><%=password%>
             </td>
@@ -141,8 +142,6 @@
             <td><%=is_staff%>
             </td>
             <td><%=phone%>
-            </td>
-            <td><%=email%>
             </td>
             <td><%=gender%>
             </td>
@@ -160,15 +159,15 @@
 
 </div>
 
-
+<br>
 <HR width="60%" color=#987cb9 SIZE=10>
+<br>
 
-
-<div class="margin:0px auto" text-align="center">
-    <div>
+<div  class="text-center">
         <form action="editInfoController" method="post">
-            UserID:
-            <input type="text" name="userID" value=<%=userID%>>
+            <input type="hidden" name="userID" value="<%=userID%>">
+            Email:
+            <input type="text" name="email" value=<%=email%>>
             <br>
             Password:
             <input type="text" name="password" value=<%=password%>>
@@ -179,13 +178,14 @@
             Last_name:
             <input type="text" name="lastname" value=<%=lastName%>>
             <br>
-            is_staff: NO: <input type="radio" name="is_staff" value="NO" checked> YES:  <input type="radio" name="is_staff" value="YES">
+            <%if(finded.isIs_staff()){%>
+            Is staff:   NO: <input type="radio" name="is_staff" value="NO" >   YES:  <input type="radio" name="is_staff" value="YES" checked>
+            <%}else {%>
+            Is staff:   NO: <input type="radio" name="is_staff" value="NO" checked>   YES:  <input type="radio" name="is_staff" value="YES" >
+            <%}%>
             <br>
             Phone:
             <input type="text" name="phone" value=<%=phone%>>
-            <br>
-            Email:
-            <input type="text" name="email" value=<%=email%>>
             <br>
             Gender:
             <input type="text" name="gender" value=<%=gender%>>
@@ -196,20 +196,23 @@
             Date_registered:
             <input type="text" name="date" value=<%=date_registered%>>
             <br>
-            is_staff: NO: <input type="radio" name="act" value="NO" checked> YES:  <input type="radio" name="act" value="YES">
+
+            <%if(finded.getActivated_status()){%>
+            Activated Statue:   NO: <input type="radio" name="act" value="NO" >   YES:  <input type="radio" name="act" value="YES" checked>
+            <%}else {%>
+            Activated Statue:   NO: <input type="radio" name="act" value="NO" checked>   YES:  <input type="radio" name="act" value="YES" >
+            <%}%>
             <br>
+
             Username:
             <input type="text" name="username" value=<%=username%>>
             <br>
             <br>
 
-
-
             <input type="hidden" name="type" value="2">
             <button onclick="window.location.href = 'editInfo.jsp'">Cancel</button>
             <button type="submit" onclick="confirm('Are you sure to edit this user?')">Submit</button>
         </form>
-    </div>
 </div>
 
 <%}%>
