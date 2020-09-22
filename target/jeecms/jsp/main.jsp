@@ -1,4 +1,4 @@
-<%@ page import="com.app.asd.module.User" %><%--
+<%--
   Created by IntelliJ IDEA.
   User: wenhuili
   Date: 18/8/20
@@ -18,16 +18,12 @@
 </head>
 
 <body>
-<%
-    User user = (User) session.getAttribute("currentUser");
-    String username = user.getUsername();
-%>
     <div>
         <div class="d-flex flex-column flex-md-row align-items-center p-3 mb-3 bg-white shadow-sm">
             <a href="" class="logo my-0 mr-md-auto font-weight-normal">
                 <img src="../resources/logo.png" class="logo my-0 mr-md-auto font-weight-normal" alt="" class="logo">
             </a>
-            <span>Welcome <span style="color: orangered;"><%=username%></span></span>
+            <span>Welcome <span style="color: orangered;">XXX</span></span>
         </div>
 
         <br>

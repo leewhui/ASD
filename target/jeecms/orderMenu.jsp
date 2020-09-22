@@ -5,6 +5,9 @@
   Time: 下午 11:42
   To change this template use File | Settings | File Templates.
 --%>
+<%@page import="java.util.ArrayList"%>
+<%@page import="java.util.List"%>
+<%@page import="com.app.asd.model.*"%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!DOCTYPE html>
 <html lang="en">
@@ -16,6 +19,11 @@
     <link rel="stylesheet" href="css/orderMenu.css">
 </head>
 <body class="" style= " background-color: rgba(44, 141, 238, 0.15);">
+
+
+
+
+
 <div>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 mb-3 bg-white shadow-sm">
         <a href="" class="logo my-0 mr-md-auto font-weight-normal">
@@ -27,22 +35,52 @@
 <div style="text-align: center;">
     <h1 style="color: orangered;">My Order</h1>
     <br/>
-    <h3>Hello <span style="color:rgb(255, 128, 78);">Customer</span>
-        <span style="color:rgb(44, 141, 238)">(UserName)</span></h3>
+    <h3>Hello <span style="color:rgb(255, 128, 78);">Customer Shahao</span>
+        <span style="color:rgb(44, 141, 238)">13066206</span></h3>
     <br/>
     <a class="btn btn-outline-primary" href="/Controller/orderNewCardController">Get a new card</a> &nbsp
     <a class="btn btn-outline-primary" href="#">Card Type Requirement</a> &nbsp
     <a class="btn btn-outline-primary" href="/jsp/main.jsp">Back</a>
 </div>
 
-<p>Customers will use this webpage, Staff will be linked to another webpage orderManagement.jsp</p>
-<p>The function: </p>
-<p>1. View all orders of the current account</p>
-<p>2. Search for particular order</p>
-<p>3. Get a new opal card </p>
+<br/>
+
+<div class="form-group" style="text-align: center;">
+    <span>Search by</span>
+    <input type="text" id="ItemSearchInput" onkeyup="SearchTable()" placeholder="Order ID or Date">
+</div>
+
+<script>
+    function SearchTable()
+    {
+        var input, filter, table, tr, itemName, categoryName, i, nameValue, categoryValue;
+        input = document.getElementById("ItemSearchInput");
+        filter = input.value.toUpperCase();
+        table = document.getElementById("itemTable");
+        tr = table.getElementsByTagName("tr");
+
+        for (i = 0; i < tr.length; i++) {
+            itemName = tr[i].getElementsByTagName("td")[0];
+            categoryName = tr[i].getElementsByTagName("td")[1];
+            if (itemName) {
+                nameValue = itemName.textContent || itemName.innerText;
+                categoryValue = categoryName.textContent || categoryName.innerText;
+
+                if (nameValue.toUpperCase().indexOf(filter) > -1 || categoryValue.toUpperCase().indexOf(filter) > -1) {
+                    tr[i].style.display = "";
+                }
+                else {
+                    tr[i].style.display = "none";
+                }
+            }
+        }
+    }
+</script>
+
+
 
 <div align="center">
-    <table class="hovertable">
+    <table class="hovertable" id="itemTable">
         <tr>
             <th>Order ID</th>
             <th>Order Date</th>
@@ -65,34 +103,44 @@
             <td>10000002</td>
             <td>24-08-2020</td>
             <td>Concession</td>
-            <td>Unit 01, 34-36 ABCD Road, Ultimo, NSW</td>
+            <td>Unit 02, 34-36 ABCD Road, Ultimo, NSW</td>
             <td>2007</td>
             <td>Submitted</td>
         </tr>
         <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
             <td>10000003</td>
-            <td>24-08-2020</td>
+            <td>29-08-2020</td>
             <td>Adult</td>
-            <td>Unit 11, 88 EFGH Road, Ultimo, NSW</td>
+            <td>Unit 11, 88 EFGH Road, ZXY, VIC</td>
             <td>2007</td>
             <td>Delivered</td>
         </tr>
         <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
             <td>10000004</td>
-            <td>24-08-2020</td>
+            <td>01-09-2020</td>
             <td>Adult</td>
-            <td>Unit 11, 88 EFGH Road, Ultimo, NSW</td>
+            <td>Unit 16, 18 Center Road, Ultimo, NSW</td>
             <td>2007</td>
             <td>Delivered</td>
         </tr>
         <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
             <td>10000005</td>
-            <td>24-08-2020</td>
+            <td>02-09-2020</td>
             <td>Adult</td>
-            <td>Unit 11, 88 EFGH Road, Ultimo, NSW</td>
+            <td>Unit 05, 18 QWER Road, Ultimo, NSW</td>
             <td>2007</td>
             <td>Delivered</td>
         </tr>
+        <tr onmouseover="this.style.backgroundColor='#ffff66';" onmouseout="this.style.backgroundColor='#d4e3e5';">
+            <td>10000006</td>
+            <td>05-09-2020</td>
+            <td>Adult</td>
+            <td>Unit 09, 105 QWER Road, Ultimo, NSW</td>
+            <td>2007</td>
+            <td>Delivered</td>
+        </tr>
+
+
     </table>
 </div>
 

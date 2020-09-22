@@ -6,19 +6,31 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
+
+<%@page import="com.app.asd.module.*" %>
+<%@page import="com.app.asd.Controller.*" %>
+>
+<%@page import="com.app.asd.module.dao.*" %>
+<%@ page import="org.bson.types.ObjectId" %>
+
+<%
+    User[] users = (User[]) request.getAttribute("users");
+%>
+
 <html>
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdminHome</title>
     <!-- 最新版本的 Bootstrap 核心 CSS 文件 -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
     <style>
         body {
             padding-top: 50px;
         }
 
-        .starter{
+        .starter {
             padding: 40px 15px;
             text-align: center;
         }
@@ -29,8 +41,6 @@
 <body>
 
 
-
-
 <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
     <div class="container">
         <div class="navbar-header">
@@ -38,13 +48,16 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li class="active"><a href="#">Home</a> </li>
-                <li><a href="editInfo.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User Information edit</a> </li>
-                <li><<li><a href="editAccount.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User Account edit</a> </li>
+                <li ><a href="adminHomeServlet">All User Info</a></li>
+                <li><a href="editInfo.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User
+                    Information edit</a></li>
+                <li><
+                <li><a href="editAccount.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User
+                    Account edit</a></li>
             </ul>
-            <form class="navbar-form navbar-left">
+            <form class="navbar-form navbar-left form " action="adminHomeController" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" name="userID">
                 </div>
                 <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
             </form>
@@ -64,8 +77,11 @@
     <h3>Please select the funtion you want at the top navbar!</h3>
 </div>
 
-<HR  width="60%"color=#987cb9 SIZE=10>
+<HR width="60%" color=#987cb9 SIZE=10>
 
+<%
+    if (users != null) {
+%>
 
 <h2 class="sub-header">All user information</h2>
 <div class="table-responsive">
@@ -87,230 +103,67 @@
         </tr>
         </thead>
         <tbody>
+        
+        <%
+            if (users != null) {
+                for (User u : users) {
+                    String userID = u.getUserId().toString();
+                    String password = u.getPassword();
+                    String firstName = u.getFirst_name();
+                    String lastName = u.getLast_name();
+                    String is_staff;
+                    if (u.isIs_staff()) {
+                        is_staff = "YES";
+                    } else {
+                        is_staff = "NO";
+                    }
+                    ;
+                    String phone = u.getPhone();
+                    String email = u.getEmail();
+                    String gender = u.getGender();
+                    String dob = u.getDob();
+                    String date_registered = u.getDate_registered();
+                    String activated_status;
+                    if (u.getActivated_status()) {
+                        activated_status = "YES";
+                    } else {
+                        activated_status = "NO";
+                    }
+                    String username = u.getUsername();
+        %>
         <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
+            <td><%=userID%>
+            </td>
+            <td><%=password%>
+            </td>
+            <td><%=firstName%>
+            </td>
+            <td><%=lastName%>
+            </td>
+            <td><%=is_staff%>
+            </td>
+            <td><%=phone%>
+            </td>
+            <td><%=email%>
+            </td>
+            <td><%=gender%>
+            </td>
+            <td><%=dob%>
+            </td>
+            <td><%=date_registered%>
+            </td>
+            <td><%=activated_status%>
+            </td>
+            <td><%=username%>
+            </td>
         </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
-        <tr>
-            <td>1,001</td>
-            <td>aabbcc</td>
-            <td>Very</td>
-            <td>Handsome</td>
-            <td>ture</td>
-            <td>1254122336</td>
-            <td>lskwjdu@gmail.com</td>
-            <td>female</td>
-            <td>2020/08/30</td>
-            <td>2020/08/30</td>
-            <td>ture</td>
-            <td>goodgood</td>
-        </tr>
+        <%
+                }
+            } else {
+                System.out.println("jsp users null");
+            }
+        %>
+
         </tbody>
     </table>
 
@@ -335,6 +188,7 @@
     </nav>
 
 </div>
+<%}%>
 
 
 </body>

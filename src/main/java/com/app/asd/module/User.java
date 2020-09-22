@@ -1,7 +1,9 @@
 package com.app.asd.module;
 
-public class User
-{
+import org.bson.types.ObjectId;
+
+public class User {
+    private ObjectId userId;
     private String password;
     private String first_name;
     private String last_name;
@@ -11,8 +13,31 @@ public class User
     private String gender;
     private String dob;
     private String date_registered;
-    private String activated_status;
+    private boolean activated_status;
     private String username;
+
+    public User(ObjectId userID, String password, String firstName, String lastName, boolean is_staff, String phone, String email, String gender, String dob, String date_registered, boolean activated_status, String username) {
+        this.userId = userID;
+        this.password = password;
+        this.first_name = firstName;
+        this.last_name = lastName;
+        this.is_staff = is_staff;
+        this.phone = phone;
+        this.email = email;
+        this.gender = gender;
+        this.dob = dob;
+        this.date_registered = date_registered;
+        this.activated_status = activated_status;
+        this.username = username;
+    }
+
+    public ObjectId getUserId() {
+        return userId;
+    }
+
+    public void setUserId(ObjectId userId) {
+        this.userId = userId;
+    }
 
     public String getPassword() {
         return password;
@@ -86,11 +111,11 @@ public class User
         this.date_registered = date_registered;
     }
 
-    public String getActivated_status() {
+    public boolean getActivated_status() {
         return activated_status;
     }
 
-    public void setActivated_status(String activated_status) {
+    public void setActivated_status(boolean activated_status) {
         this.activated_status = activated_status;
     }
 
