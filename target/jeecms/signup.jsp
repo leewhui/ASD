@@ -143,4 +143,5 @@
         crossorigin="anonymous"></script>
 <script src="./script/validation.js"></script>
 </body>
+
 </html>

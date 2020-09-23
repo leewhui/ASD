@@ -55,19 +55,4 @@ public class Admin {
     public void searchUser(int userID) {
 
     }
-
-    public ArrayList getAllUser() {
-        ArrayList<String> userList = new ArrayList<>();
-        MongoCollection<Document> dbcollect = dbConnect.getMongoCollection("user");
-
-
-        return userList;
-    }
-
-
-    public void createUser(Document newone) {
-        dbConnect.insertOneDocument("user", newone);
-    }
-
-
 }

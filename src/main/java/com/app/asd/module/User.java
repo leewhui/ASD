@@ -1,9 +1,10 @@
 package com.app.asd.module;
 
 import org.bson.types.ObjectId;
+import java.util.Date;
 
 public class User {
-    private ObjectId userId;
+    private ObjectId _id;
     private String password;
     private String first_name;
     private String last_name;
@@ -16,8 +17,12 @@ public class User {
     private boolean activated_status;
     private String username;
 
+    public User(){
+
+    }
+
     public User(ObjectId userID, String password, String firstName, String lastName, boolean is_staff, String phone, String email, String gender, String dob, String date_registered, boolean activated_status, String username) {
-        this.userId = userID;
+        this._id = userID;
         this.password = password;
         this.first_name = firstName;
         this.last_name = lastName;
@@ -31,12 +36,12 @@ public class User {
         this.username = username;
     }
 
-    public ObjectId getUserId() {
-        return userId;
+    public ObjectId get_id() {
+        return _id;
     }
 
-    public void setUserId(ObjectId userId) {
-        this.userId = userId;
+    public void set_id(ObjectId _id) {
+        this._id = _id;
     }
 
     public String getPassword() {
