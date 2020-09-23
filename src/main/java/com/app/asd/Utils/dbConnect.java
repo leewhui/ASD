@@ -6,6 +6,9 @@ import com.mongodb.MongoClient;
 import com.mongodb.client.*;
 import org.bson.Document;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public class dbConnect
 {
     private static MongoClient mongoClient = new MongoClient(new MongoClientURI("mongodb+srv://wenhuili:lwh971213@cluster0.bgi8l.mongodb.net/ASD?retryWrites=true&w=majority"));
