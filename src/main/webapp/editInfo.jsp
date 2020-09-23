@@ -164,56 +164,60 @@
 <HR width="60%" color=#987cb9 SIZE=10>
 <br>
 
-<div  class="text-center">
-        <form action="editInfoController" method="post">
-            <input type="hidden" name="userID" value="<%=userID%>">
-            Email:
-            <input type="text" name="email" value=<%=email%>>
-            <br>
-            Password:
-            <input type="text" name="password" value=<%=password%>>
-            <br>
-            First_name:
-            <input type="text" name="firstname" value=<%=firstName%>>
-            <br>
-            Last_name:
-            <input type="text" name="lastname" value=<%=lastName%>>
-            <br>
-            <%if(finded.isIs_staff()){%>
-            Is staff:   NO: <input type="radio" name="is_staff" value="NO" >   YES:  <input type="radio" name="is_staff" value="YES" checked>
-            <%}else {%>
-            Is staff:   NO: <input type="radio" name="is_staff" value="NO" checked>   YES:  <input type="radio" name="is_staff" value="YES" >
-            <%}%>
-            <br>
-            Phone:
-            <input type="text" name="phone" value=<%=phone%>>
-            <br>
-            Gender:
-            <input type="text" name="gender" value=<%=gender%>>
-            <br>
-            Dob:
-            <input type="text" name="dob" value=<%=dob%>>
-            <br>
-            Date_registered:
-            <input type="text" name="date" value=<%=date_registered%>>
-            <br>
+<div class="text-center">
+    <form action="editInfoController" method="post">
+        <input type="hidden" name="userID" value="<%=userID%>">
+        Email:
+        <input type="text" name="email" value=<%=email%>>
+        <br>
+        Password:
+        <input type="text" name="password" value=<%=password%>>
+        <br>
+        First_name:
+        <input type="text" name="firstname" value=<%=firstName%>>
+        <br>
+        Last_name:
+        <input type="text" name="lastname" value=<%=lastName%>>
+        <br>
+        <%if (finded.isIs_staff()) {%>
+        Is staff: NO: <input type="radio" name="is_staff" value="NO"> YES: <input type="radio" name="is_staff"
+                                                                                  value="YES" checked>
+        <%} else {%>
+        Is staff: NO: <input type="radio" name="is_staff" value="NO" checked> YES: <input type="radio" name="is_staff"
+                                                                                          value="YES">
+        <%}%>
+        <br>
+        Phone:
+        <input type="text" name="phone" value=<%=phone%>>
+        <br>
+        Gender:
+        <input type="text" name="gender" value=<%=gender%>>
+        <br>
+        Dob:
+        <input type="text" name="dob" value=<%=dob%>>
+        <br>
+        Date_registered:
+        <input type="text" name="date" value=<%=date_registered%>>
+        <br>
 
-            <%if(finded.getActivated_status()){%>
-            Activated Statue:   NO: <input type="radio" name="act" value="NO" >   YES:  <input type="radio" name="act" value="YES" checked>
-            <%}else {%>
-            Activated Statue:   NO: <input type="radio" name="act" value="NO" checked>   YES:  <input type="radio" name="act" value="YES" >
-            <%}%>
-            <br>
+        <%if (finded.getActivated_status()) {%>
+        Activated Statue: NO: <input type="radio" name="act" value="NO"> YES: <input type="radio" name="act" value="YES"
+                                                                                     checked>
+        <%} else {%>
+        Activated Statue: NO: <input type="radio" name="act" value="NO" checked> YES: <input type="radio" name="act"
+                                                                                             value="YES">
+        <%}%>
+        <br>
 
-            Username:
-            <input type="text" name="username" value=<%=username%>>
-            <br>
-            <br>
+        Username:
+        <input type="text" name="username" value=<%=username%>>
+        <br>
+        <br>
 
-            <input type="hidden" name="type" value="2">
-            <button onclick="window.location.href = 'editInfo.jsp'">Cancel</button>
-            <button type="submit" onclick="confirm('Are you sure to edit this user?')">Submit</button>
-        </form>
+        <input type="hidden" name="type" value="2">
+        <button onclick="window.location.href = 'editInfo.jsp'">Cancel</button>
+        <button type="submit" onclick="confirm('Are you sure to edit this user?')">Submit</button>
+    </form>
 </div>
 
 <%}%>

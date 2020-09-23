@@ -19,7 +19,7 @@ public class adminHomeServlet extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        adminHomeDao con =(adminHomeDao) req.getSession().getAttribute("con");
+        adminHomeDao con = (adminHomeDao) req.getSession().getAttribute("con");
 
         req.setCharacterEncoding("UTF-8");
         User[] users = con.getAllUser();

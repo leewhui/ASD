@@ -17,7 +17,7 @@
 <%
     JGDBC jgdbc = new JGDBC();
     adminHomeDao con = new adminHomeDao(jgdbc.openConnection());
-    session.setAttribute("con",con);
+    session.setAttribute("con", con);
     User[] users = (User[]) request.getAttribute("users");
 %>
 
@@ -52,7 +52,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li ><a href="adminHomeServlet">All User Info</a></li>
+                <li><a href="adminHomeServlet">All User Info</a></li>
                 <li><a href="editInfo.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User
                     Information edit</a></li>
                 <li><
@@ -107,7 +107,7 @@
         </tr>
         </thead>
         <tbody>
-        
+
         <%
             if (users != null) {
                 for (User u : users) {

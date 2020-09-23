@@ -22,7 +22,7 @@ public class editInfoController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         String type = req.getParameter("type");
-        adminHomeDao con =(adminHomeDao) req.getSession().getAttribute("con");
+        adminHomeDao con = (adminHomeDao) req.getSession().getAttribute("con");
 
         if (type.equals("1")) {
             String email = req.getParameter("userEmail");

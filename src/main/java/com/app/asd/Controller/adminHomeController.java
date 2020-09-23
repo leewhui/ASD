@@ -23,7 +23,7 @@ public class adminHomeController extends HttpServlet {
         req.setCharacterEncoding("UTF-8");
         String userEmail = req.getParameter("userEmail");
 
-        adminHomeDao con =(adminHomeDao) req.getSession().getAttribute("con");
+        adminHomeDao con = (adminHomeDao) req.getSession().getAttribute("con");
         User finded = con.getSearch(userEmail);
 
         req.setAttribute("finded", finded);
