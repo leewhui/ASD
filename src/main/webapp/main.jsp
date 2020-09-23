@@ -30,14 +30,23 @@
         <div class="container">
             <ul class="nav-card clearfix" id="service">
                 <h3>Services</h3>
+
+                <form class="form" role="form" action="cardStatusServlet" method="post">
+
+                    <%
+                        int userID =1000001;
+                        session.setAttribute("userID",userID);
+                    %>
+
                 <li class="card" style="width: 18rem;">
                     <img src="resources/top%20up.jpg" class="card-img-top" alt="...">
                     <div class="card-body">
                         <h5 class="card-title">Top up</h5>
                         <p class="card-text">Plan ahead or top up online</p>
-                        <a href="../../java/com.app.asd/Controller/paymentController" class="btn btn-primary">Go for it</a>
+                        <button id="submit_btn" type="submit" class="btn btn-primary">Go for it</button>
                     </div>
                 </li>
+                </form>
 
                 <li class="card" style="width: 18rem;">
                     <img src="resources/buy.png" alt="...">

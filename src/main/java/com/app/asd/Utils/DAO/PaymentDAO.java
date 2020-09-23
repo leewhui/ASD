@@ -19,11 +19,11 @@ public class PaymentDAO {
         this.database = database;
     }
 
-    public Payment getPaymentBalance(int paymentID){
+    public Payment getInvoice(int userID){
 
         BasicDBObject allQuery = new BasicDBObject();
         BasicDBObject fields = new BasicDBObject();
-        fields.put("paymentID", paymentID);
+        fields.put("paymentID", userID);
 
         DBCursor cursor = collection.find(fields);
         DBObject result = cursor.one();
@@ -31,7 +31,18 @@ public class PaymentDAO {
             System.out.println(cursor.next());
             double paymentResult = (double)result.get("paymentBalance");
 
-            return new Payment(paymentResult);
+            int newPaymentID = (int)result.get("paymentID");
+            int creditCardNumber = (int)result.get("creditCardNumber");
+            String paymentType = (String)result.get("paymentType");
+            double paymentBalance = (double)result.get("paymentBalance");
+            String paymentStatus = (String)result.get("paymentStatus");
+            String paymentDate = (String)result.get("paymentDate");
+            String gender = (String)result.get("gender");
+            String billingAddress = (String)result.get("billingAddress");
+            int newUserID = (int)result.get("userID");
+
+
+            return new Payment(newPaymentID,creditCardNumber,paymentType,paymentBalance,paymentStatus,paymentDate,gender,billingAddress,newUserID);
         }
         return null;
     }

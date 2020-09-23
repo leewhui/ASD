@@ -11,6 +11,18 @@ public class Payment {
     private String billingAddress;
     private int userID;
 
+    public Payment(int paymentID, int creditCardNumber, String paymentType, double paymentBalance, String paymentStatus, String paymentDate, String gender, String billingAddress, int userID) {
+        this.paymentID = paymentID;
+        this.creditCardNumber = creditCardNumber;
+        this.paymentType = paymentType;
+        this.paymentBalance = paymentBalance;
+        this.paymentStatus = paymentStatus;
+        this.paymentDate = paymentDate;
+        this.gender = gender;
+        this.billingAddress = billingAddress;
+        this.userID = userID;
+    }
+
     public Payment(int paymentID) {
         this.paymentID = paymentID;
     }

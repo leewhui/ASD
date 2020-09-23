@@ -1,3 +1,6 @@
+
+<%@page import="com.app.asd.module.Card"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -5,17 +8,22 @@
 </head>
 <body>
 
-<h2>Transfer</h2>
-<p></p>
+<%
+    Card card = (Card)session.getAttribute("chosenCard");
+%>
+
+<h1 align="center">Top up</h1>
+
+
 <div class="row">
     <div class="col-75">
         <div class="container">
-            <form>
+            <form action="afterPayment.jsp">
                 <div class="row">
                     <div class="col-50">
                         <h3>Billing Address</h3>
                         <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="John Smith">
+                        <input type="text" id="fname" name="fullName" placeholder="John Smith">
                         <label for="email"><i class="fa fa-envelope"></i> Email</label>
                         <input type="text" id="email" name="email" placeholder="john.smith@gmail.com">
                         <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
@@ -66,11 +74,14 @@
 
                 </div>
                 <label>
-                    <input type="checkbox" checked="checked" name="sameadr"> allowed to Auto Recharge when Remain card balance below $5
+                    <input type="checkbox" checked="checked" name="autoTopup"> allowed to Auto Recharge when Remain card balance below $5
                 </label>
                 <input type="submit" value="Confirm" class="btn">
             </form>
             <form action="main.jsp">
+                <%
+                    session.removeAttribute("chosenCard");
+                %>
                 <input type="submit" value="Back" class="btn">
             </form>
         </div>
