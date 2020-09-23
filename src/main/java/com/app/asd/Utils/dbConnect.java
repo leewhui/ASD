@@ -58,4 +58,13 @@ public class dbConnect
         }
     }
 
+    public static MongoCursor<Document> findAll(String collName){
+        MongoCollection<Document> coll = db.getCollection(collName);
+        List<Document> result = new ArrayList<Document>();
+        FindIterable<Document> findIterable = coll.find();
+        MongoCursor<Document> mongoCursor = findIterable.iterator();
+        return mongoCursor;
+
+    }
+
 }
