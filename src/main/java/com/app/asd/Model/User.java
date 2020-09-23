@@ -1,9 +1,21 @@
 package com.app.asd.Model;
 
+import org.bson.types.ObjectId;
+
 import java.util.Date;
 
 public class User
 {
+    private ObjectId _id;
+
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
+    }
+
     private String password;
     private String first_name;
     private String last_name;
@@ -107,7 +119,8 @@ public class User
     @Override
     public String toString() {
         return "User{" +
-                "password='" + password + '\'' +
+                "_id='" + _id + '\'' +
+                ", password='" + password + '\'' +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", is_staff=" + is_staff +
@@ -116,7 +129,7 @@ public class User
                 ", gender='" + gender + '\'' +
                 ", dob='" + dob + '\'' +
                 ", date_registered='" + date_registered + '\'' +
-                ", activated_status='" + activated_status + '\'' +
+                ", activated_status=" + activated_status +
                 ", username='" + username + '\'' +
                 '}';
     }

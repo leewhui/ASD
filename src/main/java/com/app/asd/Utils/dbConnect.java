@@ -1,14 +1,10 @@
 package com.app.asd.Utils;
-import com.app.asd.Model.*;
+import com.app.asd.Model.User;
 import com.google.gson.Gson;
 import com.mongodb.*;
 import com.mongodb.MongoClient;
 import com.mongodb.client.*;
-import com.mongodb.util.JSON;
 import org.bson.Document;
-
-import java.util.ArrayList;
-import java.util.List;
 
 public class dbConnect
 {
@@ -61,22 +57,5 @@ public class dbConnect
             return "error";
         }
     }
-
-    public static MongoCursor<Document> findAll(String collName){
-
-        MongoCollection<Document> coll = db.getCollection(collName);
-        List<Document> result = new ArrayList<Document>();
-        FindIterable<Document> findIterable = coll.find();
-        MongoCursor<Document> mongoCursor = findIterable.iterator();
-
-        /*
-        while(mongoCursor.hasNext()){
-            result.add(mongoCursor.next());
-        }
-        */
-
-        return mongoCursor;
-    }
-
 
 }

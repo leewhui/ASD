@@ -25,8 +25,6 @@
     User user = (User) session.getAttribute("currentUser");
     if (user == null)
     {
-//        response.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
-
         response.setHeader("Cache-Control","no-store");
         response.setHeader("Pragrma","no-cache");
         response.setDateHeader("Expires",0);
