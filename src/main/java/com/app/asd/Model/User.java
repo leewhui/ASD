@@ -8,14 +8,6 @@ public class User
 {
     private ObjectId _id;
 
-    public ObjectId get_id() {
-        return _id;
-    }
-
-    public void set_id(ObjectId _id) {
-        this._id = _id;
-    }
-
     private String password;
     private String first_name;
     private String last_name;
@@ -27,6 +19,14 @@ public class User
     private String date_registered;
     private boolean activated_status;
     private String username;
+
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
+    }
 
     public String getPassword() {
         return password;
