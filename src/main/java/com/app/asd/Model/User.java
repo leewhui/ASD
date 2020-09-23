@@ -1,13 +1,7 @@
 package com.app.asd.Model;
 
-import org.bson.types.ObjectId;
-
-import java.util.Date;
-
 public class User
 {
-    private ObjectId _id;
-
     private String password;
     private String first_name;
     private String last_name;
@@ -17,16 +11,9 @@ public class User
     private String gender;
     private String dob;
     private String date_registered;
-    private boolean activated_status;
+    private String activated_status;
     private String username;
-
-    public ObjectId get_id() {
-        return _id;
-    }
-
-    public void set_id(ObjectId _id) {
-        this._id = _id;
-    }
+    private String cardNumber;
 
     public String getPassword() {
         return password;
@@ -100,11 +87,11 @@ public class User
         this.date_registered = date_registered;
     }
 
-    public boolean getActivated_status() {
+    public String getActivated_status() {
         return activated_status;
     }
 
-    public void setActivated_status(boolean activated_status) {
+    public void setActivated_status(String activated_status) {
         this.activated_status = activated_status;
     }
 
@@ -116,11 +103,18 @@ public class User
         this.username = username;
     }
 
+    public String getCardNumber() {
+        return cardNumber;
+    }
+
+    public void setCardNumber(String cardNumber) {
+        this.cardNumber = cardNumber;
+    }
+
     @Override
     public String toString() {
         return "User{" +
-                "_id='" + _id + '\'' +
-                ", password='" + password + '\'' +
+                "password='" + password + '\'' +
                 ", first_name='" + first_name + '\'' +
                 ", last_name='" + last_name + '\'' +
                 ", is_staff=" + is_staff +
@@ -129,7 +123,7 @@ public class User
                 ", gender='" + gender + '\'' +
                 ", dob='" + dob + '\'' +
                 ", date_registered='" + date_registered + '\'' +
-                ", activated_status=" + activated_status +
+                ", activated_status='" + activated_status + '\'' +
                 ", username='" + username + '\'' +
                 '}';
     }

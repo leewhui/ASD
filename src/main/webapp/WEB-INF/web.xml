@@ -11,8 +11,18 @@
   </servlet>
 
   <servlet>
+    <servlet-name>linkController</servlet-name>
+    <servlet-class>com.app.asd.Controller.linkController</servlet-class>
+  </servlet>
+
+  <servlet>
     <servlet-name>signupController</servlet-name>
     <servlet-class>com.app.asd.Controller.signupController</servlet-class>
+  </servlet>
+
+  <servlet>
+    <servlet-name>editController</servlet-name>
+    <servlet-class>com.app.asd.Controller.editController</servlet-class>
   </servlet>
 
   <servlet-mapping>
@@ -23,6 +33,16 @@
   <servlet-mapping>
     <servlet-name>signupController</servlet-name>
     <url-pattern>/signupController</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>editController</servlet-name>
+    <url-pattern>/editProfile</url-pattern>
+  </servlet-mapping>
+
+  <servlet-mapping>
+    <servlet-name>linkController</servlet-name>
+    <url-pattern>/linkController</url-pattern>
   </servlet-mapping>
 
   <servlet>

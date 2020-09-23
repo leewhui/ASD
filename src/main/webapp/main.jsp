@@ -96,7 +96,7 @@
                 <div class="card-body">
                     <h5 class="card-title">User information</h5>
                     <p class="card-text">View Your Profile</p>
-                    <a href="../userInfo.jsp" class="btn btn-primary">Go for it</a>
+                    <a href="editProfile" class="btn btn-primary">Go for it</a>
 
                 </div>
             </li>
