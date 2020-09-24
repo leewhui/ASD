@@ -33,7 +33,7 @@
             <div class="card">
                 <div class="card-body">
                     <h3 class="m0 text-bold"><%=user.getUsername()%></h3>
-                    <p>Hello, Have fun!</p>
+                    <p>Hello, Have fun !</p>
                     <div class="text-center"><a class="btn btn-primary" href="linkCard.jsp">Link Card</a></div>
                 </div>
             </div>
