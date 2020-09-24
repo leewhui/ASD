@@ -51,7 +51,7 @@
                         </tr>
                         <tr>
                             <th scope="row">Card Name:</th>
-                            <td>Jack Tom</td>
+                            <td><%=user.getFirst_name()%> <%=user.getLast_name()%></td>
                         </tr>
                     </table>
                 </div>
@@ -87,13 +87,13 @@
                             <label class="col-sm-4 control-label" >Email</label>
                             <div class="col-sm-8">
                                 <input class="form-control" name="email" type="email"
-                                       value="<%=user.getEmail()%>">
+                                       value="<%=user.getEmail()%>" readonly="true">
                             </div>
                         </div>
                         <div class="form-group row">
                             <label class="col-sm-4 control-label" >Password</label>
                             <div class="col-sm-8">
-                                <input class="form-control" name="password" type="text" value="*********">
+                                <input class="form-control" name="password" type="text" value="<%=user.getPassword()%>">
                             </div>
                         </div>
 
@@ -107,7 +107,7 @@
                             <label class="col-sm-4 control-label" >Gender</label>
                             <div class="col-sm-8">
                                 <input class="form-control" name="gender" type="text"
-                                       value="<%=user.getGender()%>">
+                                       value="<%=user.getGender()%>" readonly="true">
                             </div>
                         </div>
 
