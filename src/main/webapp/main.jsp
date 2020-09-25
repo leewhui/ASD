@@ -67,8 +67,8 @@
             <li class="card" style="width: 18rem;">
                 <img src="resources/buy.png" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Order New Card</h5>
-                    <p class="card-text">Get a new opal card</p>
+                    <h5 class="card-title">Order</h5>
+                    <p class="card-text">Manage your orders</p>
                     <a href="/Controller/orderMenuController" class="btn btn-primary">Go for it</a>
                 </div>
             </li>
@@ -78,7 +78,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Admin System</h5>
                     <p class="card-text">For system admin to manage user</p>
-                    <a href="../adminHome.jsp" class="btn btn-primary">Go for it</a>
+                    <a href="../adminHome.jsp" class="btn btn-primary" disabled="true">Go for it</a>
                 </div>
             </li>
 
