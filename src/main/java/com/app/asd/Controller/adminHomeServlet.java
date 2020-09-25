@@ -9,7 +9,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 
-public class adminHomeController extends HttpServlet {
+public class adminHomeServlet extends HttpServlet {
 
 
     @Override
@@ -17,20 +17,14 @@ public class adminHomeController extends HttpServlet {
         doPost(req, resp);
     }
 
-
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
-        req.setCharacterEncoding("UTF-8");
-        String userEmail = req.getParameter("userEmail");
-
         adminHomeDao con = (adminHomeDao) req.getSession().getAttribute("con");
-        User finded = con.getSearch(userEmail);
 
-        req.setAttribute("finded", finded);
-        req.getRequestDispatcher("adminShow.jsp").forward(req, resp);
-
+        req.setCharacterEncoding("UTF-8");
+        User[] users = con.getAllUser();
+        req.setAttribute("users", users);
+        req.getRequestDispatcher("adminHome.jsp").forward(req, resp);
 
     }
-
-
 }
