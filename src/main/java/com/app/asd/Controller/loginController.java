@@ -41,7 +41,7 @@ public class loginController extends HttpServlet
                     if ("admin@gmail.com".equals(user.getEmail())) // if staff login
                     {
                         req.setAttribute("LoginStatus",user);
-                        req.getRequestDispatcher("/login.jsp").forward(req, resp);
+                        req.getRequestDispatcher("/adminHome.jsp").forward(req, resp);
                     }
                     else
                     {
