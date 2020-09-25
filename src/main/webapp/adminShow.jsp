@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.app.asd.Model.User" %><%--
   Created by IntelliJ IDEA.
   User: Gao
   Date: 26/08/2020
@@ -6,21 +6,6 @@
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-
-<%@page import="com.app.asd.Model.*" %>
-<%@page import="com.app.asd.Controller.*" %>
->
-<%@page import="com.app.asd.Model.dao.*" %>
-<%@ page import="org.bson.types.ObjectId" %>
-<%@ page import="com.app.asd.Utils.JGDBC" %>
-
-<%
-    JGDBC jgdbc = new JGDBC();
-    adminHomeDao con = new adminHomeDao(jgdbc.openConnection());
-    session.setAttribute("con", con);
-    User[] users = (User[]) request.getAttribute("users");
-%>
-
 <html>
 <head>
     <meta charset="UTF-8">
@@ -52,7 +37,7 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li><a href="adminHomeServlet">All User Info</a></li>
+                <li class="active"><a href="adminHomeServlet">All User Info</a></li>
                 <li><a href="editInfo.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User
                     Information edit</a></li>
                 <li><
@@ -79,16 +64,19 @@
 
 <div class="starter">
     <h1>Welcome! Administrators.</h1>
-    <h3>Please select the funtion you want at the top navbar!</h3>
+    <h3>The search result is presented below</h3>
 </div>
 
 <HR width="60%" color=#987cb9 SIZE=10>
 
+
 <%
-    if (users != null) {
+    User finded = (User) request.getAttribute("finded");
+    if (finded != null) {
 %>
 
-<h2 class="sub-header">All user information</h2>
+
+<h2 class="sub-header">Searched result of "<%=finded.getUserId()%>"</h2>
 <div class="table-responsive">
     <table class="table table-striped table-hover">
         <thead>
@@ -106,34 +94,32 @@
             <th>Username</th>
         </tr>
         </thead>
-        <tbody>
 
+        <tbody>
         <%
-            if (users != null) {
-                for (User u : users) {
-                    String userID = u.getUserId().toString();
-                    String password = u.getPassword();
-                    String firstName = u.getFirst_name();
-                    String lastName = u.getLast_name();
-                    String is_staff;
-                    if (u.isIs_staff()) {
-                        is_staff = "YES";
-                    } else {
-                        is_staff = "NO";
-                    }
-                    ;
-                    String phone = u.getPhone();
-                    String email = u.getEmail();
-                    String gender = u.getGender();
-                    String dob = u.getDob();
-                    String date_registered = u.getDate_registered();
-                    String activated_status;
-                    if (u.getActivated_status()) {
-                        activated_status = "YES";
-                    } else {
-                        activated_status = "NO";
-                    }
-                    String username = u.getUsername();
+            String userID = finded.getUserId().toString();
+            String password = finded.getPassword();
+            String firstName = finded.getFirst_name();
+            String lastName = finded.getLast_name();
+            String is_staff;
+            if (finded.isIs_staff()) {
+                is_staff = "YES";
+            } else {
+                is_staff = "NO";
+            }
+            ;
+            String phone = finded.getPhone();
+            String email = finded.getEmail();
+            String gender = finded.getGender();
+            String dob = finded.getDob();
+            String date_registered = finded.getDate_registered();
+            String activated_status;
+            if (finded.getActivated_status()) {
+                activated_status = "YES";
+            } else {
+                activated_status = "NO";
+            }
+            String username = finded.getUsername();
         %>
         <tr>
             <td><%=email%>
@@ -148,6 +134,8 @@
             </td>
             <td><%=phone%>
             </td>
+            <td><%=email%>
+            </td>
             <td><%=gender%>
             </td>
             <td><%=dob%>
@@ -159,39 +147,18 @@
             <td><%=username%>
             </td>
         </tr>
-        <%
-                }
-            } else {
-                System.out.println("jsp users null");
-            }
-        %>
+
 
         </tbody>
     </table>
 
-    <nav aria-label="Page navigation" class="text-center">
-        <ul class="pagination">
-            <li>
-                <a href="#" aria-label="Previous">
-                    <span aria-hidden="true">&laquo;</span>
-                </a>
-            </li>
-            <li><a href="#">1</a></li>
-            <li><a href="#">2</a></li>
-            <li><a href="#">3</a></li>
-            <li><a href="#">4</a></li>
-            <li><a href="#">5</a></li>
-            <li>
-                <a href="#" aria-label="Next">
-                    <span aria-hidden="true">&raquo;</span>
-                </a>
-            </li>
-        </ul>
-    </nav>
-
 </div>
-<%}%>
+<%} else {%>
 
+<br>
+<h2 class="text-center">Could not find that ID</h2>
+
+<%}%>
 
 </body>
 </html>

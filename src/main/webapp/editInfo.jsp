@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.app.asd.Model.User" %><%--
   Created by IntelliJ IDEA.
   User: Gao
   Date: 26/08/2020
@@ -11,8 +11,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AdminHome</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/css/bootstrap.min.css"
+          integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@3.3.7/dist/js/bootstrap.min.js"
+            integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa"
+            crossorigin="anonymous"></script>
     <script src="https://cdn.staticfile.org/jquery/2.1.1/jquery.min.js"></script>
     <script src="https://cdn.staticfile.org/twitter-bootstrap/3.3.7/js/bootstrap.min.js"></script>
     <style>
@@ -20,7 +23,7 @@
             padding-top: 50px;
         }
 
-        .starter{
+        .starter {
             padding: 40px 15px;
             text-align: center;
         }
@@ -35,19 +38,22 @@
         </div>
         <div id="navbar" class="collapse navbar-collapse">
             <ul class="nav navbar-nav">
-                <li ><a href="adminHome.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">Home</a> </li>
-                <li class="active"><a href="#">User Information edit</a> </li>
-                <li><a href="editAccount.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User Account edit</a> </li>
+                <li><a href="adminHomeServlet" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">All User
+                    Info</a></li>
+                <li class="active"><a href="#">User Information edit</a></li>
+                <li><a href="editAccount.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User
+                    Account edit</a></li>
             </ul>
-            <form class="navbar-form navbar-left">
+            <form class="navbar-form navbar-left form " action="adminHomeController" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
+                    <input type="text" class="form-control" placeholder="Search" name="userEmail">
                 </div>
-                <button type="submit" class="btn btn-default">Submit</button>
+                <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
-                <li><a href="jsp/main.jsp">Main Page</a></li>
-                <li><a href="index.jsp">Logout</a></li>
+                <form class="navbar-form navbar-right form" action="logoutServlet" method="get">
+                    <button type="submit" class="btn btn-default">Logout</button>
+                </form>
             </ul>
         </div>
 
@@ -59,80 +65,188 @@
     <h3>Please type in the user ID which you want to edit and press enter</h3>
 </div>
 
-<HR  width="60%"color=#987cb9 SIZE=10>
+<HR width="60%" color=#987cb9 SIZE=10>
+<br>
 
+<form action="editInfoController" method="post">
+    <input type="hidden" name="type" value="1">
+    <div class="text-center">
+        <input placeholder="User Email" name="userEmail">
+        <button type="submit">
+            Enter
+        </button>
+    </div>
+</form>
 
-<div class="text-center">
-    <input placeholder="UserID"></div>
-<!-- 按钮触发模态框 -->
-<button class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#myModal">
-    Enter
-</button>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
+<%
+    User finded = (User) request.getAttribute("finded");
+    String type = (String)request.getAttribute("type");
+    if (finded != null) {
+%>
 
-            </div>
-            <div class="modal-body">
+<br>
+<HR width="60%" color=#987cb9 SIZE=10>
+<br>
 
+<h2 class="sub-header">Searched result of "<%=finded.getEmail()%>"</h2>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Email</th>
+            <th>Password</th>
+            <th>First_name</th>
+            <th>Last_name</th>
+            <th>is_staff</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Dob</th>
+            <th>Data_registered</th>
+            <th>Activated_statue</th>
+            <th>Username</th>
+        </tr>
+        </thead>
 
-                <form action="/demo/demo_form.asp">
-                    UserID:<br>
-                    <input type="text" name="firstname" value="Mickey">
-                    <br>
-                    Password:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    First_name:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Last_name:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Is_staff:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Phone:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Email:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Gender:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Dob:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Data_registered:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Activated_statue:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Username:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    <br>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Closer
-                </button>
-                <button type="button" class="btn btn-primary">
-                    Enter
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
+        <tbody>
+        <%
+            String userID = finded.getUserId().toString();
+            String password = finded.getPassword();
+            String firstName = finded.getFirst_name();
+            String lastName = finded.getLast_name();
+            String is_staff;
+            if (finded.isIs_staff()) {
+                is_staff = "YES";
+            } else {
+                is_staff = "NO";
+            }
+            ;
+            String phone = finded.getPhone();
+            String email = finded.getEmail();
+            String gender = finded.getGender();
+            String dob = finded.getDob();
+            String date_registered = finded.getDate_registered();
+            String activated_status;
+            if (finded.getActivated_status()) {
+                activated_status = "YES";
+            } else {
+                activated_status = "NO";
+            }
+            String username = finded.getUsername();
+        %>
+        <tr>
+            <td><%=email%>
+            </td>
+            <td><%=password%>
+            </td>
+            <td><%=firstName%>
+            </td>
+            <td><%=lastName%>
+            </td>
+            <td><%=is_staff%>
+            </td>
+            <td><%=phone%>
+            </td>
+            <td><%=gender%>
+            </td>
+            <td><%=dob%>
+            </td>
+            <td><%=date_registered%>
+            </td>
+            <td><%=activated_status%>
+            </td>
+            <td><%=username%>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
 </div>
-</div>
 
+<br>
+<HR width="60%" color=#987cb9 SIZE=10>
+<br>
+<form action="editInfoController" method="post">
+    <table class="table  table-bordered table-responsive table-curved" style="width: 55%; height: auto;" align="center">
+        <tbody>
 
+        <tr>
+            <td align="left" style="width: 40%">Email:</td>
+            <td style="width: 60%"><%=email%>
+            </td>
+            <input type="hidden" name="email" style="width: 100%" value="<%=email%>">
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">Password:</td>
+            <td style="width: 60%"><input type="text" name="password" style="width: 100%" value="<%=password%>"></td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">First Name:</td>
+            <td style="width: 60%"><input type="text" name="firstname" style="width: 100%" value="<%=firstName%>"></td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">Last Name:</td>
+            <td style="width: 60%"><input type="text" name="lastname" style="width: 100%" value="<%=lastName%>"></td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">Is Staff:</td>
+            <td style="width: 60%"><%if (finded.isIs_staff()) {%>
+                Is staff: NO: <input type="radio" name="is_staff" value="NO"> YES: <input type="radio" name="is_staff"
+                                                                                          value="YES" checked>
+                <%} else {%>
+                Is staff: NO: <input type="radio" name="is_staff" value="NO" checked> YES: <input type="radio"
+                                                                                                  name="is_staff"
+                                                                                                  value="YES">
+                <%}%></td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">Phone:</td>
+            <td style="width: 60%"><input type="text" name="phone" style="width: 100%" value="<%=phone%>"></td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">Gender:</td>
+            <td style="width: 60%"><input type="text" name="gender" style="width: 100%" value="<%=gender%>"></td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">Dob:</td>
+            <td style="width: 60%"><input type="text" name="dob" style="width: 100%" value="<%=dob%>"></td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">Date registered:</td>
+            <td style="width: 60%"><%=date_registered%>
+            </td>
+            <input type="hidden" name="date" style="width: 100%" value="<%=date_registered%>">
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">Activated Statue:</td>
+            <td style="width: 60%"><%if (finded.getActivated_status()) {%>
+                Activated Statue: NO: <input type="radio" name="act" value="NO"> YES: <input type="radio" name="act"
+                                                                                             value="YES"
+                                                                                             checked>
+                <%} else {%>
+                Activated Statue: NO: <input type="radio" name="act" value="NO" checked> YES: <input type="radio"
+                                                                                                     name="act"
+                                                                                                     value="YES">
+                <%}%></td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">Username:</td>
+            <td style="width: 60%"><input type="text" name="username" style="width: 100%" value="<%=username%>"></td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    <input type="hidden" name="userID" value="<%=userID%>">
+    <input type="hidden" name="type" value="2">
+    <div class="text-center">
+        <button class="btn btn-default" onclick="window.location.href = 'editInfo.jsp'">Cancel</button>
+        <button class="btn btn-info" type="submit" onclick="confirm('Are you sure to edit this user?')">Submit</button>
+    </div>
+</form>
+<%}else if(type != null && type.equals("good")){%>
+
+<br>
+<h1 class="text-center">Edition finished!</h1>
+
+<%}%>
 </body>
 </html>
