@@ -1,4 +1,4 @@
-<%--
+<%@ page import="com.app.asd.Model.User" %><%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2020/8/26 0026
@@ -13,62 +13,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Order New Card</title>
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
-    <link rel="stylesheet" href="css/orderMenu.css">
+    <link rel="stylesheet" href="/css/orderMenu.css">
 </head>
+
 <body class="" style= " background-color: rgba(44, 141, 238, 0.15);">
+<%
+
+    User user = (User) session.getAttribute("currentUser");
+    String NewOrderMessage = (String) session.getAttribute("NewOrderMessage");
+    String username = user.getUsername();
+
+%>
+
+
+
+
 <div>
     <div class="d-flex flex-column flex-md-row align-items-center p-3 mb-3 bg-white shadow-sm">
         <a href="" class="logo my-0 mr-md-auto font-weight-normal">
-            <img src="resources/logo.png" class="logo my-0 mr-md-auto font-weight-normal" alt="" class="logo">
+            <img src="/resources/logo.png" class="logo my-0 mr-md-auto font-weight-normal" alt="" class="logo">
         </a>
     </div>
 </div>
 
 <div style="text-align: center;">
-    <h1 style="color: orangered;">Get a New Opal Card</h1>
+    <h1 style="color: orangered;"><%=(NewOrderMessage != null ? NewOrderMessage : "Get a New Opal Card")%></h1>
     <br/>
     <h3>Hello <span style="color:rgb(255, 128, 78);">Customer</span>
-        <span style="color:rgb(44, 141, 238)">(UserName)</span></h3>
+        <span style="color:rgb(44, 141, 238)">(<%=username%>)</span></h3>
     <br/>
     <a class="btn btn-outline-primary" href="#">Card Type Requirement</a> &nbsp
-    <a class="btn btn-outline-primary" href="/orderMenu.jsp">Back</a>
+    <a class="btn btn-outline-primary" href="/Controller/orderMenuController">Back</a>
 </div>
 
 <div class="container">
     <div id="test" class="test"></div>
-    <form class="form" action="orderMenu.jsp" method="post">
+    <form class="form" action="/Controller/orderNewCardController" method="post">
 
         <h5>New Order</h5>
 
-            <div class="form-group">
-                <label>Card Type</label>
-                <select name="gender" class="form-control" id="gender">
-                    <option selected>Choose...</option>
-                    <option>Adult</option>
-                    <option>Youth</option>
-                    <option>Concession</option>
-                    <option>Gold Senior</option>
-                </select>
-                <small id="orderCardType" class="form-text text-warning"></small>
-            </div>
+        <div class="form-group">
+            <label>Card Type</label>
+            <select class="form-control" name="orderCardType">
+                <option selected>Choose...</option>
+                <option>Adult</option>
+                <option>Youth</option>
+                <option>Concession</option>
+                <option>Gold Senior</option>
+            </select>
+        </div>
 
-            <div class="form-group">
-                <label>Delivery Address</label>
-                <input type="text" class="form-control" id="deliveryAddress" required>
-            </div>
+        <div class="form-group">
+            <label>Delivery Address</label>
+            <input type="text" class="form-control" name="deliveryAddress" required>
+        </div>
 
-            <div class="form-group">
-                <label>Delivery Postcode</label>
-                <input type="text" class="form-control" id="deliveryPostcode" required>
-            </div>
+        <div class="form-group">
+            <label>Delivery Postcode</label>
+            <input type="text" class="form-control" name="deliveryPostcode" required>
+        </div>
 
-            <div class="form-group">
-                <label>Prefer Delivery Date</label>
-                <input type="date" class="form-control" id="deliveryDate" required>
-            </div>
+        <div class="form-group">
+            <label>Additional Comment</label>
+            <input type="text" class="form-control" name="orderComment" placeholder="Add your additional requirements here"  >
+        </div>
 
-        <a class="btn btn-outline-primary" href="/orderMenu.jsp">Cancel</a> &nbsp
-        <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+        <div class="form-group" style="text-align: right">
+            <a class="btn btn-outline-primary" href="/Controller/orderMenuController">Cancel</a> &nbsp
+            <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
+        </div>
 
     </form>
 </div>

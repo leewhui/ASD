@@ -67,12 +67,12 @@
         <span style="color:rgb(44, 141, 238)">(<%=username%>)</span></h3>
     <br/>
     <% if(user.isIs_staff()) {%>
-        <a class="btn btn-outline-primary" href="#">Clear All Order</a> &nbsp
+        <a class="btn btn-outline-primary" href="#">Clear All Order (R2)</a> &nbsp
         <a class="btn btn-outline-primary" href="../main.jsp">Back</a>
     <% } %>
     <% if(!user.isIs_staff()) { %>
         <a class="btn btn-outline-primary" href="../orderNewCard.jsp">Get a new card</a> &nbsp
-        <a class="btn btn-outline-primary" href="#">Card Type Requirement</a> &nbsp
+        <a class="btn btn-outline-primary" href="#">Card Type Requirement (R2)</a> &nbsp
         <a class="btn btn-outline-primary" href="../main.jsp">Back</a>
     <% } %>
 </div>
@@ -123,6 +123,9 @@
                 <th>Delivery Address</th>
                 <th>Delivery Postcode</th>
                 <th>Status</th>
+                <% if (user.isIs_staff()) {%>
+                    <th>Edit</th>
+                <% } %>
 
             </tr>
         </thead>
@@ -136,6 +139,15 @@
                     <td><%= OrderList.get(i).getDeliveryAddress() %></td>
                     <td><%= OrderList.get(i).getDeliveryPostcode() %></td>
                     <td><%= OrderList.get(i).getOrderStatus() %></td>
+                    <% if (user.isIs_staff()) {%>
+                        <td>
+                        <form method="post" action="/Controller/orderUpdateController" style="text-align:center;">
+                            <input type="text" name="operation" value="R" style="display:none">
+                            <input type="text" name="orderID" value="<%= OrderList.get(i).getOrderID()%>" style="display:none">
+                            <input type="submit" class="btn btn-outline-primary" value="Edit">
+                        </form>
+                        </td>
+                    <% } %>
 
                 </tr>
             <% } %>
