@@ -34,7 +34,6 @@ public class editInfoController extends HttpServlet {
             req.getRequestDispatcher("editInfo.jsp").forward(req, resp);
         } else if (type.equals("2")) {
 
-            String userID = req.getParameter("userID");
             String password = req.getParameter("password");
             String firstname = req.getParameter("firstname");
             String lastname = req.getParameter("lastname");
@@ -47,7 +46,7 @@ public class editInfoController extends HttpServlet {
             String act = req.getParameter("act");
             String username = req.getParameter("username");
 
-            con.editUser(userID, password, firstname, lastname, is_staff, phone, email, gender, dob, date, act, username);
+            con.editUser(password, firstname, lastname, is_staff, phone, email, gender, dob, date, act, username);
             req.setAttribute("type","good");
             req.getRequestDispatcher("editInfo.jsp").forward(req, resp);
         }
