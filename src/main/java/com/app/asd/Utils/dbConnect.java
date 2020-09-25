@@ -75,7 +75,6 @@ public class dbConnect
             Bson filter = eq("username", user.getUsername());
             Bson updateOperation = combine(set("first_name", user.getFirst_name()),
                     set("last_name", user.getLast_name()),
-                    set("email", user.getEmail()),
                     set("password", user.getPassword()),
                     set("gender", user.getGender()),
                     set("dob", user.getDob()),
