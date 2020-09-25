@@ -102,7 +102,7 @@
             <th>Gender</th>
             <th>Dob</th>
             <th>Data_registered</th>
-            <th>Activated_statue</th>
+            <th>activated_status</th>
             <th>Username</th>
         </tr>
         </thead>
@@ -111,7 +111,6 @@
         <%
             if (users != null) {
                 for (User u : users) {
-                    String userID = u.getUserId().toString();
                     String password = u.getPassword();
                     String firstName = u.getFirst_name();
                     String lastName = u.getLast_name();
@@ -127,12 +126,7 @@
                     String gender = u.getGender();
                     String dob = u.getDob();
                     String date_registered = u.getDate_registered();
-                    String activated_status;
-                    if (u.getActivated_status()) {
-                        activated_status = "YES";
-                    } else {
-                        activated_status = "NO";
-                    }
+                    String activated_status = u.getActivated_status();
                     String username = u.getUsername();
         %>
         <tr>

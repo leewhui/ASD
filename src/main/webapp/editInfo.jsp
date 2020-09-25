@@ -109,7 +109,6 @@
 
         <tbody>
         <%
-            String userID = finded.getUserId().toString();
             String password = finded.getPassword();
             String firstName = finded.getFirst_name();
             String lastName = finded.getLast_name();
@@ -125,12 +124,7 @@
             String gender = finded.getGender();
             String dob = finded.getDob();
             String date_registered = finded.getDate_registered();
-            String activated_status;
-            if (finded.getActivated_status()) {
-                activated_status = "YES";
-            } else {
-                activated_status = "NO";
-            }
+            String activated_status = finded.getActivated_status();
             String username = finded.getUsername();
         %>
         <tr>
@@ -218,7 +212,7 @@
         </tr>
         <tr>
             <td align="left" style="width: 40%">Activated Statue:</td>
-            <td style="width: 60%"><%if (finded.getActivated_status()) {%>
+            <td style="width: 60%"><%if (finded.getActivated_status().equals("YES")) {%>
                 Activated Statue: NO: <input type="radio" name="act" value="NO"> YES: <input type="radio" name="act"
                                                                                              value="YES"
                                                                                              checked>
@@ -235,7 +229,7 @@
         </tbody>
     </table>
     </div>
-    <input type="hidden" name="userID" value="<%=userID%>">
+    <input type="hidden" name="userEmail" value="<%=email%>">
     <input type="hidden" name="type" value="2">
     <div class="text-center">
         <button class="btn btn-default" onclick="window.location.href = 'editInfo.jsp'">Cancel</button>

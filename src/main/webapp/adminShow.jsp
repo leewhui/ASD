@@ -76,7 +76,7 @@
 %>
 
 
-<h2 class="sub-header">Searched result of "<%=finded.getUserId()%>"</h2>
+<h2 class="sub-header">Searched result of "<%=finded.getEmail()%>"</h2>
 <div class="table-responsive">
     <table class="table table-striped table-hover">
         <thead>
@@ -90,14 +90,13 @@
             <th>Gender</th>
             <th>Dob</th>
             <th>Data_registered</th>
-            <th>Activated_statue</th>
+            <th>activated_status</th>
             <th>Username</th>
         </tr>
         </thead>
 
         <tbody>
         <%
-            String userID = finded.getUserId().toString();
             String password = finded.getPassword();
             String firstName = finded.getFirst_name();
             String lastName = finded.getLast_name();
@@ -113,12 +112,7 @@
             String gender = finded.getGender();
             String dob = finded.getDob();
             String date_registered = finded.getDate_registered();
-            String activated_status;
-            if (finded.getActivated_status()) {
-                activated_status = "YES";
-            } else {
-                activated_status = "NO";
-            }
+            String activated_status = finded.getActivated_status();
             String username = finded.getUsername();
         %>
         <tr>
@@ -133,8 +127,6 @@
             <td><%=is_staff%>
             </td>
             <td><%=phone%>
-            </td>
-            <td><%=email%>
             </td>
             <td><%=gender%>
             </td>
