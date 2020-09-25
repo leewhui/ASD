@@ -74,6 +74,36 @@
     <servlet-name>cardManagementController</servlet-name>
     <url-pattern>/cardManagementController</url-pattern>
   </servlet-mapping>
+ 
+ <servlet>
+    <servlet-name>adminHomeController</servlet-name>
+    <servlet-class>com.app.asd.Controller.adminHomeController</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>adminHomeController</servlet-name>
+    <url-pattern>/adminHomeController</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>adminHomeServlet</servlet-name>
+    <servlet-class>com.app.asd.Controller.adminHomeServlet</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>adminHomeServlet</servlet-name>
+    <url-pattern>/adminHomeServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>editInfoController</servlet-name>
+    <servlet-class>com.app.asd.Controller.editInfoController</servlet-class>
+  </servlet>
+
+  <servlet-mapping>
+    <servlet-name>editInfoController</servlet-name>
+    <url-pattern>/editInfoController</url-pattern>
+  </servlet-mapping>
 
 </web-app>
 
