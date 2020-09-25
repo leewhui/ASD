@@ -106,7 +106,7 @@
                 <div class="card-body">
                     <h5 class="card-title">Manage card</h5>
                     <p class="card-text">Manage your opal card online</p>
-                    <form action="cardManagementController">
+                    <form action="cardManagementController" method ="get" >
                         <button class="btn btn-primary">Go for it</button>
                     </form>
                 </div>
