@@ -76,55 +76,6 @@ public class orderMenuController extends HttpServlet
         }
 
 
-
-
-
-
-
-
-        /*
-        MongoCollection<Document> result = dbConnect.getMongoCollection("Order");
-        List<Document> temp = dbConnect.findAll("Order");
-
-        session.setAttribute("OrderList",temp);
-        req.getRequestDispatcher("/orderMenu.jsp").forward(req, resp);
-        */
-
-
-
-
-
-
-
-        /*
-        if (!resultList.hasNext())
-        {
-            String message = "Order not exist";
-            req.setAttribute("OrderStatus",message);
-            req.getRequestDispatcher("/orderMenu.jsp").forward(req, resp);
-        }
-        else
-        {
-            ArrayList<Order> temp = new ArrayList();
-
-            while (resultList.hasNext()) {
-                Order order = gson.fromJson(resultList.next().toJson(), Order.class);
-                if (order.getUserEmail().equals(userEmail))
-                {
-                    req.setAttribute("LoginStatus",order);
-                    HttpSession session = req.getSession();
-                    session.setAttribute("currentUser", order);
-                    req.getRequestDispatcher("/orderMenu.jsp").forward(req, resp);
-                }
-                else
-                {
-                    req.setAttribute("LoginStatus","Password is incorrect");
-                    req.getRequestDispatcher("/login.jsp").forward(req, resp);
-                }
-            }
-        }
-        */
-
     }
 
     @Override
