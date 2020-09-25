@@ -55,14 +55,16 @@
     <div class="container">
         <ul class="nav-card clearfix" id="service">
             <h3>Services</h3>
-            <li class="card" style="width: 18rem;">
-                <img src="resources/top up.jpg" class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Top up</h5>
-                    <p class="card-text">Plan ahead or top up online</p>
-                    <a href="../payment.jsp" class="btn btn-primary">Go for it</a>
-                </div>
-            </li>
+            <form class="form" role="form" action="cardStatusServlet" method="post">
+                <li class="card" style="width: 18rem;">
+                    <img src="resources/top%20up.jpg" class="card-img-top" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Top up</h5>
+                        <p class="card-text">Plan ahead or top up online</p>
+                        <button id="submit_btn" type="submit" class="btn btn-primary" name="topUp">Go for it</button>
+                    </div>
+                </li>
+            </form>
 
             <li class="card" style="width: 18rem;">
                 <img src="resources/buy.png" alt="...">
@@ -82,14 +84,16 @@
                 </div>
             </li>
 
-            <li class="card" style="width: 18rem;">
-                <img src="resources/transfer.jpg" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Transfer</h5>
-                    <p class="card-text">Transfer between two accounts</p>
-                    <a href="#" class="btn btn-primary">Go for it</a>
-                </div>
-            </li>
+            <form class="form" role="form" action="cardStatusServlet" method="post">
+                <li class="card" style="width: 18rem;">
+                    <img src="resources/transfer.jpg" alt="...">
+                    <div class="card-body">
+                        <h5 class="card-title">Transfer</h5>
+                        <p class="card-text">Transfer between two accounts</p>
+                        <button id="submit_btn2" type="submit" class="btn btn-primary" name="transfer">Go for it</button>
+                    </div>
+                </li>
+            </form>
 
             <li class="card" style="width: 18rem;">
                 <img src="resources/info.jpg" alt="...">

@@ -1,90 +1,107 @@
-<!DOCTYPE html>
-<html>
+<%--
+  Created by IntelliJ IDEA.
+  User: 61405
+  Date: 22/09/2020
+  Time: 11:17 am
+  To change this template use File | Settings | File Templates.
+--%>
+<%@page import="com.app.asd.Model.Card"%>
+
+<!doctype html>
+<html lang="en">
 <head>
-    <link rel="stylesheet" href="css/payment.css">
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="./css/payment.css">
+
+    <!--  JavaScript -->
+    <script src="script/payment.js"></script>
+
+    <title>Opal Card</title>
 </head>
+
+
 <body>
 
-<h2>Payment</h2>
-<p></p>
-<div class="row">
-    <div class="col-75">
-        <div class="container">
-            <form>
-                <div class="row">
-                    <div class="col-50">
-                        <h3>Billing Address</h3>
-                        <label for="fname"><i class="fa fa-user"></i> Full Name</label>
-                        <input type="text" id="fname" name="firstname" placeholder="John Smith">
-                        <label for="email"><i class="fa fa-envelope"></i> Email</label>
-                        <input type="text" id="email" name="email" placeholder="john.smith@gmail.com">
-                        <label for="adr"><i class="fa fa-address-card-o"></i> Address</label>
-                        <input type="text" id="adr" name="address" placeholder="22 Jane St.">
-                        <label for="city"><i class="fa fa-institution"></i> City</label>
-                        <input type="text" id="city" name="city" placeholder="Sydney">
+<%
+    Card card = (Card)session.getAttribute("chosenCard");
+    int cardID = card.getCardID();
+    session.setAttribute("cardID",cardID);
+%>
 
-                        <div class="row">
-                            <div class="col-50">
-                                <label for="state">State</label>
-                                <input type="text" id="state" name="state" placeholder="NSW">
-                            </div>
-                            <div class="col-50">
-                                <label for="postcode">Postcode</label>
-                                <input type="text" id="postcode" name="postcode" placeholder="2112">
-                            </div>
-                        </div>
-                    </div>
+<div class="checkout-panel">
+    <div class="panel-body">
+        <h2 class="title">Top up here!</h2>
 
-                    <div class="col-50">
-                        <h3>Card Detail</h3>
-                        <label for="amount">Top up amount</label>
-                        <input list="amounts" name="cardAmount" id="amount">
-                        <datalist id="amounts">
-                            <option value="$5">
-                            <option value="$10">
-                            <option value="$25">
-                            <option value="$50">
-                            <option value="$100">
-                        </datalist>
-                        <label for="cname">Name on Card</label>
-                        <input type="text" id="cname" name="cardname" placeholder="John Smith">
-                        <label for="ccnum">Credit card number</label>
-                        <input type="text" id="ccnum" name="cardnumber" placeholder="****-****-****-****">
-                        <label for="expmonth">Exp Month</label>
-                        <input type="text" id="expmonth" name="expmonth" placeholder="September">
-                        <div class="row">
-                            <div class="col-50">
-                                <label for="expyear">Exp Year</label>
-                                <input type="text" id="expyear" name="expyear" placeholder="2020">
-                            </div>
-                            <div class="col-50">
-                                <label for="cvv">CVV</label>
-                                <input type="text" id="cvv" name="cvv" placeholder="***">
-                            </div>
-                        </div>
-                    </div>
+        <div class="progress-bar">
+            <div class="step active"></div>
+            <div class="step active"></div>
+            <div class="step"></div>
+            <div class="step"></div>
+        </div>
 
+        <div class="payment-method">
+            <label for="card" class="method card">
+                <div class="card-logos">
+                    <img src="https://designmodo.com/demo/checkout-panel/img/visa_logo.png"/>
+                    <img src="https://designmodo.com/demo/checkout-panel/img/mastercard_logo.png"/>
                 </div>
-                <label>
-                    <input type="checkbox" checked="checked" name="sameadr"> allowed to Auto Recharge when Remain card balance below $5
-                </label>
-                <input type="submit" value="Confirm" class="btn">
-            </form>
-            <form action="./jsp/main.jsp">
-                <input type="submit" value="Back" class="btn">
-            </form>
+
+                <div class="radio-input">
+                    <input id="card" type="radio" name="payment" value="20">
+                    Pay AU$20 with credit card
+                </div>
+            </label>
+
+            <label for="paypal" class="method paypal">
+                <img src="https://designmodo.com/demo/checkout-panel/img/paypal_logo.png"/>
+                <div class="radio-input">
+                    <input id="paypal" type="radio" name="payment" value="20">
+                    Pay AU$20 with PayPal
+                </div>
+            </label>
+        </div>
+
+        <div class="input-fields">
+            <div class="column-1">
+                <label for="cardholder">Name</label>
+                <input type="text" id="cardholder" />
+
+                <div class="small-inputs">
+                    <div>
+                        <label for="date">Valid date</label>
+                        <input type="text" id="date"/>
+                    </div>
+
+                    <div>
+                        <label for="verification">CVV / CVC *</label>
+                        <input type="password" id="verification"/>
+                    </div>
+                </div>
+
+            </div>
+            <div class="column-2">
+                <label for="cardnumber">Card Number</label>
+                <input type="password" id="cardnumber"/>
+
+                <span class="info">* CVV or CVC is the card security code, unique three digits number on the back of your card separate from its number.</span>
+            </div>
         </div>
     </div>
-    <div class="col-25">
-        <div class="container">
-            <h4>Select cards <span class="price" style="color:black"><i class="fa fa-shopping-cart"></i> Remain balance </span></h4>
-            <p><input type="checkbox"  id="opalCard1" value=""> opalCard1<span class="price">$20</span></p>
-            <p><input type="checkbox"  id="opalCard2" value=""> opalCard2<span class="price">$15</span></p>
-            <p><input type="checkbox"  id="opalCard3" value=""> opalCard3<span class="price">$10</span></p>
-            <p><input type="checkbox"  id="opalCard4" value=""> opalCard4<span class="price">$5</span></p>
-        </div>
+
+    <div class="panel-footer">
+        <form action="cardStatus.jsp">
+        <button type="submit" name="back" value="back"  class="btn back-btn">Back</button>
+        </form>
+        <form class="form" role="form" action="processingServlet" method="post">
+        <button type="submit" name="confirm" value="confirm" class="btn next-btn">Confirm</button>
+        </form>
     </div>
 </div>
+
 
 </body>
 </html>

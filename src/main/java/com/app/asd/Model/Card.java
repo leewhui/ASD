@@ -10,6 +10,26 @@ public class Card {
     private boolean is_linked;
     private boolean is_sold;
 
+    public Card(int cardID, String opalCardNumber, String cardType, double cardBalance, String cardStatus, String userEmail, boolean is_linked, boolean is_sold) {
+        this.cardID = cardID;
+        this.opalCardNumber = opalCardNumber;
+        this.cardType = cardType;
+        this.cardBalance = cardBalance;
+        this.cardStatus = cardStatus;
+        this.userEmail = userEmail;
+        this.is_linked = is_linked;
+        this.is_sold = is_sold;
+    }
+
+    public Card(int cardID, String opalCardNumber, String cardType, double cardBalance, String cardStatus, String userEmail) {
+        this.cardID = cardID;
+        this.opalCardNumber = opalCardNumber;
+        this.cardType = cardType;
+        this.cardBalance = cardBalance;
+        this.cardStatus = cardStatus;
+        this.userEmail = userEmail;
+    }
+
     public int getCardID() {
         return cardID;
     }

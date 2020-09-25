@@ -105,5 +105,59 @@
     <url-pattern>/editInfoController</url-pattern>
   </servlet-mapping>
 
+  <servlet>
+    <servlet-name>cardStatusServlet</servlet-name>
+    <servlet-class>com.app.asd.Controller.cardStatusServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>cardStatusServlet</servlet-name>
+    <url-pattern>/cardStatusServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>paymentServlet</servlet-name>
+    <servlet-class>com.app.asd.Controller.paymentServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>paymentServlet</servlet-name>
+    <url-pattern>/paymentServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>processingServlet</servlet-name>
+    <servlet-class>com.app.asd.Controller.processingServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>processingServlet</servlet-name>
+    <url-pattern>/processingServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>invoiceServlet</servlet-name>
+    <servlet-class>com.app.asd.Controller.invoiceServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>invoiceServlet</servlet-name>
+    <url-pattern>/invoiceServlet</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>transferNextCard</servlet-name>
+    <servlet-class>com.app.asd.Controller.transferNextCard</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>transferNextCard</servlet-name>
+    <url-pattern>/transferNextCard</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>processingTransferServlet</servlet-name>
+    <servlet-class>com.app.asd.Controller.processingTransferServlet</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>processingTransferServlet</servlet-name>
+    <url-pattern>/processingTransferServlet</url-pattern>
+  </servlet-mapping>
+
 </web-app>
 
