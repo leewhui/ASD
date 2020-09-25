@@ -96,5 +96,12 @@ public class dbConnect
         return mongoCursor;
 
     }
+    
+     public static UpdateResult updateOne(String collName, Bson filter, Bson update) {
+        MongoCollection<Document> coll = db.getCollection(collName);
+        UpdateResult result = coll.updateOne(filter, update);
+
+        return result;
+    }
 
 }
