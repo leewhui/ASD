@@ -25,7 +25,7 @@ public class paymentServlet extends HttpServlet {
 
         MongoDB mongoDB = new MongoDB();
 
-        CardDAO cardDAO = new CardDAO(mongoDB.openConnection());
+        CardDAO cardDAO = new CardDAO(mongoDB.openConnection()); // Use CardDAO for card payment function
 
         Card chosenCard = cardDAO.getCard(cardID);
 
