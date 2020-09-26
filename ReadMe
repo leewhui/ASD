@@ -1,1 +1,3 @@
-
+1. Import the project into Intellij IDEA
+2. Run the project using Tomcat 9.0.37 and JDK 1.8
+3. Alternatively, run the Heroku web applicaiton: https://asdappdemo.herokuapp.com/
