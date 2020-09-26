@@ -25,7 +25,7 @@
     <link rel="stylesheet" href="./css/userInfo.css">
 </head>
 <body>
-<% User user = (User) session.getAttribute("currentUser"); %>
+<% User user = (User) session.getAttribute("currentUser"); %><%-- the current user info in the session --%>
 <% Boolean success = (Boolean) request.getAttribute("success"); %>
 <div class="container">
     <div class="row">
@@ -57,6 +57,7 @@
                 </div>
             </div>
         </div>
+      <%-- Display massage when successful undateded        --%>
         <div class="col-md-8">
             <% if(success!=null && success) {
                 %>
