@@ -17,6 +17,7 @@ public class signupController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
+        // get paramaters from the front-end
         String username = req.getParameter("username");
         String email = req.getParameter("email");
         String password = req.getParameter("password");
@@ -24,12 +25,14 @@ public class signupController extends HttpServlet
         String last_name = req.getParameter("last_name");
         String gender = req.getParameter("gender");
         String dob = req.getParameter("dob");
+        // set the data format
         SimpleDateFormat sdf = new SimpleDateFormat();
         sdf.applyPattern("dd-MM-yyyy");
         Date date = new Date();
         String date_registered = req.getParameter("date_registered") == null ? sdf.format(date).toString() : req.getParameter("date_registered");
         boolean activated_status = req.getParameter("activated_status") == null ? true : Boolean.parseBoolean(req.getParameter("activated_status"));
         boolean is_staff = req.getParameter("is_staff") == null ? false : Boolean.parseBoolean(req.getParameter("is_staff"));
+        // add all paramaters into the document.
         Document document = new Document("username", username);
         document.append("email", email);
         document.append("password", password);
@@ -40,14 +43,17 @@ public class signupController extends HttpServlet
         document.append("date_registered", date_registered);
         document.append("activated_status", activated_status);
         document.append("is_staff", is_staff);
+        // insert into the database
         String result = dbConnect.insertOneDocument("User", document);
         if (result.equals("success"))
         {
+            // insert success jump to the login page and print success message
             req.setAttribute("isSignUp","Sign up success");
             req.getRequestDispatcher("login.jsp").forward(req, resp);
         }
         else
         {
+            // insert fail back to the signup page and print err message
             req.setAttribute("isSignUp", "Sign up fail");
             req.getRequestDispatcher("signup.jsp").forward(req, resp);
         }
