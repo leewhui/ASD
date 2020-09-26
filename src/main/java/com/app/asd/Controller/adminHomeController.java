@@ -18,6 +18,7 @@ public class adminHomeController extends HttpServlet {
     }
 
 
+    //get the user email form the search button and search the information in the DB, then send back the user information to jsp to show the user searched.
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
