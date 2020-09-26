@@ -13,7 +13,7 @@ public class transferNextCard extends HttpServlet {
 
         HttpSession session = request.getSession();
 
-        Integer selectFirstCard = Integer.parseInt(request.getParameter("transfer"));
+        Integer selectFirstCard = Integer.parseInt(request.getParameter("transfer")); //The balance in First Card will be transferred to Second Card
 
         session.setAttribute("selectFirstCard", selectFirstCard);
 
