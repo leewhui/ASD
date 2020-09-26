@@ -27,7 +27,7 @@ public class orderNewCardController extends HttpServlet
         HttpSession session = req.getSession();
         Gson gson = new Gson();
 
-        User user = (User) session.getAttribute("currentUser");
+        User user = (User) session.getAttribute("currentUser"); 
         String Email = user.getEmail();
 
         int lastOrderID = 0;
@@ -44,11 +44,11 @@ public class orderNewCardController extends HttpServlet
             }
         }
 
-        int newOrderID = lastOrderID + 1;
+        int newOrderID = lastOrderID + 1; // The system will automatically create a orderID for the new oreder
 
         String newOrderDateTime;
         java.util.Date date = new java.util.Date();
-        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+        SimpleDateFormat formatter = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss"); // Set the date and time format that is displayed in the list
         newOrderDateTime = formatter.format(date);
 
 
@@ -70,7 +70,7 @@ public class orderNewCardController extends HttpServlet
         document.append("deliveryPostcode", deliveryPostcode);
         document.append("orderComment", orderComment);
 
-        dbConnect.insertOneDocument("Order", document);
+        dbConnect.insertOneDocument("Order", document); // Add the new order into MongoDB
 
         session.setAttribute("NewOrderMessage", "New Order Submitted Successfully");
         req.getRequestDispatcher("../orderNewCard.jsp").forward(req, resp);
