@@ -20,6 +20,7 @@ import javax.mail.Session.*;
 
 public class cardManagementController extends HttpServlet
 {
+    //get user data from session, then get card data from database and send the card data to card management page.
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
@@ -45,7 +46,7 @@ public class cardManagementController extends HttpServlet
 
     }
 
-
+    // get change of card status from user input, then update the data in database.
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
