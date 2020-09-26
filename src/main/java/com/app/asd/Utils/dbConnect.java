@@ -48,6 +48,7 @@ public class dbConnect
         return db.getCollection(collectionName);
     }
 
+    // Find all documents in MongoDB which meet the queryObj and use iterator to pass document one by one
     public static MongoCursor<Document> queryCursor(String collectionName, BasicDBObject queryObj)
     {
         MongoCollection<Document> collection = getMongoCollection(collectionName);
@@ -66,7 +67,7 @@ public class dbConnect
             return "error";
         }
     }
-    //update user information DB
+    //update user information
     public static String updateOneUser(User user)
     {
         try {
@@ -87,7 +88,7 @@ public class dbConnect
             return "error";
         }
     }
-
+    // Find all documents from one collection in MongoDB
     public static MongoCursor<Document> findAll(String collName){
         MongoCollection<Document> coll = db.getCollection(collName);
         List<Document> result = new ArrayList<Document>();
