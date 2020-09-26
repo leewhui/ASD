@@ -17,6 +17,7 @@ public class adminHomeServlet extends HttpServlet {
         doPost(req, resp);
     }
 
+    //get the "show all user request" from "adminHome.jsp" and get the BD information,which contain all the user, then send to "adminHome.jsp" to show in the table
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         adminHomeDao con = (adminHomeDao) req.getSession().getAttribute("con");
