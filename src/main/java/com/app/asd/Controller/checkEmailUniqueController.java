@@ -18,10 +18,11 @@ public class checkEmailUniqueController extends HttpServlet
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String email = req.getParameter("email");
         BasicDBObject obj = new BasicDBObject("email", email);
+        // query the email which come from the front-end
         MongoCursor<Document> cursor = dbConnect.queryCursor("User", obj);
         PrintWriter out = resp.getWriter();
-        if (cursor.hasNext()) out.write("true");
-        else out.write("false");
+        if (cursor.hasNext()) out.write("true"); // if the email exist, print true.
+        else out.write("false"); // if not found the email, print false
         out.close();
     }
 }
