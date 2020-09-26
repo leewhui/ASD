@@ -35,4 +35,13 @@ public class orderTest {
         document.append("orderComment","junit Test");
         dbConnect.insertOneDocument("Order", document);
     }
+    
+    @Test
+    public void testGetOrder()
+    {
+        BasicDBObject obj = new BasicDBObject("userEmail", "test1@gmail.com");
+        MongoCursor<Document> resultList = dbConnect.queryCursor("Order", obj);
+
+        System.out.println(resultList);
+    }
 }
