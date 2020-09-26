@@ -22,20 +22,23 @@
 
     for(int i = 0;i < cardResult.size(); i++)
     {
-        if(cardResult.get(i).getUserEmail().equals(email))
+        try
         {
-            cardID = cardResult.get(i).getCardID();
-            cardNumber = cardResult.get(i).getOpalCardNumber();
-            cardType = cardResult.get(i).getCardType();
-            cardBalance = cardResult.get(i).getCardBalance();
-            cardStatus = cardResult.get(i).getCardStatus();
-            userEmail = cardResult.get(i).getUserEmail();
-            is_linked = cardResult.get(i).isIs_linked();
-            is_sold = cardResult.get(i).isIs_sold();
+            if(cardResult.get(i).getUserEmail().equals(email))
+            {
+                cardID = cardResult.get(i).getCardID();
+                cardNumber = cardResult.get(i).getOpalCardNumber();
+                cardType = cardResult.get(i).getCardType();
+                cardBalance = cardResult.get(i).getCardBalance();
+                cardStatus = cardResult.get(i).getCardStatus();
+                userEmail = cardResult.get(i).getUserEmail();
+                is_linked = cardResult.get(i).isIs_linked();
+                is_sold = cardResult.get(i).isIs_sold();
+            }
         }
-        else
+        catch (Exception e)
         {
-            System.out.println("Null");
+
         }
 
     }
