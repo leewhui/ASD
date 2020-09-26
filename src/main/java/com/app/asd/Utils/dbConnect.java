@@ -66,7 +66,7 @@ public class dbConnect
             return "error";
         }
     }
-
+    //update user information DB
     public static String updateOneUser(User user)
     {
         try {
@@ -80,7 +80,7 @@ public class dbConnect
                     set("dob", user.getDob()),
                     set("card_number", user.getCardNumber())
                     );
-            collection.updateOne(filter, updateOperation);
+            collection.updateOne(filter, updateOperation);//update
             return "success";
         } catch (Exception e) {
             e.printStackTrace();
