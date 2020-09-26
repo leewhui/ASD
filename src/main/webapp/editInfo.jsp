@@ -232,7 +232,7 @@
     <input type="hidden" name="userEmail" value="<%=email%>">
     <input type="hidden" name="type" value="2">
     <div class="text-center">
-        <button class="btn btn-default" onclick="window.location.href = 'editInfo.jsp'">Cancel</button>
+        <button class="btn btn-default" type="button" onclick="window.location.href = 'editInfo.jsp'">Cancel</button>
         <button class="btn btn-info" type="submit" onclick="confirm('Are you sure to edit this user?')">Submit</button>
     </div>
 </form>
