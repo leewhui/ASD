@@ -32,7 +32,8 @@ public class orderMenuController extends HttpServlet
         String userEmail = user.getEmail();
         boolean isStaff = user.isIs_staff();
 
-        if(isStaff)
+        // If the current user is staff, then all orders in the database will be added into the list
+        if(isStaff) 
         {
             MongoCursor<Document> result = dbConnect.findAll("Order");
             ArrayList<Order> temp1 = new ArrayList();
@@ -51,7 +52,7 @@ public class orderMenuController extends HttpServlet
             session.setAttribute("OrderList",temp1);
             req.getRequestDispatcher("/orderMenu.jsp").forward(req, resp);
         }
-        else
+        else // If the current user is customer, then only the orders of the current customer will be added into the list
         {
             BasicDBObject obj = new BasicDBObject("userEmail", userEmail);
             MongoCursor<Document> resultList = dbConnect.queryCursor("Order", obj);
