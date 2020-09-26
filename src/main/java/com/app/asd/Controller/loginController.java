@@ -21,9 +21,11 @@ public class loginController extends HttpServlet
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
         Gson gson = new Gson();
+        // get paramaters from the front-end
         String email = req.getParameter("email");
         String password = req.getParameter("password");
         String remember = req.getParameter("checkbox");
+        // find the user by the email
         BasicDBObject obj = new BasicDBObject("email", email);
         MongoCursor<Document> resultList = dbConnect.queryCursor("User", obj);
         if (!resultList.hasNext()) // if there is no user found from the database
@@ -34,11 +36,13 @@ public class loginController extends HttpServlet
         }
         else
         {
+            // if the user exist
             while (resultList.hasNext()) {
                 User user = gson.fromJson(resultList.next().toJson(), User.class);
+                // check wheather email and password match
                 if (user.getEmail().equals(email) && user.getPassword().equals(password))
                 {
-                    if ("admin@gmail.com".equals(user.getEmail())) // if staff login
+                    if ("admin@gmail.com".equals(user.getEmail())) // if staff login jump to the admin page
                     {
                         req.setAttribute("LoginStatus",user);
                         req.getRequestDispatcher("/adminHome.jsp").forward(req, resp);
@@ -55,6 +59,7 @@ public class loginController extends HttpServlet
                             resp.addCookie(cookie1);
                             resp.addCookie(cookie2);
                         }
+                        // normal user login, jump to the main page
                         req.setAttribute("LoginStatus",user);
                         HttpSession session = req.getSession();
                         session.setAttribute("currentUser", user);
@@ -63,6 +68,7 @@ public class loginController extends HttpServlet
                 }
                 else
                 {
+                    // password not found
                     req.setAttribute("LoginStatus","Password is incorrect");
                     req.getRequestDispatcher("/login.jsp").forward(req, resp);
                 }
