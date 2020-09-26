@@ -18,6 +18,9 @@ public class editInfoController extends HttpServlet {
     }
 
 
+    //this method deal with the edit user information function, in the type "1", it would get the user email from "editInfo.jsp", and search the information from 
+    //data base. then in the type "2", it would get the information which wanted to be edited from "editInfo.jsp", and sent a request to DB to edit it. and send 
+    //back a "good" notification to jsp to show edition finished.
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         req.setCharacterEncoding("UTF-8");
