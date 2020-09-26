@@ -26,13 +26,13 @@ public class orderUpdateController extends HttpServlet{
 
         session.setAttribute("orderStatusMessage","");
 
-        String operation = req.getParameter("operation");
+        String operation = req.getParameter("operation"); // Use "operation" parameter to decide the function
 
         switch(operation)
         {
             case "R":
 
-                String orderID = req.getParameter("orderID");
+                String orderID = req.getParameter("orderID"); // Get the current selected order ID 
                 MongoCursor<Document> result = dbConnect.findAll("Order");
 
                 while (result.hasNext())
@@ -57,7 +57,7 @@ public class orderUpdateController extends HttpServlet{
                 filter.append("orderID", currentOrderID);
 
                 Document update = new Document();
-                update.append("$set", new Document("orderStatus", orderStatus_Changed));
+                update.append("$set", new Document("orderStatus", orderStatus_Changed)); // Update the order status of one order in MongoDB
 
                 dbConnect.updateOne("Order",filter, update);
 
