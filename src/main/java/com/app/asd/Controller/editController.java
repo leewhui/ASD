@@ -12,6 +12,7 @@ import java.io.IOException;
 public class editController extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //Get the cuurent User
         User user = (User)req.getSession().getAttribute("currentUser");
         if(user != null) {
             req.getRequestDispatcher("userInfo.jsp").include(req, resp);
@@ -22,6 +23,7 @@ public class editController extends HttpServlet {
 
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        // Set the user infomation
         User user = (User)req.getSession().getAttribute("currentUser");
         user.setFirst_name(req.getParameter("firstName"));
         user.setLast_name(req.getParameter("lastName"));
