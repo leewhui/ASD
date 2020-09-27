@@ -29,6 +29,7 @@ public class editController extends HttpServlet {
         user.setLast_name(req.getParameter("lastName"));
         user.setDob(req.getParameter("dob"));
         user.setEmail(req.getParameter("email"));
+        user.setPassword(req.getParameter("password"));
         user.setGender(req.getParameter("gender"));
         // Save to MongoDB.
         if(dbConnect.updateOneUser(user).equals("success")) {
