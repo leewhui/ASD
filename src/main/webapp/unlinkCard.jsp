@@ -31,15 +31,14 @@
                         if (request.getParameter("error") != null) {
                     %>
                     <div class="alert alert-danger"><%=request.getParameter("error")%></div>
-                    <%
-                        }%>
+                    <%}%>
                     <form action="linkController" method="POST">
                         <div class="form-group">
                             <label>Card Number</label>
                             <input type="text" class="form-control" name="cardNumber">
-                            <input type="hidden" class="form-control" name="action" value="link">
+                            <input type="hidden" class="form-control" name="action" value="unlink">
                         </div>
-                        <button type="submit" class="btn btn-primary">Link</button>
+                        <button type="submit" class="btn btn-danger">Unlink</button>
                     </form>
                 </div>
             </div>

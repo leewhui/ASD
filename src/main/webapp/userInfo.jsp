@@ -1,4 +1,6 @@
-<%@ page import="com.app.asd.Model.User" %><%--
+<%@ page import="com.app.asd.Model.User" %>
+<%@ page import="com.app.asd.Model.Card" %>
+<%@ page import="java.util.List" %><%--
   Created by IntelliJ IDEA.
   User: Simon
   Date: 2020/8/26
@@ -32,7 +34,8 @@
         <div class="col-md-4">
             <div class="card">
                 <div class="card-body">
-                    <h3 class="m0 text-bold"><%=user.getUsername()%></h3>
+                    <h3 class="m0 text-bold"><%=user.getUsername()%>
+                    </h3>
                     <p>Hello, Have fun !</p>
                     <div class="text-center"><a class="btn btn-primary" href="linkCard.jsp">Link Card</a></div>
                 </div>
@@ -41,31 +44,41 @@
             <div class="card mt-3">
                 <div class="card-header">
                     Card Info
-                    <button class="btn btn-sm btn-danger float-right">Unlink</button>
+                    <a class="btn btn-sm btn-danger float-right" href="unlinkCard.jsp">Unlink</a>
                 </div>
                 <div class="card-body">
                     <table class="table">
                         <tr>
-                            <th scope="row">Card Number:</th>
-                            <td><%=user.getCardNumber()%></td>
+                            <th scope="row">Number</th>
+                            <th scope="row">Type</th>
+                            <th scope="row">Balance</th>
                         </tr>
+                        <%
+                            List<Card> cards = (List<Card>) request.getAttribute("cards");
+                            for (Card card : cards) {
+                        %>
                         <tr>
-                            <th scope="row">Card Name:</th>
-                            <td><%=user.getFirst_name()%> <%=user.getLast_name()%></td>
+                            <td><%=card.getOpalCardNumber()%></td>
+                            <td><%=card.getCardType()%></td>
+                            <td>$<%=card.getCardBalance()%></td>
                         </tr>
+                        <%}%>
                     </table>
                 </div>
             </div>
         </div>
-      <%-- Display massage when successful undateded        --%>
+        <%-- Display massage when successful undateded        --%>
         <div class="col-md-8">
-            <% if(success!=null && success) {
-                %>
-                <div class="alert alert-success">The user has been saved successfully.</div>
+            <% if (success != null && success) {
+            %>
+            <div class="alert alert-success">The user has been saved successfully.</div>
             <%
-            } %>
+                } %>
             <div class="card">
-                <div class="card-header text-center bg-info text-light text-weight-bold"><h4>User Profile</h4></div>
+                <div class="card-header text-center bg-info text-light text-weight-bold">
+                    <h4>User Profile</h4>
+                    <a class="d-inline-block float-right btn btn-primary" style="margin-top: -40px" href="main.jsp">Main Page</a>
+                </div>
                 <div class="card-body">
                     <form class="form-horizontal" action="editProfile" method="POST">
                         <div class="form-group row">
@@ -85,27 +98,27 @@
 
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 control-label" >Email</label>
+                            <label class="col-sm-4 control-label">Email</label>
                             <div class="col-sm-8">
                                 <input class="form-control" name="email" type="email"
                                        value="<%=user.getEmail()%>" readonly="true">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 control-label" >Password</label>
+                            <label class="col-sm-4 control-label">Password</label>
                             <div class="col-sm-8">
                                 <input class="form-control" name="password" type="text" value="<%=user.getPassword()%>">
                             </div>
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-sm-4 control-label" >Date of birth</label>
+                            <label class="col-sm-4 control-label">Date of birth</label>
                             <div class="col-sm-8">
                                 <input class="form-control" name="dob" type="text" value="<%=user.getDob()%>">
                             </div>
                         </div>
                         <div class="form-group row">
-                            <label class="col-sm-4 control-label" >Gender</label>
+                            <label class="col-sm-4 control-label">Gender</label>
                             <div class="col-sm-8">
                                 <input class="form-control" name="gender" type="text"
                                        value="<%=user.getGender()%>" readonly="true">
@@ -118,7 +131,6 @@
                             </div>
                         </div>
                     </form>
-                    <div class="text-right"><a class="btn btn-primary" href="/main.jsp">Main Page</a></div>
                 </div>
             </div>
         </div>

@@ -75,7 +75,7 @@
 
 
   <build>
-    <finalName>jeecms</finalName>
+    <finalName>asdR0</finalName>
     <plugins>
 
       <plugin>
