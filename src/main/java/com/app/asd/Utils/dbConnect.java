@@ -68,27 +68,7 @@ public class dbConnect
             return "error";
         }
     }
-    //update user information
-    public static String updateOneUser(User user)
-    {
-        try {
-            MongoCollection<Document> collection = getMongoCollection("User");
-            // update one document
-            Bson filter = eq("username", user.getUsername());
-            Bson updateOperation = combine(set("first_name", user.getFirst_name()),
-                    set("last_name", user.getLast_name()),
-                    set("password", user.getPassword()),
-                    set("gender", user.getGender()),
-                    set("dob", user.getDob()),
-                    set("card_number", user.getCardNumber())
-                    );
-            collection.updateOne(filter, updateOperation);//update
-            return "success";
-        } catch (Exception e) {
-            e.printStackTrace();
-            return "error";
-        }
-    }
+
     // Find all documents from one collection in MongoDB
     public static MongoCursor<Document> findAll(String collName){
         MongoCollection<Document> coll = db.getCollection(collName);
@@ -110,7 +90,7 @@ public class dbConnect
         MongoCollection<Document> coll = db.getCollection(collName);
         coll.deleteOne(document);
     }
-    
+
     public static DeleteResult removeOne(String collectionName, Bson bson)
     {
         MongoCollection<Document> collection = dbConnect.getMongoCollection(collectionName);
