@@ -35,7 +35,7 @@ public class linkController extends HttpServlet {
         if(resultList.hasNext()){
             card = gson.fromJson(resultList.next().toJson(), Card.class);
         } else {//if action equals link, then the page=linkCard.jsp,
-            String page = action.equals("link")?"linkCard.jsp":"unlinkCard.jsp";
+            String page = action.equals("link")?"../linkCard.jsp":"../unlinkCard.jsp";
             resp.sendRedirect( page + "?error=Card number does not exist.");
             return;
         }
@@ -48,14 +48,14 @@ public class linkController extends HttpServlet {
             if(card.getUserEmail() == null){
                 update.append("$set", new Document("userEmail", user.getEmail()));
             } else {//link itself
-                resp.sendRedirect("linkCard.jsp?error=The card has already been linked.");
+                resp.sendRedirect("../linkCard.jsp?error=The card has already been linked.");
                 return;
             }
         } else {//if user click 'unlink' button
             if(user.getEmail().equals(card.getUserEmail())){//if the current user email equals the target card of user email
                 update.append("$set", new Document("userEmail", null));
             } else {// if the target card of user email not equal the current user// if the card not yours but exists in MongoDB
-                resp.sendRedirect("unlinkCard.jsp?error=Cannot unlink a card that does not belong to you.");
+                resp.sendRedirect("../unlinkCard.jsp?error=Cannot unlink a card that does not belong to you.");
                 return;
             }
         }
