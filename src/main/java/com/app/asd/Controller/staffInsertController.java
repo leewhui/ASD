@@ -17,9 +17,16 @@ public class staffInsertController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         String cardType = req.getParameter("cardType");
+        if(cardType.equals("Gold Senior"))
+        {
+            cardType = "Senior";
+        }
+        double initialBal = 0;
+
         int cardID = -1;
         long opalCardNumber = -1;
         Gson gson = new Gson();
+
         MongoCursor<Document> cardList = dbConnect.findAll("Card");
         while (cardList.hasNext())
         {
@@ -29,12 +36,13 @@ public class staffInsertController extends HttpServlet
             if (card.getOpalCardNumber() != null && !card.getOpalCardNumber().equals("") && opalCardNumber < Long.parseLong(card.getOpalCardNumber())) opalCardNumber = Long.parseLong(card.getOpalCardNumber());
         }
         String str = String.valueOf((opalCardNumber + 1));
+
         Document document = new Document("cardID", cardID + 1);
         document.append("opalCardNumber", str);
         document.append("cardType", cardType);
-        document.append("cardBalance", 0);
-        document.append("cardStatus", "Activate");
-        document.append("userEmail", "");
+        document.append("cardBalance", initialBal);
+        document.append("cardStatus", "Activated");
+        document.append("userEmail", null);
         document.append("is_linked", false);
         document.append("is_sold", false);
         dbConnect.insertOneDocument("Card", document);
