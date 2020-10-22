@@ -27,14 +27,14 @@ public class cardManagementController extends HttpServlet
         req.setCharacterEncoding("UTF-8");
         HttpSession session = req.getSession();
         User user = (User) session.getAttribute("currentUser");
+        Gson gson = new Gson();
         // if the current user is the staff, jump to the staff page
         if (user.isIs_staff())
         {
             resp.sendRedirect("staff.jsp");
         }
         HttpSession session = req.getSession();
-        Gson gson = new Gson();
-        User user = (User) session.getAttribute("currentUser");
+        
         String email = user.getEmail();
         BasicDBObject obj = new BasicDBObject("email", email);
         MongoCursor<Document> resultList = dbConnect.findAll("Card");
