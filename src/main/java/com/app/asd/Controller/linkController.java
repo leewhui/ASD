@@ -58,8 +58,9 @@ public class linkController extends HttpServlet {
                 resp.sendRedirect("../unlinkCard.jsp?error=Cannot unlink a card that does not belong to you.");
                 return;
             }
+             dbConnect.updateOne("Card",filter,update);
+            resp.sendRedirect("editProfile");
         }
-        dbConnect.updateOne("Card",filter,update);
-        resp.sendRedirect("editProfile");
+       
     }
 }
