@@ -37,7 +37,7 @@ public class linkController extends HttpServlet {
         } else {//if action equals link, then the page=linkCard.jsp,
             String page = action.equals("link")?"../linkCard.jsp":"../unlinkCard.jsp";
             resp.sendRedirect( page + "?error=Card number does not exist.");
-            return;
+            // return;
         }
 
         Document filter = new Document();
@@ -49,14 +49,14 @@ public class linkController extends HttpServlet {
                 update.append("$set", new Document("userEmail", user.getEmail()));
             } else {//link itself
                 resp.sendRedirect("../linkCard.jsp?error=The card has already been linked.");
-                return;
+                // return;
             }
         } else {//if user click 'unlink' button
             if(user.getEmail().equals(card.getUserEmail())){//if the current user email equals the target card of user email
                 update.append("$set", new Document("userEmail", null));
             } else {// if the target card of user email not equal the current user// if the card not yours but exists in MongoDB
                 resp.sendRedirect("../unlinkCard.jsp?error=Cannot unlink a card that does not belong to you.");
-                return;
+                // return;
             }
         }
         dbConnect.updateOne("Card",filter,update);
