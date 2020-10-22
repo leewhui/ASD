@@ -97,12 +97,17 @@ public class dbConnect
         return mongoCursor;
 
     }
-    
-     public static UpdateResult updateOne(String collName, Bson filter, Bson update) {
+    // Update one document in one collection in MongoDB
+    public static UpdateResult updateOne(String collName, Bson filter, Bson update) {
         MongoCollection<Document> coll = db.getCollection(collName);
         UpdateResult result = coll.updateOne(filter, update);
 
         return result;
+    }
+    // Delete one document in one collection in MongoDB
+    public static void deleteOne(String collName, Bson document) {
+        MongoCollection<Document> coll = db.getCollection(collName);
+        coll.deleteOne(document);
     }
 
 }
