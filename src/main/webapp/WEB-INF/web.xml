@@ -9,12 +9,7 @@
     <servlet-name>loginController</servlet-name>
     <servlet-class>com.app.asd.Controller.loginController</servlet-class>
   </servlet>
-
-  <servlet>
-    <servlet-name>linkController</servlet-name>
-    <servlet-class>com.app.asd.Controller.linkController</servlet-class>
-  </servlet>
-
+ 
   <servlet>
     <servlet-name>signupController</servlet-name>
     <servlet-class>com.app.asd.Controller.signupController</servlet-class>
@@ -40,10 +35,7 @@
     <url-pattern>/editProfile</url-pattern>
   </servlet-mapping>
 
-  <servlet-mapping>
-    <servlet-name>linkController</servlet-name>
-    <url-pattern>/linkController</url-pattern>
-  </servlet-mapping>
+  
 
   <servlet>
     <servlet-name>checkEmailUnique</servlet-name>
@@ -193,6 +185,15 @@
   <servlet-mapping>
     <servlet-name>staffUpdateController</servlet-name>
     <url-pattern>/staffUpdate</url-pattern>
+  </servlet-mapping>
+ 
+ <servlet>
+    <servlet-name>linkController</servlet-name>
+    <servlet-class>com.app.asd.Controller.linkController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>linkController</servlet-name>
+    <url-pattern>/linkController</url-pattern>
   </servlet-mapping>
 
 </web-app>
