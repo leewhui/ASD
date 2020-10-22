@@ -7,7 +7,7 @@
         <packaging>war</packaging>
       </options>
     </properties>
-    <root id="archive" name="asdR0.war">
+    <root id="archive" name="jeecms.war">
       <element id="artifact" artifact-name="asdR0:war exploded" />
     </root>
   </artifact>
