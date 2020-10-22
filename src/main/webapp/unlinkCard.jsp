@@ -22,6 +22,9 @@
             crossorigin="anonymous"></script>
 </head>
 <body>
+<%
+
+%>
 <div class="container-md bg-default p-3">
     <div class="row justify-content-md-center">
         <div class="col-8">
@@ -29,18 +32,21 @@
                 <div class="card-body">
                     <%
                         // if (request.getParameter("error") != null) {
-                        if (session.getAttribute("error") != null) {
+                        if (session.getAttribute("linkError") != null) {
                     %>
-                    <div class="alert alert-danger"><%=session.getAttribute("error")%></div>
+                    <div class="alert alert-danger"><%=session.getAttribute("linkError")%></div>
                     <%}%>
-                    <form action="/linkController" method="POST">
+                    <form action="/linkController" method="post">
                         <div class="form-group">
                             <label>Enter Your Card Number</label>
                             <input type="text" class="form-control" name="cardNumber">
                             <input type="hidden" class="form-control" name="action" value="unlink">
                         </div>
                         <button type="submit" class="btn btn-danger">Unlink</button>
+                        <!--
                         <input style="margin-left: 20px" class="btn btn-primary" type="button" value="Back" onclick="javascript:window.history.back(-1);">
+                        -->
+                        <a style="margin-left: 20px" class="btn btn-primary" href="editProfile">Back</a>&emsp;
                     </form>
                 </div>
             </div>
@@ -48,6 +54,10 @@
     </div>
 
 </div>
+
+<%
+    session.setAttribute("linkError", null);
+%>
 
 </body>
 </html>
