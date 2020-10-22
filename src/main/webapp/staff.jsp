@@ -16,6 +16,15 @@
     <link rel="stylesheet" type="text/css" href="https://www.jeasyui.com/easyui/demo/demo.css">
 </head>
 <body>
+<div style="text-align: right">
+    <br />
+    <a style="text-decoration:none; border-width:3px; border-style:solid; border-color:dodgerblue;background-color: black;
+        color: white; font-size: 30px;" href="../main.jsp">Back</a>&emsp;
+</div>
+<div style="text-align: right">
+    <br />
+</div>
+  
 <table id="admin" title="Staff admin" class="easyui-datagrid" fitColumns="true" pagination="true"
        fit="true" rownumbers="true" url="staffController"
        data-options="fitColumns:true,singleSelect:false,checkbox:true" toolbar="#toolbar">
