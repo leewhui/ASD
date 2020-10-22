@@ -28,9 +28,10 @@
             <div class="card">
                 <div class="card-body">
                     <%
-                        if (request.getParameter("error") != null) {
+                        // if (request.getParameter("error") != null) {
+                        if (session.getAttribute("error") != null) {
                     %>
-                    <div class="alert alert-danger"><%=request.getParameter("error")%></div>
+                    <div class="alert alert-danger"><%=session.getAttribute("error")%></div>
                     <%}%>
                     <form action="/linkController" method="POST">
                         <div class="form-group">
