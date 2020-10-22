@@ -1,6 +1,10 @@
 package com.app.asd.Model;
 
+import org.bson.types.ObjectId;
+
 public class Card {
+    private ObjectId _id;
+    private String ID;
     private int cardID;
     private String opalCardNumber;
     private String cardType;
@@ -29,6 +33,21 @@ public class Card {
         this.cardStatus = cardStatus;
         this.userEmail = userEmail;
     }
+    
+    public ObjectId get_id() {
+        return _id;
+    }
+
+    public void set_id(ObjectId _id) {
+        this._id = _id;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+    public void setID(String id) {
+        this.ID = id;
 
     public int getCardID() {
         return cardID;
