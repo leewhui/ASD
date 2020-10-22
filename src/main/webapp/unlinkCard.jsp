@@ -32,7 +32,7 @@
                     %>
                     <div class="alert alert-danger"><%=request.getParameter("error")%></div>
                     <%}%>
-                    <form action="linkController" method="POST">
+                    <form action="/linkController" method="POST">
                         <div class="form-group">
                             <label>Enter Your Card Number</label>
                             <input type="text" class="form-control" name="cardNumber">
