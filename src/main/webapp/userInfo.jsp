@@ -47,7 +47,7 @@
                     <a class="btn btn-sm btn-danger float-right" href="unlinkCard.jsp">Unlink</a>
                 </div>
                 <div class="card-body">
-                    <table class="table">
+                    <table class="table" style="font-size: smaller">
                         <tr>
                             <th scope="row">Number</th>
                             <th scope="row">Type</th>
