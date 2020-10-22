@@ -3,6 +3,7 @@ package com.app.asd.Controller;
 import com.app.asd.Model.Order;
 import com.app.asd.Utils.dbConnect;
 import com.google.gson.Gson;
+import com.mongodb.BasicDBObject;
 import com.mongodb.client.MongoCursor;
 import org.bson.Document;
 
@@ -48,23 +49,46 @@ public class orderUpdateController extends HttpServlet{
                 req.getRequestDispatcher("../orderManage.jsp").forward(req, resp);
                 break;
 
+
             case "U":
                 String orderStatus_Changed = req.getParameter("orderStatus");
                 Order order = (Order) session.getAttribute("currentOrder");
                 String currentOrderID = order.getOrderID();
 
-                Document filter = new Document();
-                filter.append("orderID", currentOrderID);
+                if (orderStatus_Changed.equals("Choose..."))
+                {
+                    session.setAttribute("orderStatusMessage","Please select the order status to change");
+                }
+                else
+                {
+                    Document filter = new Document();
+                    filter.append("orderID", currentOrderID);
 
-                Document update = new Document();
-                update.append("$set", new Document("orderStatus", orderStatus_Changed)); // Update the order status of one order in MongoDB
+                    Document update = new Document();
+                    update.append("$set", new Document("orderStatus", orderStatus_Changed)); // Update the order status of one order in MongoDB
 
-                dbConnect.updateOne("Order",filter, update);
+                    dbConnect.updateOne("Order",filter, update);
 
+                    session.setAttribute("orderStatusMessage","Order Status Updated Successfully");
+                }
 
-                session.setAttribute("orderStatusMessage","Order Status Updated Successfully");
                 req.getRequestDispatcher("../orderManage.jsp").forward(req, resp);
                 session.setAttribute("orderStatusMessage","");
+                break;
+
+
+            case "D":
+                String deleteOrderID = req.getParameter("orderID");
+
+                Document delete = new Document();
+                delete.append("orderID", deleteOrderID);
+
+                dbConnect.deleteOne("Order", delete); // Delete the corresponding order in MongoDB
+
+                session.setAttribute("orderStatusMessage","Order has been Deleted");
+                req.getRequestDispatcher("../orderManage.jsp").forward(req, resp);
+                session.setAttribute("orderStatusMessage","");
+
                 break;
         }
 

@@ -61,18 +61,27 @@ public class orderNewCardController extends HttpServlet
         String deliveryPostcode = req.getParameter("deliveryPostcode");
         String orderComment = req.getParameter("orderComment");
 
-        Document document = new Document("orderID", orderID);
-        document.append("userEmail", userEmail);
-        document.append("orderDate", orderDate);
-        document.append("orderStatus", orderStatus);
-        document.append("orderCardType", orderCardType);
-        document.append("deliveryAddress", deliveryAddress);
-        document.append("deliveryPostcode", deliveryPostcode);
-        document.append("orderComment", orderComment);
+        if (orderCardType.equals("Choose..."))
+        {
+            session.setAttribute("NewOrderMessage", "Please choose the card type");
 
-        dbConnect.insertOneDocument("Order", document); // Add the new order into MongoDB
+        }
+        else
+        {
+            Document document = new Document("orderID", orderID);
+            document.append("userEmail", userEmail);
+            document.append("orderDate", orderDate);
+            document.append("orderStatus", orderStatus);
+            document.append("orderCardType", orderCardType);
+            document.append("deliveryAddress", deliveryAddress);
+            document.append("deliveryPostcode", deliveryPostcode);
+            document.append("orderComment", orderComment);
 
-        session.setAttribute("NewOrderMessage", "New Order Submitted Successfully");
+            dbConnect.insertOneDocument("Order", document); // Add the new order into MongoDB
+
+            session.setAttribute("NewOrderMessage", "New Order Submitted Successfully");
+        }
+
         req.getRequestDispatcher("../orderNewCard.jsp").forward(req, resp);
         session.setAttribute("NewOrderMessage", null);
     }
