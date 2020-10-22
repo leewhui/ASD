@@ -109,5 +109,17 @@ public class dbConnect
         MongoCollection<Document> coll = db.getCollection(collName);
         coll.deleteOne(document);
     }
+    
+    public static DeleteResult removeOne(String collectionName, Bson bson)
+    {
+        MongoCollection<Document> collection = dbConnect.getMongoCollection(collectionName);
+        return collection.deleteOne(bson);
+    }
+
+    public static DeleteResult removeMany(String collectionName, Bson bson)
+    {
+        MongoCollection<Document> collection = dbConnect.getMongoCollection(collectionName);
+        return collection.deleteMany(bson);
+    }
 
 }
