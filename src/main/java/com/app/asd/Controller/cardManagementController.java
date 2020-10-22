@@ -31,25 +31,24 @@ public class cardManagementController extends HttpServlet
         // if the current user is the staff, jump to the staff page
         if (user.isIs_staff())
         {
-            resp.sendRedirect("staff.jsp");
+            resp.sendRedirect("../staff.jsp");
         }
-        
-        String email = user.getEmail();
-        BasicDBObject obj = new BasicDBObject("email", email);
-        MongoCursor<Document> resultList = dbConnect.findAll("Card");
-        ArrayList<Card> cardList = new ArrayList();
-        while(resultList.hasNext())
+        else
         {
-            Card card = gson.fromJson(resultList.next().toJson(),Card.class);
-            cardList.add(card);
+            String email = user.getEmail();
+            BasicDBObject obj = new BasicDBObject("email", email);
+            MongoCursor<Document> resultList = dbConnect.findAll("Card");
+            ArrayList<Card> cardList = new ArrayList();
+            while(resultList.hasNext())
+            {
+                Card card = gson.fromJson(resultList.next().toJson(),Card.class);
+                cardList.add(card);
 
+            }
+
+            session.setAttribute("card",cardList);
+            req.getRequestDispatcher("/cardManagement.jsp").forward(req,resp);
         }
-
-        session.setAttribute("card",cardList);
-        req.getRequestDispatcher("/cardManagement.jsp").forward(req,resp);
-
-
-
     }
 
     // get change of card status from user input, then update the data in database.
