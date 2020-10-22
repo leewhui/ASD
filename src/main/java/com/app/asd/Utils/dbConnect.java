@@ -48,6 +48,28 @@ public class dbConnect
     {
         return db.getCollection(collectionName);
     }
+    
+    //update user information
+    public static String updateOneUser(User user)
+    {
+        try {
+            MongoCollection<Document> collection = getMongoCollection("User");
+            // update one document
+            Bson filter = eq("username", user.getUsername());
+            Bson updateOperation = combine(set("first_name", user.getFirst_name()),
+                    set("last_name", user.getLast_name()),
+                    set("password", user.getPassword()),
+                    set("gender", user.getGender()),
+                    set("dob", user.getDob()),
+                    set("card_number", user.getCardNumber())
+            );
+            collection.updateOne(filter, updateOperation);//update
+            return "success";
+        } catch (Exception e) {
+            e.printStackTrace();
+            return "error";
+        }
+    }
 
     // Find all documents in MongoDB which meet the queryObj and use iterator to pass document one by one
     public static MongoCursor<Document> queryCursor(String collectionName, BasicDBObject queryObj)
