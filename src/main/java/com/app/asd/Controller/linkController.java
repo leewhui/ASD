@@ -25,6 +25,8 @@ public class linkController extends HttpServlet {
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //action : 'link' and 'unlink'
+        HttpSession session = req.getSession();
+        
         String action = req.getParameter("action");
         String cardNumber = req.getParameter("cardNumber");
         User user = (User)req.getSession().getAttribute("currentUser");
@@ -36,7 +38,13 @@ public class linkController extends HttpServlet {
             card = gson.fromJson(resultList.next().toJson(), Card.class);
         } else {//if action equals link, then the page=linkCard.jsp,
             String page = action.equals("link")?"linkCard.jsp":"unlinkCard.jsp";
-            resp.sendRedirect( page + "?error=Card number does not exist.");
+            
+            
+            session.setAttribute("error","Card number does not exist.");
+            resp.sendRedirect( page )
+            
+                
+            //resp.sendRedirect( page + "?error=Card number does not exist.");
             return;
         }
 
