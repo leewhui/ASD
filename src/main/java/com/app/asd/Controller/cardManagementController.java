@@ -33,7 +33,6 @@ public class cardManagementController extends HttpServlet
         {
             resp.sendRedirect("staff.jsp");
         }
-        HttpSession session = req.getSession();
         
         String email = user.getEmail();
         BasicDBObject obj = new BasicDBObject("email", email);
