@@ -27,7 +27,7 @@ public class linkController extends HttpServlet {
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
         //action : 'link' and 'unlink'
         HttpSession session = req.getSession();
-        
+
         String action = req.getParameter("action");
         String cardNumber = req.getParameter("cardNumber");
         User user = (User)req.getSession().getAttribute("currentUser");
@@ -39,13 +39,11 @@ public class linkController extends HttpServlet {
             card = gson.fromJson(resultList.next().toJson(), Card.class);
         } else {//if action equals link, then the page=linkCard.jsp,
             String page = action.equals("link")?"linkCard.jsp":"unlinkCard.jsp";
-            
-            
-            session.setAttribute("error","Card number does not exist.");
-            resp.sendRedirect( page );
-            
-                
+            //req.setAttribute("error","Card number does not exist.");
             //resp.sendRedirect( page + "?error=Card number does not exist.");
+
+            session.setAttribute("linkError","Card number does not exist.");
+            resp.sendRedirect( page );
             return;
         }
 
@@ -57,18 +55,24 @@ public class linkController extends HttpServlet {
             if(card.getUserEmail() == null){
                 update.append("$set", new Document("userEmail", user.getEmail()));
             } else {//link itself
-                resp.sendRedirect("../linkCard.jsp?error=The card has already been linked.");
+                //resp.sendRedirect("linkCard.jsp?error=The card has already been linked.");
+
+                session.setAttribute("linkError","The card has already been linked.");
+                resp.sendRedirect("../linkCard.jsp");
                 return;
             }
         } else {//if user click 'unlink' button
             if(user.getEmail().equals(card.getUserEmail())){//if the current user email equals the target card of user email
                 update.append("$set", new Document("userEmail", null));
             } else {// if the target card of user email not equal the current user// if the card not yours but exists in MongoDB
-                resp.sendRedirect("../unlinkCard.jsp?error=Cannot unlink a card that does not belong to you.");
+                // resp.sendRedirect("unlinkCard.jsp?error=Cannot unlink a card that does not belong to you.");
+
+                session.setAttribute("linkError","Can not unlink a card that does not belong to you.");
+                resp.sendRedirect("../unlinkCard.jsp");
                 return;
             }
         }
-            dbConnect.updateOne("Card",filter,update);
-            resp.sendRedirect("editProfile");
+        dbConnect.updateOne("Card",filter,update);
+        resp.sendRedirect("editProfile");
     }
 }
