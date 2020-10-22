@@ -67,12 +67,12 @@
         <span style="color:rgb(44, 141, 238)">(<%=username%>)</span></h3>
     <br/>
     <% if(user.isIs_staff()) {%>
-        <a class="btn btn-outline-primary" href="#">Clear All Order (R2)</a> &nbsp
+        <a class="btn btn-outline-primary" href="/Controller/orderCancelController">Clear all canceled orders</a> &nbsp
         <a class="btn btn-outline-primary" href="../main.jsp">Back</a>
     <% } %>
     <% if(!user.isIs_staff()) { %>
         <a class="btn btn-outline-primary" href="../orderNewCard.jsp">Get a new card</a> &nbsp
-        <a class="btn btn-outline-primary" href="#">Card Type Requirement (R2)</a> &nbsp
+        <a class="btn btn-outline-primary" href="/Controller/orderCancelController">Cancel an order</a> &nbsp
         <a class="btn btn-outline-primary" href="../main.jsp">Back</a>
     <% } %>
 </div>

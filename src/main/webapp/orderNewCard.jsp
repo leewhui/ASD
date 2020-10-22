@@ -42,8 +42,6 @@
     <h3>Hello <span style="color:rgb(255, 128, 78);">Customer</span>
         <span style="color:rgb(44, 141, 238)">(<%=username%>)</span></h3>
     <br/>
-    <a class="btn btn-outline-primary" href="#">Card Type Requirement</a> &nbsp
-    <a class="btn btn-outline-primary" href="/Controller/orderMenuController">Back</a>
 </div>
 
 <div class="container">
@@ -79,7 +77,7 @@
         </div>
 
         <div class="form-group" style="text-align: right">
-            <a class="btn btn-outline-primary" href="/Controller/orderMenuController">Cancel</a> &nbsp
+            <a class="btn btn-outline-primary" href="/Controller/orderMenuController">Back</a> &nbsp
             <button type="submit" class="btn btn-primary" id="submitBtn">Submit</button>
         </div>
 

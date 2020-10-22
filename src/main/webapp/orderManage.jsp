@@ -1,4 +1,5 @@
-<%@ page import="com.app.asd.Model.*" %><%--
+<%@ page import="com.app.asd.Model.*" %>
+<%--
   Created by IntelliJ IDEA.
   User: Administrator
   Date: 2020/9/23 0023
@@ -77,14 +78,19 @@
             <a class="btn btn-outline-primary" href="/Controller/orderMenuController">Back</a>
         </div>
 
-        <br/>
-        <br/>
-        <h3 style="color:rgb(44, 141, 238)"> Further Management Function will be added in Release 2 </h3>
+        <br/> <br/> <br/>
+            <h3 style="color:rgb(44, 141, 238)"> If you want to <span style="color: red">DELETE</span> this order </h3>
 
         </form>
     </div>
 
-
+    <div>
+        <form method="post" action="/Controller/orderUpdateController" style="text-align:center;">
+            <input type="text" name="operation" value="D" style="display:none">
+            <input type="text" name="orderID" value="<%= order.getOrderID()%>" style="display:none">
+            <input type="submit" class="btn btn-outline-primary" value="Delete">
+        </form>
+    </div>
 
 
 
