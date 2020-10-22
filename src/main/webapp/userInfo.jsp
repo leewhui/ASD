@@ -43,7 +43,7 @@
 
             <div class="card mt-3">
                 <div class="card-header">
-                    Card Info
+                    Card Information
                     <a class="btn btn-sm btn-danger float-right" href="unlinkCard.jsp">Unlink</a>
                 </div>
                 <div class="card-body">
@@ -77,7 +77,7 @@
             <div class="card">
                 <div class="card-header text-center bg-info text-light text-weight-bold">
                     <h4>User Profile</h4>
-                    <a class="d-inline-block float-right btn btn-primary" style="margin-top: -40px" href="main.jsp">Main Page</a>
+
                 </div>
                 <div class="card-body">
                     <form class="form-horizontal" action="editProfile" method="POST">
@@ -128,6 +128,7 @@
                         <div class="form-group row">
                             <div class="col-sm-offset-2 col-sm-10">
                                 <button class="btn btn-info" type="submit">Update</button>
+                                <a class="d-inline-block float-right btn btn-primary" style="margin-right: -110px" href="main.jsp">Back</a>
                             </div>
                         </div>
                     </form>

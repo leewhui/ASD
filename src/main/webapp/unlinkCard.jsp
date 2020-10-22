@@ -34,11 +34,12 @@
                     <%}%>
                     <form action="linkController" method="POST">
                         <div class="form-group">
-                            <label>Card Number</label>
+                            <label>Enter Your Card Number</label>
                             <input type="text" class="form-control" name="cardNumber">
                             <input type="hidden" class="form-control" name="action" value="unlink">
                         </div>
                         <button type="submit" class="btn btn-danger">Unlink</button>
+                        <input style="margin-left: 20px" class="btn btn-primary" type="button" value="Back" onclick="javascript:window.history.back(-1);">
                     </form>
                 </div>
             </div>

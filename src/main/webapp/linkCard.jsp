@@ -20,6 +20,7 @@
     <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js"
             integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6"
             crossorigin="anonymous"></script>
+
 </head>
 <body>
 <div class="container-md bg-default p-3">
@@ -35,11 +36,12 @@
                         }%>
                     <form action="linkController" method="POST">
                         <div class="form-group">
-                            <label>Card Number</label>
+                            <label>Enter Your Card Number</label>
                             <input type="text" class="form-control" name="cardNumber">
                             <input type="hidden" class="form-control" name="action" value="link">
                         </div>
                         <button type="submit" class="btn btn-primary">Link</button>
+                        <input style="margin-left: 20px" class="btn btn-primary" type="button" value="Back" onclick="javascript:window.history.back(-1);">
                     </form>
                 </div>
             </div>
