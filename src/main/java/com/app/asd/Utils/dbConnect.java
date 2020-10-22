@@ -4,6 +4,7 @@ import com.google.gson.Gson;
 import com.mongodb.*;
 import com.mongodb.MongoClient;
 import com.mongodb.client.*;
+import com.mongodb.client.result.DeleteResult;
 import com.mongodb.client.result.UpdateResult;
 import org.bson.Document;
 import org.bson.conversions.Bson;
