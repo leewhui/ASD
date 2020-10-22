@@ -158,6 +158,42 @@
     <servlet-name>processingTransferServlet</servlet-name>
     <url-pattern>/processingTransferServlet</url-pattern>
   </servlet-mapping>
+ 
+  <servlet>
+    <servlet-name>staffControllerServlet</servlet-name>
+    <servlet-class>com.app.asd.Controller.staffController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>staffControllerServlet</servlet-name>
+    <url-pattern>/staffController</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>staffInsertControllerServlet</servlet-name>
+    <servlet-class>com.app.asd.Controller.staffInsertController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>staffInsertControllerServlet</servlet-name>
+    <url-pattern>/staffInsert</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>staffDeleteController</servlet-name>
+    <servlet-class>com.app.asd.Controller.staffDeleteController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>staffDeleteController</servlet-name>
+    <url-pattern>/staffDelete</url-pattern>
+  </servlet-mapping>
+
+  <servlet>
+    <servlet-name>staffUpdateController</servlet-name>
+    <servlet-class>com.app.asd.Controller.staffUpdateController</servlet-class>
+  </servlet>
+  <servlet-mapping>
+    <servlet-name>staffUpdateController</servlet-name>
+    <url-pattern>/staffUpdate</url-pattern>
+  </servlet-mapping>
 
 </web-app>
 
