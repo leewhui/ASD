@@ -50,8 +50,6 @@ public class cardManagementController extends HttpServlet
     @Override
     protected void doPost(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
 
-        //HttpSession session = req.getSession();
-
         String cardStatus_changed = req.getParameter("cardStatus");
         int cardID = Integer.parseInt(req.getParameter("cardID"));
 
@@ -63,32 +61,6 @@ public class cardManagementController extends HttpServlet
 
         req.getRequestDispatcher("/main.jsp").forward(req,resp);
 
-        /*req.setCharacterEncoding("UTF-8");
-        HttpSession session = req.getSession();
-        Gson gson = new Gson();
-        User user = (User) session.getAttribute("currentUser");
 
-        String email = user.getEmail();
-        BasicDBObject obj = new BasicDBObject("email", email);
-
-        int cardID = Integer.parseInt(req.getParameter("cardID"));
-        String cardNumber = req.getParameter("cardNumber");
-        String cardType = req.getParameter("cardType");
-        String cardBalance = req.getParameter("cardBalance");
-        String cardStatus = req.getParameter("cardStatus");
-        String userEmail = req.getParameter("userEmail");
-        Boolean is_linked = Boolean.valueOf(req.getParameter("is_linked")).booleanValue();
-        Boolean is_sold = Boolean.valueOf(req.getParameter("is_sold")).booleanValue();
-
-        //dbConnect.editCardStatus(cardID, cardNumber,cardType, cardBalance, cardStatus, userEmail,is_linked, is_sold);
-        /*ArrayList<Card> cardList = new ArrayList();
-        while(resultList.hasNext())
-        {
-            Card card = gson.fromJson(resultList.next().toJson(),Card.class);
-            cardList.add(card);
-        }*/
-
-        //session.setAttribute("card",cardList);
-        //req.getRequestDispatcher("/main.jsp").forward(req,resp);
     }
 }
