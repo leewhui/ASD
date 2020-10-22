@@ -48,6 +48,7 @@ public class Card {
 
     public void setID(String id) {
         this.ID = id;
+    }
 
     public int getCardID() {
         return cardID;
