@@ -35,7 +35,7 @@ public class linkController extends HttpServlet {
         if(resultList.hasNext()){
             card = gson.fromJson(resultList.next().toJson(), Card.class);
         } else {//if action equals link, then the page=linkCard.jsp,
-            String page = action.equals("link")?"../linkCard.jsp":"../unlinkCard.jsp";
+            String page = action.equals("link")?"linkCard.jsp":"unlinkCard.jsp";
             resp.sendRedirect( page + "?error=Card number does not exist.");
             return;
         }
