@@ -1,21 +1,8 @@
 package com.app.asd.Model.dao;
 
-import javax.servlet.ServletException;
-import javax.servlet.http.HttpServlet;
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpServletResponse;
-import javax.swing.plaf.basic.BasicCheckBoxMenuItemUI;
-import java.io.IOException;
-import java.util.ArrayList;
-
-import com.app.asd.Utils.dbConnect;
+import com.app.asd.Model.Card;
+import com.app.asd.Model.User;
 import com.mongodb.*;
-import com.mongodb.client.FindIterable;
-import com.mongodb.client.MongoCollection;
-import com.mongodb.client.MongoCursor;
-import org.bson.Document;
-import org.bson.types.ObjectId;
-import com.app.asd.Model.*;
 
 
 public class adminHomeDao {
@@ -23,18 +10,24 @@ public class adminHomeDao {
     MongoClient mongoClient;
     DB database;
     DBCollection collection;
+    DBCollection collectionCard;
 
-    public adminHomeDao(MongoClient mongoClient) {
+    public adminHomeDao(MongoClient mongoClient, String type) { //build up the object
         this.mongoClient = mongoClient;
         database = mongoClient.getDB("ASD");
-        collection = database.getCollection("User");
+
+        if (type.equals("User")) {// get User collection
+            collection = database.getCollection("User");
+        } else if (type.equals("Card")) {//get Card collection
+            collectionCard = database.getCollection("Card");
+        }
     }
 
     public void setDatabase(DB database) {
         this.database = database;
     }
 
-    public User[] getAllUser() {
+    public User[] getAllUser() { // this method get all the user information from database, return a array contain all the user
 
         DBCursor cursor = collection.find();
         User[] users = new User[cursor.count()];
@@ -54,8 +47,6 @@ public class adminHomeDao {
             String date_registered = "null";
             String activated_status = "null";
             String username = "null";
-
-
 
 
             if ((String) result.get("password") != null) {
@@ -100,16 +91,12 @@ public class adminHomeDao {
             }
 
             try {
-                boolean tempAct = (boolean)result.get("activated_status");
-
-                if(tempAct)
-                { activated_status = "YES";}
-                else
-                { activated_status = "NO";}
+                boolean tempAct = (boolean) result.get("activated_status");
+                activated_status = tempAct ? "YES" : "NO";
             } catch (Exception e) {
                 activated_status = "NO";
             }
-            
+
 
             if ((String) result.get("username") != null) {
                 username = (String) result.get("username");
@@ -132,13 +119,12 @@ public class adminHomeDao {
             count++;
 
 
-
         }
         return users;
     }
 
 
-    public User getSearch(String email) {
+    public User getSearch(String email) { // search one user in the database, return a object of the result, if null return null
 
 
         BasicDBObject query = new BasicDBObject();
@@ -156,7 +142,6 @@ public class adminHomeDao {
             String date_registered = "null";
             String activated_status = "null";
             String username = "null";
-
 
 
             if ((String) result.get("password") != null) {
@@ -201,12 +186,13 @@ public class adminHomeDao {
             }
 
             try {
-                boolean tempAct = (boolean)result.get("activated_status");
+                boolean tempAct = (boolean) result.get("activated_status");
 
-                if(tempAct)
-                    { activated_status = "YES";}
-                else
-                    { activated_status = "NO";}
+                if (tempAct) {
+                    activated_status = "YES";
+                } else {
+                    activated_status = "NO";
+                }
             } catch (Exception e) {
                 activated_status = "NO";
             }
@@ -214,7 +200,6 @@ public class adminHomeDao {
             if ((String) result.get("username") != null) {
                 username = (String) result.get("username");
             }
-
 
 
             User finded = new User();
@@ -239,29 +224,20 @@ public class adminHomeDao {
         return null;
     }
 
+    //edit the user information base the email pass in
     public void editUser(String password, String firstname, String lastname, String is_staff, String phone, String email, String gender, String dob, String date, String act, String username) {
 
 
         boolean iss;
         boolean bact;
 
-        if (is_staff.equals("YES")) {
-            iss = true;
-        } else {
-            iss = false;
-        }
-
-        if (act.equals("YES")) {
-            bact = true;
-        } else {
-            bact = false;
-        }
-
+        iss = is_staff.equals("YES");
+        bact = act.equals("YES");
 
         BasicDBObject query = new BasicDBObject();
         query.put("email", email);
         BasicDBObject newRecord = new BasicDBObject();
-        newRecord.put("email",email);
+        newRecord.put("email", email);
         newRecord.put("password", password);
         newRecord.put("first_name", firstname);
         newRecord.put("last_name", lastname);
@@ -272,10 +248,109 @@ public class adminHomeDao {
         newRecord.put("date_registered", date);
         newRecord.put("activated_status", bact);
         newRecord.put("username", username);
-        collection.update(query, newRecord);
+        collection.update(query, new BasicDBObject("$set", newRecord));
+    }
 
+    public void delUser(String email) {//delete the user base on the email pass in
+        BasicDBObject query = new BasicDBObject();
+        query.put("email", email);
+        collection.remove(query);
+    }
+
+    //adding a new user
+    public void addUser(String email, String password, String firstname, String lastname, String is_staff, String phone, String gender, String dob, String date, String act, String username) {
+
+        boolean bis_staff = is_staff.equals("YES");
+        boolean bact = act.equals("YES");
+
+        BasicDBObject newRecord = new BasicDBObject();
+        newRecord.put("email", email);
+        newRecord.put("password", password);
+        newRecord.put("first_name", firstname);
+        newRecord.put("last_name", lastname);
+        newRecord.put("is_staff", bis_staff);
+        newRecord.put("phone", phone);
+        newRecord.put("gender", gender);
+        newRecord.put("dob", dob);
+        newRecord.put("date_registered", date);
+        newRecord.put("activated_status", bact);
+        newRecord.put("username", username);
+
+        collection.insert(newRecord);
 
     }
 
+    //get all the card base on the email, return an array contain all the card object, if null return a array contain null
+    public Card[] getAllCard(String email) {
+        BasicDBObject query = new BasicDBObject();
+        query.put("userEmail", email);
+        DBCursor cursor = collectionCard.find(query);
+        Card[] cards = new Card[cursor.count()];
+        int count = 0;
+        while (cursor.hasNext()) {
+
+            DBObject result = cursor.next();
+
+            int cardID = 0;
+            String opalCardNumber = "null";
+            String cardType = "null";
+            double cardBalance = 0.00;
+            String cardStatus = "null";
+            boolean is_linked = false;
+            boolean is_sold = false;
+
+
+            cardID = (int) result.get("cardID");
+
+
+            if ((String) result.get("opalCardNumber") != null) {
+                opalCardNumber = (String) result.get("opalCardNumber");
+            }
+
+            if ((String) result.get("cardType") != null) {
+                cardType = (String) result.get("cardType");
+            }
+
+
+            cardBalance = (double) result.get("cardBalance");
+
+
+            if ((String) result.get("cardStatus") != null) {
+                cardStatus = (String) result.get("cardStatus");
+            }
+
+            try {
+                is_linked = (boolean) result.get("is_linked");
+            } catch (Exception e) {
+            }
+            ;
+
+            try {
+                is_sold = (boolean) result.get("is_sold");
+            } catch (Exception e) {
+            }
+            ;
+
+            Card newOne = new Card(cardID, opalCardNumber, cardType, cardBalance, cardStatus, email, is_linked, is_sold);
+
+            cards[count] = newOne;
+            count++;
+        }
+        return cards;
+
+    }
+
+    // edit the card information base on the email pass in
+    public void editCard(String opcn, String balance, String cardType, String cardStatus) {
+        double dbbalance = Double.parseDouble(balance);
+
+        BasicDBObject query = new BasicDBObject();
+        query.put("opalCardNumber", opcn);
+        BasicDBObject newRecord = new BasicDBObject();
+        newRecord.put("cardBalance", dbbalance);
+        newRecord.put("cardType", cardType);
+        newRecord.put("cardStatus", cardStatus);
+        collectionCard.update(query, new BasicDBObject("$set", newRecord));
+    }
 
 }
