@@ -182,7 +182,7 @@
 
 
     <div class="panel-footer">
-        <a href="paymentServlet" class="btn back-btn">Cancel</a>
+        <a href="cardStatusServlet" class="btn back-btn">Cancel</a>
         <button type="submit" name="confirm" value="confirm" class="btn next-btn">Confirm</button>
     </div>
 </div>
