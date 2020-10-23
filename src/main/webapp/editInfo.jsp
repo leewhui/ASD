@@ -40,13 +40,14 @@
             <ul class="nav navbar-nav">
                 <li><a href="adminHomeServlet" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">All User
                     Info</a></li>
+                <li><a href="adminCreateUser.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">Adding New User</a></li>
                 <li class="active"><a href="#">User Information edit</a></li>
-                <li><a href="editAccount.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User
-                    Account edit</a></li>
+                <li><a href="editAccount.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">Users'
+                    Card edit</a></li>
             </ul>
             <form class="navbar-form navbar-left form " action="adminHomeController" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" name="userEmail">
+                    <input type="text" class="form-control" placeholder="Search" name="userEmail" required="required">
                 </div>
                 <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
             </form>
@@ -69,9 +70,9 @@
 <br>
 
 <form action="editInfoController" method="post">
-    <input type="hidden" name="type" value="1">
+    <input type="hidden" name="type" value="search user">
     <div class="text-center">
-        <input placeholder="User Email" name="userEmail">
+        <input placeholder="User Email" name="userEmail" required="required">
         <button type="submit">
             Enter
         </button>
@@ -167,73 +168,73 @@
             <td align="left" style="width: 40%">Email:</td>
             <td style="width: 60%"><%=email%>
             </td>
-            <input type="hidden" name="email" style="width: 100%" value="<%=email%>">
+            <input type="hidden" name="email" style="width: 100%" value="<%=email%>" required="required">
         </tr>
         <tr>
             <td align="left" style="width: 40%">Password:</td>
-            <td style="width: 60%"><input type="text" name="password" style="width: 100%" value="<%=password%>"></td>
+            <td style="width: 60%"><input type="text" name="password" style="width: 100%" value="<%=password%>" required="required"></td>
         </tr>
         <tr>
             <td align="left" style="width: 40%">First Name:</td>
-            <td style="width: 60%"><input type="text" name="firstname" style="width: 100%" value="<%=firstName%>"></td>
+            <td style="width: 60%"><input type="text" name="firstname" style="width: 100%" value="<%=firstName%>" required="required"></td>
         </tr>
         <tr>
             <td align="left" style="width: 40%">Last Name:</td>
-            <td style="width: 60%"><input type="text" name="lastname" style="width: 100%" value="<%=lastName%>"></td>
+            <td style="width: 60%"><input type="text" name="lastname" style="width: 100%" value="<%=lastName%>" required="required"></td>
         </tr>
         <tr>
             <td align="left" style="width: 40%">Is Staff:</td>
             <td style="width: 60%"><%if (finded.isIs_staff()) {%>
-                Is staff: NO: <input type="radio" name="is_staff" value="NO"> YES: <input type="radio" name="is_staff"
+                NO: <input type="radio" name="is_staff" value="NO"> &ensp;&ensp; YES: <input type="radio" name="is_staff"
                                                                                           value="YES" checked>
                 <%} else {%>
-                Is staff: NO: <input type="radio" name="is_staff" value="NO" checked> YES: <input type="radio"
+                NO: <input type="radio" name="is_staff" value="NO" checked> &ensp;&ensp; YES: <input type="radio"
                                                                                                   name="is_staff"
                                                                                                   value="YES">
                 <%}%></td>
         </tr>
         <tr>
             <td align="left" style="width: 40%">Phone:</td>
-            <td style="width: 60%"><input type="text" name="phone" style="width: 100%" value="<%=phone%>"></td>
+            <td style="width: 60%"><input type="text" name="phone" style="width: 100%" value="<%=phone%>" required="required"></td>
         </tr>
         <tr>
             <td align="left" style="width: 40%">Gender:</td>
-            <td style="width: 60%"><input type="text" name="gender" style="width: 100%" value="<%=gender%>"></td>
+            <td style="width: 60%"><input type="text" name="gender" style="width: 100%" value="<%=gender%>" required="required"></td>
         </tr>
         <tr>
             <td align="left" style="width: 40%">Dob:</td>
-            <td style="width: 60%"><input type="text" name="dob" style="width: 100%" value="<%=dob%>"></td>
+            <td style="width: 60%"><input type="text" name="dob" style="width: 100%" value="<%=dob%>" required="required"></td>
         </tr>
         <tr>
             <td align="left" style="width: 40%">Date registered:</td>
             <td style="width: 60%"><%=date_registered%>
             </td>
-            <input type="hidden" name="date" style="width: 100%" value="<%=date_registered%>">
+            <input type="hidden" name="date" style="width: 100%" value="<%=date_registered%>" required="required">
         </tr>
         <tr>
             <td align="left" style="width: 40%">Activated Statue:</td>
             <td style="width: 60%"><%if (finded.getActivated_status().equals("YES")) {%>
-                Activated Statue: NO: <input type="radio" name="act" value="NO"> YES: <input type="radio" name="act"
+                NO: <input type="radio" name="act" value="NO"> &ensp;&ensp; YES: <input type="radio" name="act"
                                                                                              value="YES"
                                                                                              checked>
                 <%} else {%>
-                Activated Statue: NO: <input type="radio" name="act" value="NO" checked> YES: <input type="radio"
+                NO: <input type="radio" name="act" value="NO" checked> &ensp;&ensp; YES: <input type="radio"
                                                                                                      name="act"
                                                                                                      value="YES">
                 <%}%></td>
         </tr>
         <tr>
             <td align="left" style="width: 40%">Username:</td>
-            <td style="width: 60%"><input type="text" name="username" style="width: 100%" value="<%=username%>"></td>
+            <td style="width: 60%"><input type="text" name="username" style="width: 100%" value="<%=username%>" required="required"></td>
         </tr>
         </tbody>
     </table>
     </div>
     <input type="hidden" name="userEmail" value="<%=email%>">
-    <input type="hidden" name="type" value="2">
+    <input type="hidden" name="type" value="editing user">
     <div class="text-center">
         <button class="btn btn-default" type="button" onclick="window.location.href = 'editInfo.jsp'">Cancel</button>
-        <button class="btn btn-info" type="submit" onclick="confirm('Are you sure to edit this user?')">Submit</button>
+        <button class="btn btn-info" type="submit" onclick="return confirm('Are you sure to edit this user?')">Submit</button>
     </div>
 </form>
 <%}else if(type != null && type.equals("good")){%>

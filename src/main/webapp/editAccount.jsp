@@ -1,8 +1,9 @@
-<%--
+<%@ page import="com.app.asd.Model.User" %>
+<%@ page import="com.app.asd.Model.Card" %><%--
   Created by IntelliJ IDEA.
   User: Gao
   Date: 26/08/2020
-  Time: 9:47 pm
+  Time: 9:48 pm
   To change this template use File | Settings | File Templates.
 --%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
@@ -40,13 +41,14 @@
             <ul class="nav navbar-nav">
                 <li><a href="adminHomeServlet" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">All User
                     Info</a></li>
+                <li><a href="adminCreateUser.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">Adding New User</a></li>
                 <li><a href="editInfo.jsp" onclick="_hmt.push(['_trackEvent', 'docv3-navbar', 'click',])">User
                     Information edit</a></li>
-                <li class="active"><a href="#">User Account edit</a></li>
+                <li class="active"><a href="#">Users' Card edit</a></li>
             </ul>
             <form class="navbar-form navbar-left form " action="adminHomeController" method="post">
                 <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search" name="userEmail">
+                    <input type="text" class="form-control" placeholder="Search" name="userEmail" required="required">
                 </div>
                 <button type="submit" class="btn btn-default" id="submitBtn">Submit</button>
             </form>
@@ -66,80 +68,196 @@
 </div>
 
 <HR width="60%" color=#987cb9 SIZE=10>
+<br>
 
+<form action="editInfoController" method="post">
+    <input type="hidden" name="type" value="edit Account search">
+    <div class="text-center">
+        <input placeholder="User Email" name="userEmail" required="required">
+        <button type="submit">
+            Enter
+        </button>
+    </div>
+</form>
 
-<div class="text-center">
-    <input placeholder="UserID"></div>
+<%
+    User finded = (User) request.getAttribute("finded");
+    String type = (String) request.getAttribute("type");
+    if (finded != null) {
+%>
 
-<!-- 按钮触发模态框 -->
-<button class="btn btn-primary btn-lg center-block" data-toggle="modal" data-target="#myModal">
-    Enter
-</button>
-<!-- 模态框（Modal） -->
-<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
-        <div class="modal-content">
-            <div class="modal-header">
-                <button type="button" class="close" data-dismiss="modal" aria-hidden="true">
-                    &times;
-                </button>
+<br>
+<HR width="60%" color=#987cb9 SIZE=10>
+<br>
 
-            </div>
-            <div class="modal-body">
+<h2 class="sub-header">Searched result of "<%=finded.getEmail()%>"</h2>
+<br>
+<div class="table-responsive">
+    <table class="table table-striped table-hover">
+        <thead>
+        <tr>
+            <th>Email</th>
+            <th>Password</th>
+            <th>First_name</th>
+            <th>Last_name</th>
+            <th>is_staff</th>
+            <th>Phone</th>
+            <th>Gender</th>
+            <th>Dob</th>
+            <th>Data_registered</th>
+            <th>Activated_statue</th>
+            <th>Username</th>
+        </tr>
+        </thead>
 
+        <tbody>
+        <%
+            String password = finded.getPassword();
+            String firstName = finded.getFirst_name();
+            String lastName = finded.getLast_name();
+            String is_staff;
+            if (finded.isIs_staff()) {
+                is_staff = "YES";
+            } else {
+                is_staff = "NO";
+            }
+            ;
+            String phone = finded.getPhone();
+            String email = finded.getEmail();
+            String gender = finded.getGender();
+            String dob = finded.getDob();
+            String date_registered = finded.getDate_registered();
+            String activated_status = finded.getActivated_status();
+            String username = finded.getUsername();
+        %>
+        <tr>
+            <td><%=email%>
+            </td>
+            <td><%=password%>
+            </td>
+            <td><%=firstName%>
+            </td>
+            <td><%=lastName%>
+            </td>
+            <td><%=is_staff%>
+            </td>
+            <td><%=phone%>
+            </td>
+            <td><%=gender%>
+            </td>
+            <td><%=dob%>
+            </td>
+            <td><%=date_registered%>
+            </td>
+            <td><%=activated_status%>
+            </td>
+            <td><%=username%>
+            </td>
+        </tr>
+        </tbody>
+    </table>
 
-                <form action="/demo/demo_form.asp">
-                    UserID:<br>
-                    <input type="text" name="firstname" value="Mickey">
-                    <br>
-                    Password:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    First_name:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Last_name:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Is_staff:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Phone:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Email:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Gender:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Dob:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Data_registered:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Activated_statue:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    Username:<br>
-                    <input type="text" name="lastname" value="Mouse">
-                    <br>
-                    <br>
-                </form>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Closer
-                </button>
-                <button type="button" class="btn btn-primary">
-                    Enter
-                </button>
-            </div>
-        </div><!-- /.modal-content -->
-    </div><!-- /.modal -->
 </div>
 
+<br>
+<HR width="60%" color=#987cb9 SIZE=10>
+<br>
 
-</div>
+<%
+    Card[] cards = (Card[]) request.getAttribute("cards");
+    if (cards != null && cards.length !=0 ) {
+%>
+<h1 class="starter">Below is the Card of user <%=email%>
+</h1>
+<%
+
+    int i = 0;
+    for (Card c : cards) {
+        int cardID = c.getCardID();
+        String opalCardNumber = c.getOpalCardNumber();
+        String CardType = c.getCardType();
+        double cardBalance = c.getCardBalance();
+        String cardStatus = c.getCardStatus();
+%>
+
+
+<form action="editInfoController" method="post">
+    <table class="table  table-bordered table-responsive table-curved" style="width: 35%; height: auto;" align="center">
+        <tbody>
+
+        <tr>
+            <td align="left" style="width: 40%">cardID:</td>
+            <td style="width: 60%"><%=cardID%>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">opalCardNumber:</td>
+            <td style="width: 60%"><%=opalCardNumber%>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">CardType:</td>
+            <td style="width: 60%">
+
+                Adult: <input type="radio" name="cardType" value="Adult" <%if(CardType.equals("Adult")){%>checked<%}%>>
+                &ensp;Child: <input type="radio" name="cardType" value="Child" <%if(CardType.equals("Child")){%>checked<%}%>>
+                &ensp; Concession: <input type="radio" name="cardType" value="Concession" <%if(CardType.equals("Concession")){%>checked<%}%>>
+                &ensp; Senior: <input type="radio" name="cardType" value="Senior" <%if(CardType.equals("Senior")){%>checked<%}%>>
+            </td>
+        </tr>
+        <tr>
+            <td align="left" style="width: 40%">Balance:</td>
+            <td style="width: 60%"><input type="text" name="balance" style="width: 100%" value="<%=cardBalance%>" required="required"></td>
+        </tr>
+
+        <tr>
+            <td align="left" style="width: 40%">cardStatus:</td>
+            <td style="width: 60%">
+
+                <%if (cardStatus.equals("Activated")) {%>
+                Frozen: <input type="radio" name="cardStatus" value="Frozen"> &ensp;&ensp; Activated: <input
+                    type="radio" name="cardStatus"
+                    value="Activated"
+                    checked>
+                <%} else {%>
+                Frozen: <input type="radio" name="cardStatus" value="Frozen" checked> &ensp;&ensp; Activated: <input
+                    type="radio"
+                    name="cardStatus"
+                    value="Activated">
+                <%}%>
+
+            </td>
+        </tr>
+        </tbody>
+    </table>
+    </div>
+    <input type="hidden" name="type" value="editing card">
+    <input type="hidden" name="opgn" value="<%=opalCardNumber%>">
+    <div class="text-center">
+        <button class="btn btn-default" type="button" onclick="window.location.href = 'editAccount.jsp'">Cancel</button>
+        <button class="btn btn-info" type="submit" onclick="return confirm('Are you sure to edit this card?')">Submit
+        </button>
+    </div>
+</form>
+
+<br>
+
+<HR width="60%" color=#987cb9 SIZE=10>
+<br>
+
+
+<%
+    }
+} else if (cards.length == 0) {
+
+%>
+<h1 class="starter">This Account do not have a card</h1>
+<%
+    }
+} else if (type != null && type.equals("good")) {
+%>
+<br>
+<h1 class="text-center">Edition finished!</h1>
+<%}%>
 </body>
 </html>
