@@ -1,7 +1,6 @@
 package com.app.asd.Controller;
 
-import com.app.asd.Model.Card;
-import com.app.asd.Model.User;
+import com.app.asd.Model.*;
 import com.app.asd.Utils.DAO.CardDAO;
 import com.app.asd.Utils.DAO.MongoDB;
 
