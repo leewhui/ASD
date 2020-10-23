@@ -38,6 +38,8 @@
 <body>
 
 <%
+    // Comment: this page retrieve all mongoDB data of Card
+
     User user = (User) session.getAttribute("currentUser");
     Card[] cards = (Card[]) session.getAttribute("cards");
     String userEmail = user.getEmail();
@@ -63,8 +65,6 @@
                     String cardType = cards[i].getCardType();
                     double cardBalance = cards[i].getCardBalance();
                     String cardStatus = cards[i].getCardStatus();
-                    //Boolean is_linked =  cards[i].isIs_linked();
-                    //Boolean is_sold = cards[i].isIs_sold();
             %>
                 <% if(i == 0){ %>
                 <div class="carousel-item col-md-3 active">
@@ -84,15 +84,12 @@
                         <% } %>
                     <div class="details">
                         <div class="textContent">
-                            <h3><%=cardType%> Card</h3>
+                            <h3><%=cardType%></h3>
                             <div class="price">$<%=cardBalance%></div>
                         </div>
 
                         <form class="form" role="form" action="paymentServlet" method="post">
                             <button type="submit" name="topUp" value="<%=cardID%>" class="btn"> Top up </button>
-                        </form>
-                        <form action="invoice.jsp">
-                            <input type="submit" value="Invoice History" class="btn">
                         </form>
                     </div>
                     <div class="description">

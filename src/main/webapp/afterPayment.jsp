@@ -61,17 +61,13 @@
 	<h1>Success</h1>
 	<p>We received your Top Up request;<br/> The balance will top up shortly!</p>
 	<br/>
-	<form class="form" role="form" action="invoiceServlet" method="post">
-		<input type="submit" value="Check your Invoice" class="btn">
-	</form>
 	<form action="main.jsp">
 		<input type="submit" value="Back to main page" class="btn">
 	</form>
 </div>
 
 <%session.removeAttribute("cards");%>
-<%session.removeAttribute("transfer");%>
-<%session.removeAttribute("transfer1");%>
+<%session.removeAttribute("cardID");%>
 
 </body>
 </html>

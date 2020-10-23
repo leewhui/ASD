@@ -19,31 +19,28 @@ public class processingTransferServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // Comment: this servlet processed two cards transfer, it will transfer first card balance to second one selected from database.
+
         HttpSession session = request.getSession();
 
-        //Integer selectFirstCard = (Integer)session.getAttribute("selectFirstCard");
+        Integer selectFirstCard = (Integer)session.getAttribute("selectFirstCard");
 
-        //Integer selectSecondCard = Integer.parseInt(request.getParameter("transfer2"));
-
-        int selectFirstCard = 0;
-
-        int selectSecondCard = 1;
+        Integer selectSecondCard = Integer.parseInt(request.getParameter("transfer2"));
 
         Card[] cards = (Card[])session.getAttribute("cards");
+
+        int firstID = cards[selectFirstCard].getCardID();
+
+        int secondID = cards[selectSecondCard].getCardID();
 
         MongoDB mongoDB = new MongoDB();
 
         CardDAO cardDAO = new CardDAO(mongoDB.openConnection());
 
-        cardDAO.transferBalance(cards,selectFirstCard,selectSecondCard);
+        Card newCard = cardDAO.transferBalance(firstID,secondID);
 
-        //Card chosenCard = new Card(cardID, userID);
-
-        //session.setAttribute("chosenCard", chosenCard);
-
-        request.getRequestDispatcher("afterPayment.jsp").forward(request, response);
+        request.getRequestDispatcher("afterTransfer.jsp").forward(request, response);
     }
-
 
 }
 

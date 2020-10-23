@@ -20,7 +20,6 @@ public class CardDAO {
 
     public Card getCard(int cardID){
 
-        //BasicDBObject allQuery = new BasicDBObject();
         BasicDBObject fields = new BasicDBObject();
         fields.put("cardID", cardID);
 
@@ -28,14 +27,12 @@ public class CardDAO {
         DBObject result = cursor.one();
         while (cursor.hasNext()) {
 
-            //int cardID = (int)result.get("cardID");
             String opalCardNumber = (String)result.get("opalCardNumber");
             String cardType = (String)result.get("cardType");
             double cardBalance = (double)result.get("cardBalance");
             String cardStatus = (String)result.get("cardStatus");
             String userEmail = (String)result.get("userEmail");
-            /*boolean is_linked = (boolean)result.get("is_linked");
-            boolean is_sold = (boolean)result.get("is_sold");*/
+
 
             return new Card(cardID, opalCardNumber, cardType, cardBalance, cardStatus,userEmail);
         }
@@ -44,7 +41,6 @@ public class CardDAO {
 
     public Card[] getCards(String userEmail){
 
-        //BasicDBObject allQuery = new BasicDBObject();
         BasicDBObject fields = new BasicDBObject();
         fields.put("userEmail", userEmail);
 
@@ -59,18 +55,15 @@ public class CardDAO {
             String cardType = (String)result.get("cardType");
             double cardBalance = (double)result.get("cardBalance");
             String cardStatus = (String)result.get("cardStatus");
-            //String newUserEmail = (String)result.get("userEmail");
-            //boolean is_linked = result.get("is_linked").toString();
-            //boolean is_sold = (boolean)result.get("is_sold");
+
             card[count] = new Card(cardID, opalCardNumber, cardType, cardBalance, cardStatus,userEmail);
             count++;
         }
         return card;
     }
 
-    public Card updateBalance(int cardID){
+    public Card updateBalance(int cardID,double money){
 
-        //BasicDBObject allQuery = new BasicDBObject();
         BasicDBObject fields = new BasicDBObject();
         fields.put("cardID", cardID);
 
@@ -78,18 +71,15 @@ public class CardDAO {
         DBObject result = cursor.one();
         while (cursor.hasNext()) {
 
-            //int newCardID = (int)result.get("cardID");
             String opalCardNumber = (String)result.get("opalCardNumber");
             String cardType = (String)result.get("cardType");
             double cardBalance = (double)result.get("cardBalance");
             String cardStatus = (String)result.get("cardStatus");
             String userEmail = (String)result.get("userEmail");
-           /* boolean is_linked = (boolean)result.get("is_linked");
-            boolean is_sold = (boolean)result.get("is_sold");*/
 
-            double newBalance = 20 + cardBalance;
 
-            //BasicDBObject records = new BasicDBObject();
+            double newBalance = money + cardBalance;
+
             BasicDBObject update = new BasicDBObject();
             update.append("cardID", cardID);
             update.append("opalCardNumber", opalCardNumber);
@@ -97,8 +87,6 @@ public class CardDAO {
             update.append("cardBalance", newBalance);
             update.append("cardStatus", cardStatus);
             update.append("userEmail", userEmail);
-            //update.append("is_linked", is_linked);
-            //update.append("is_sold", is_sold);
             collection.update(fields, update);
 
             return new Card(cardID, opalCardNumber, cardType, cardBalance, cardStatus,userEmail);
@@ -106,31 +94,50 @@ public class CardDAO {
         return null;
     }
 
-    public void transferBalance(Card[] cards,int selectFirstCard,int selectSecondCard) {
+    public Card transferBalance(int firstID,int secondID) {
 
-        double fristCardBalance = (double) cards[selectFirstCard].getCardBalance();
+        BasicDBObject fields = new BasicDBObject();
+        fields.put("cardID", secondID);
 
-        double secondCardBalance = (double) cards[selectSecondCard].getCardBalance();
+        DBCursor cursor= collection.find(fields);
+        DBObject result = cursor.one();
 
         BasicDBObject fields2 = new BasicDBObject();
-        fields2.put("cardBalance", selectSecondCard);
+        fields2.put("cardID", firstID);
 
         DBCursor cursor2 = collection.find(fields2);
         DBObject result2 = cursor2.one();
-        while (cursor2.hasNext()) {
 
-            int cardID = (int) result2.get("cardID");
-            String opalCardNumber = (String) result2.get("opalCardNumber");
-            String cardType = (String) result2.get("cardType");
-            //double cardBalance = (double)result.get("cardBalance");
-            String cardStatus = (String) result2.get("cardStatus");
-            String userEmail = (String) result2.get("userEmail");
-           /* boolean is_linked = (boolean)result.get("is_linked");
-            boolean is_sold = (boolean)result.get("is_sold");*/
+        double secondCardBalance = (double)result.get("cardBalance");
+        double firstCardBalance = (double)result2.get("cardBalance");
+        double newBalance = secondCardBalance + firstCardBalance;
 
-            double newBalance = fristCardBalance + secondCardBalance;
+        while (cursor.hasNext() && cursor2.hasNext()) {
 
-            //BasicDBObject records = new BasicDBObject();
+            int cardID = (int) result.get("cardID");
+            String opalCardNumber = (String) result.get("opalCardNumber");
+            String cardType = (String) result.get("cardType");
+
+            String cardStatus = (String) result.get("cardStatus");
+            String userEmail = (String) result.get("userEmail");
+
+            int cardID2 = (int) result2.get("cardID");
+            String opalCardNumber2 = (String) result2.get("opalCardNumber");
+            String cardType2 = (String) result2.get("cardType");
+            double balance2 = 0;
+            String cardStatus2 = (String) result2.get("cardStatus");
+            String userEmail2 = (String) result2.get("userEmail");
+
+            BasicDBObject update2 = new BasicDBObject();
+            update2.append("cardID", cardID2);
+            update2.append("opalCardNumber", opalCardNumber2);
+            update2.append("cardType", cardType2);
+            update2.append("cardBalance", balance2);
+            update2.append("cardStatus", cardStatus2);
+            update2.append("userEmail", userEmail2);
+
+            collection.update(fields2, update2);
+
             BasicDBObject update = new BasicDBObject();
             update.append("cardID", cardID);
             update.append("opalCardNumber", opalCardNumber);
@@ -138,9 +145,11 @@ public class CardDAO {
             update.append("cardBalance", newBalance);
             update.append("cardStatus", cardStatus);
             update.append("userEmail", userEmail);
-            //update.append("is_linked", is_linked);
-            //update.append("is_sold", is_sold);
-            collection.update(fields2, update);
+
+            collection.update(fields, update);
+
+            return new Card(cardID, opalCardNumber, cardType, newBalance, cardStatus,userEmail);
         }
+        return null;
     }
 }

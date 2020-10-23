@@ -1,6 +1,4 @@
 package com.app.asd.Utils.DAO;
-
-//import com.app.asd.module.Payment;
 import com.app.asd.Model.Payment;
 import com.mongodb.*;
 
@@ -19,31 +17,42 @@ public class PaymentDAO {
         this.database = database;
     }
 
-    public Payment getInvoice(int userID){
+    public void addPaymentInfo(String cardName, String creditCardNumber,String validDate, String CVV, String userEmail){
 
-        BasicDBObject allQuery = new BasicDBObject();
+        BasicDBObject newPaymentInfo = new BasicDBObject();
+        newPaymentInfo.put("cardName", cardName);
+        newPaymentInfo.put("creditCardNumber", creditCardNumber);
+        newPaymentInfo.put("validDate", validDate);
+        newPaymentInfo.put("CVV", CVV);
+        newPaymentInfo.put("userEmail", userEmail);
+        collection.insert(newPaymentInfo);
+    }
+
+    public void deletePaymentInfo(String userEmail){
+
+        BasicDBObject query = new BasicDBObject();
+        query.put("userEmail", userEmail);
+        collection.remove(query);
+    }
+
+
+    public Payment getPaymentInfo(String userEmail){
+
         BasicDBObject fields = new BasicDBObject();
-        fields.put("paymentID", userID);
+        fields.put("userEmail", userEmail);
 
         DBCursor cursor = collection.find(fields);
         DBObject result = cursor.one();
         while (cursor.hasNext()) {
-            System.out.println(cursor.next());
-            double paymentResult = (double)result.get("paymentBalance");
 
-            int newPaymentID = (int)result.get("paymentID");
-            int creditCardNumber = (int)result.get("creditCardNumber");
-            String paymentType = (String)result.get("paymentType");
-            double paymentBalance = (double)result.get("paymentBalance");
-            String paymentStatus = (String)result.get("paymentStatus");
-            String paymentDate = (String)result.get("paymentDate");
-            String gender = (String)result.get("gender");
-            String billingAddress = (String)result.get("billingAddress");
-            int newUserID = (int)result.get("userID");
+             String cardName = (String)result.get("cardName");
+             String creditCardNumber = (String)result.get("creditCardNumber");
+             String validDate = (String)result.get("validDate");
+             String CVV = (String)result.get("CVV");
 
-
-            return new Payment(newPaymentID,creditCardNumber,paymentType,paymentBalance,paymentStatus,paymentDate,gender,billingAddress,newUserID);
+            return new Payment(cardName, creditCardNumber, validDate, CVV,userEmail);
         }
         return null;
     }
+
 }

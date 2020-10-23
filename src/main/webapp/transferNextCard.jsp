@@ -38,34 +38,35 @@
 <body>
 
 <%
+    // Comment: this page doesn't show previous selected transfer cards from Saved Card array of this user.
+
     User user = (User) session.getAttribute("currentUser");
     Card[] cards = (Card[]) session.getAttribute("cards");
     String userEmail = user.getEmail();
 
     Integer selectFirstCard = (Integer) session.getAttribute("selectFirstCard");
-    //int first = selectFirstCard;
 %>
 
 <div class="container-fluid">
     <h1 class="w3-wide" align ="center" style=font-size:60px>
-        Select Second Card for receiving all balance from first card selected <br/> Hi,User <%=userEmail%> <br/> First card Index:<%=selectFirstCard%>
+        Select Second Card for receiving all balance from first card selected <br/> Hi,User <%=userEmail%> <br/> First card number:<%=cards[selectFirstCard].getOpalCardNumber()%> <br/> Card ID: <%=cards[selectFirstCard].getCardID()%>
+        <br/> Card Balance:$ <%=cards[selectFirstCard].getCardBalance()%>
     </h1>
 
     <div id="myCarousel" class="carousel slide" data-ride="carousel">
         <div class="carousel-inner row w-100 mx-auto">
 
             <%
-                    for(int i=0; i< cards.length; i++) {
-                        if (i == selectFirstCard){continue;}
+                if(selectFirstCard == 0){
+                    for(int i=1; i< cards.length; i++) {
                         int cardID = cards[i].getCardID();
                         String opalCardNumber = cards[i].getOpalCardNumber();
                         String cardType = cards[i].getCardType();
                         double cardBalance = cards[i].getCardBalance();
                         String cardStatus = cards[i].getCardStatus();
-                        //Boolean is_linked =  cards[i].isIs_linked();
-                        //Boolean is_sold = cards[i].isIs_sold();
             %>
-            <% if(i == 0){ %>
+
+            <% if(i == 1){ %>
             <div class="carousel-item col-md-3 active">
                 <% } else { %>
                 <div class="carousel-item col-md-3 ">
@@ -83,15 +84,12 @@
                         <% } %>
                         <div class="details">
                             <div class="textContent">
-                                <h3><%=cardType%> Card</h3>
+                                <h3><%=cardType%></h3>
                                 <div class="price">$<%=cardBalance%></div>
                             </div>
 
                             <form class="form" role="form" action="processingTransferServlet" method="post">
                                 <button type="submit" name="transfer2" value="<%=i%>" class="btn"> Receive Transfer </button>
-                            </form>
-                            <form action="invoice.jsp">
-                                <input type="submit" value="Invoice History" class="btn">
                             </form>
                         </div>
                         <div class="description">
@@ -108,7 +106,58 @@
 
                 <%
                     }
+                } else if (selectFirstCard !=0){
+                        for(int i=0; i< cards.length; i++) {
+                            if (i == selectFirstCard){continue;}
+                            int cardID = cards[i].getCardID();
+                            String opalCardNumber = cards[i].getOpalCardNumber();
+                            String cardType = cards[i].getCardType();
+                            double cardBalance = cards[i].getCardBalance();
+                            String cardStatus = cards[i].getCardStatus();
                 %>
+
+                <% if(i == 0){ %>
+                <div class="carousel-item col-md-3 active">
+                    <% } else { %>
+                    <div class="carousel-item col-md-3 ">
+                        <% } %>
+
+                        <div class="card">
+                            <% if(cardType.equals("Adult")){ %>
+                            <img class="card-img-top img-fluid" src="resources/adultCard.jpg" alt="card-img">
+                            <% } else if(cardType.equals("Child")){ %>
+                            <img class="card-img-top img-fluid" src="resources/childCard.jpg" alt="card-img">
+                            <% } else if(cardType.equals("Concession")){ %>
+                            <img class="card-img-top img-fluid" src="resources/concessionCard.jpg" alt="card-img">
+                            <% } else if(cardType.equals("Senior")){ %>
+                            <img class="card-img-top img-fluid" src="resources/seniorCard.jpg" alt="card-img">
+                            <% } %>
+                            <div class="details">
+                                <div class="textContent">
+                                    <h3><%=cardType%> Card</h3>
+                                    <div class="price">$<%=cardBalance%></div>
+                                </div>
+
+                                <form class="form" role="form" action="processingTransferServlet" method="post">
+                                    <button type="submit" name="transfer2" value="<%=i%>" class="btn"> Receive Transfer </button>
+                                </form>
+                            </div>
+                            <div class="description">
+                                <div class="icon"><i class="fas fa-info-circle"></i></div>
+                                <div class="contents">
+                                    <h2>Card Details</h2>
+                                    <p>CardID: <%=cardID%></p>
+                                    <p>CardNumber: <%=opalCardNumber%></p>
+                                    <p>CardStatus: <%=cardStatus%></p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <%
+                        }
+                }
+                    %>
 
                 <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
                     <span class="carousel-control-prev-icon" aria-hidden="true"></span>

@@ -16,6 +16,8 @@ public class cardStatusServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // Comment: this servlet retrieve all data of card,then process to next page (transfer or top up)
+
         HttpSession session = request.getSession();
 
         User user = (User) session.getAttribute("currentUser");

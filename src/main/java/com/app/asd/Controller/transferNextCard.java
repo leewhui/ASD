@@ -11,9 +11,11 @@ public class transferNextCard extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
+        // Comment: this servlet retrieve previous selected first Transfer Card info and saved to next jsp.
+
         HttpSession session = request.getSession();
 
-        Integer selectFirstCard = Integer.parseInt(request.getParameter("transfer")); //The balance in First Card will be transferred to Second Card
+        Integer selectFirstCard = Integer.parseInt(request.getParameter("transfer"));
 
         session.setAttribute("selectFirstCard", selectFirstCard);
 

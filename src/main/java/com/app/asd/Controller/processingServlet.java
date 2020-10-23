@@ -1,8 +1,10 @@
 package com.app.asd.Controller;
 
 import com.app.asd.Model.Card;
+import com.app.asd.Model.User;
 import com.app.asd.Utils.DAO.CardDAO;
 import com.app.asd.Utils.DAO.MongoDB;
+import com.app.asd.Utils.DAO.PaymentDAO;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
@@ -19,21 +21,71 @@ public class processingServlet extends HttpServlet {
 
     protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-        HttpSession session = request.getSession();
+        // Comment: this servlet process different results based of pressed different button.
+        // delete= delete the payment info from database;
+        // autoSave = add payment info to database;
+        // confirm = process the top up
 
-        Integer cardID = (Integer) session.getAttribute("cardID");
+        HttpSession session = request.getSession();
 
         MongoDB mongoDB = new MongoDB();
 
-        CardDAO cardDAO = new CardDAO(mongoDB.openConnection());
+        if(request.getParameter("delete") != null)
+        {
+            PaymentDAO paymentDAO = new PaymentDAO(mongoDB.openConnection());
 
-        Card chosenCard = cardDAO.updateBalance(cardID);
+            User user = (User) session.getAttribute("currentUser");
 
-        //Card chosenCard = new Card(cardID, userID);
+            String userEmail = user.getEmail();
 
-        //session.setAttribute("chosenCard", chosenCard);
+            paymentDAO.deletePaymentInfo(userEmail);
 
-        request.getRequestDispatcher("./afterPayment.jsp").forward(request, response);
+            request.getRequestDispatcher("./paymentServlet").forward(request, response);
+        }
+
+
+        if(request.getParameter("confirm") != null){
+
+            String moneyCheck = request.getParameter("payment");
+
+            if(moneyCheck != null && moneyCheck.length() >0){
+
+                double money = Double.parseDouble(request.getParameter("payment"));
+
+                Integer cardID = (Integer) session.getAttribute("cardID");
+
+                CardDAO cardDAO = new CardDAO(mongoDB.openConnection());
+
+                Card chosenCard = cardDAO.updateBalance(cardID,money);
+            }
+
+
+            if (request.getParameter("autoSaved") != null) {
+
+                PaymentDAO paymentDAO = new PaymentDAO(mongoDB.openConnection());
+
+                String cardName = request.getParameter("cardName");
+
+                String creditCardNumber = request.getParameter("creditCardNumber");
+
+                String validDate = request.getParameter("validDate");
+
+                String CVV = request.getParameter("CVV");
+
+                User user = (User) session.getAttribute("currentUser");
+
+                String userEmail = user.getEmail();
+
+                paymentDAO.addPaymentInfo(cardName, creditCardNumber, validDate, CVV, userEmail);
+
+            }
+
+            request.getRequestDispatcher("./afterPayment.jsp").forward(request, response);
+        }
+
+
+
+
     }
 
 
