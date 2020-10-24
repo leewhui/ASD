@@ -123,6 +123,12 @@
         <button type="button" class="btn btn-primary " id="previous">previous</button>
         &nbsp;
         <button type="button" class="btn btn-primary" id="nextBtn">next</button>
+      
+        <HR width="80%" color=#987cb9 SIZE=30>
+
+        <div style="text-align: center">
+            <a class="btn btn-outline-primary" href="../index.jsp">Cancel</a>
+        </div>
     </form>
 </div>
 <script async src="./script/flatpickr.min.js" onload="fp_ready()"></script>
