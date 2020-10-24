@@ -124,6 +124,7 @@
                 <th>Delivery Postcode</th>
                 <th>Status</th>
                 <% if (user.isIs_staff()) {%>
+                    <th>User Email</th>
                     <th>Edit</th>
                 <% } %>
 
@@ -140,6 +141,7 @@
                     <td><%= OrderList.get(i).getDeliveryPostcode() %></td>
                     <td><%= OrderList.get(i).getOrderStatus() %></td>
                     <% if (user.isIs_staff()) {%>
+                        <td><%= OrderList.get(i).getUserEmail() %></td>
                         <td>
                         <form method="post" action="/Controller/orderUpdateController" style="text-align:center;">
                             <input type="text" name="operation" value="R" style="display:none">
