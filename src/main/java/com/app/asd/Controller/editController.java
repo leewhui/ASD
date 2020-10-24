@@ -49,12 +49,14 @@ public class editController extends HttpServlet {
             //set attributes
             while(resultList.hasNext()){
                 cards.add(gson.fromJson(resultList.next().toJson(), Card.class));
-                user.setFirst_name(req.getParameter("firstName"));
-                user.setLast_name(req.getParameter("lastName"));
-                user.setDob(req.getParameter("dob"));
-                user.setPassword(req.getParameter("password"));
-                user.setGender(req.getParameter("gender"));
             }
+            // Set updated user info
+            user.setFirst_name(req.getParameter("firstName"));
+            user.setLast_name(req.getParameter("lastName"));
+            user.setDob(req.getParameter("dob"));
+            user.setPassword(req.getParameter("password"));
+            user.setGender(req.getParameter("gender"));
+            
             // Save to MongoDB.
             if(dbConnect.updateOneUser(user).equals("success")) {
                 req.setAttribute("success", true);
