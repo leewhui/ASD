@@ -78,8 +78,8 @@
             <li class="card" style="width: 18rem;">
                 <img src="resources/paper.jpg" alt="...">
                 <div class="card-body">
-                    <h5 class="card-title">Will be changed in R2</h5>
-                    <p class="card-text">...</p>
+                    <h5 class="card-title">No Function Here</h5>
+                    <p class="card-text">Only to keep the symmetry of web</p>
                     <a href="#" class="btn btn-primary" >Go for it</a>
                 </div>
             </li>
