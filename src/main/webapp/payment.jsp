@@ -182,7 +182,7 @@
 
 
     <div class="panel-footer">
-        <a href="cardStatusServlet" class="btn back-btn">Cancel</a>
+        <a style="text-decoration: none; text-align: center;font-size: 16px; padding-top: 10px" class="btn back-btn" href="../cardStatus.jsp">Cancel</a>
         <button type="submit" name="confirm" value="confirm" class="btn next-btn">Confirm</button>
     </div>
 </div>
