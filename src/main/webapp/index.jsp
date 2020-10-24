@@ -18,8 +18,8 @@
 
 <div class="background clearfix">
     <div class="text">
-        <h2>Welcome to <span style="color:orangered">opel card service</span></h2>
-        <p>We provide fast opel card service for all of our customers!</p>
+        <h2>Welcome to <span style="color:orangered">opal card service</span></h2>
+        <p>We provide fast opal card service for all of our customers!</p>
         <p>Let's check it out!!!</p>
         <a class="btn btn-outline-primary" href="signup.jsp">Sign up</a>
         &nbsp;
