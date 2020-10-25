@@ -21,6 +21,11 @@ public class staffInsertController extends HttpServlet
         {
             cardType = "Senior";
         }
+        if(cardType.equals("Youth"))
+        {
+            cardType = "Child";
+        }
+        
         double initialBal = 0;
 
         int cardID = -1;
